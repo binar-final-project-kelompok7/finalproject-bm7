@@ -1,12 +1,16 @@
-import { useState } from "react";
-import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import KelasSaya from "./pages/KelasSaya";
+import Course from "./pages/Course";
 
 function App() {
   return (
     <>
-      <div>
-        <h1>Final project BM 7</h1>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<KelasSaya />} />
+          <Route path="/course" element={<Course />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

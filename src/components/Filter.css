@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+.filter {
+  width: 267px;
+  height: 628px;
+  border-radius: 16px;
+  padding: 10px 24px;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: 10px;
+}
+
+.filter h1 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0px;
+  margin-top: 15px;
+}
+.isiFilter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.isiFilter input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 2px solid #b4bdc4;
+  background: #e8f1ff;
+  accent-color: rgba(97, 72, 255, 1);
+}
+
+.isiFilter input[type="checkbox"]:checked:hover {
+  accent-color: rgba(97, 72, 255, 1);
+  background-color: rgba(97, 72, 255, 1);
+}
+
+.isiFilter div {
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+}
+
+.isiFilter div label {
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.filter button {
+  width: 219px;
+  height: 36px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  color: red;
+  background-color: white;
+  border: none;
+}
