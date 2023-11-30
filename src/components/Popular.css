@@ -1,0 +1,17 @@
+.navPopular{
+    width: 170px;
+}
+
+.allButton{
+    color: #6148FF;
+}
+
+.popularContent{
+    width: 323px;
+}
+
+.popularContent button{
+    background-color: #489CFF;
+    width: 180px;
+    height: 40px;
+}

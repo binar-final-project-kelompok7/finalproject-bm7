@@ -1,0 +1,28 @@
+.containerNav{
+    background-color: #6148FF;
+}
+
+.leftHomeNav h1{
+    cursor: pointer;
+}
+
+.searchHomePage{
+    height: 62px;
+    width: 100%; 
+  }
+
+.searchHomePage img{
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+}
+
+.rightHomeNav img {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+    .searchHomePage{
+      width: 526px;
+    }
+  }
