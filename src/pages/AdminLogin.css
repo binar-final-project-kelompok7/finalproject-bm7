@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+.Adm-Container {
+  display: flex;
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+}
+
+.AdmL-Logo {
+  height: 100%;
+  width: 35vw;
+  background-color: rgba(97, 72, 255, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AdmL-form {
+  height: 100%;
+  width: 65vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.AdmL-form h1 {
+  color: rgba(97, 72, 255, 1);
+}
+.AdmL-form form {
+  display: flex;
+  flex-direction: column;
+  width: 370px;
+  gap: 10px;
+}
+
+.AdmL-form form button {
+  height: 40px;
+  background-color: rgba(97, 72, 255, 1);
+  color: white;
+  border: none;
+  border-radius: 15px;
+}
+
+.AdmL-form form input {
+  height: 40px;
+  border: 1px solid rgba(208, 208, 208, 1);
+  border-radius: 15px;
+  padding-left: 20px;
+}
+
+.AdmL-form form div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.AdmL-form form div a {
+  color: rgba(97, 72, 255, 1);
+  text-decoration: none;
+}
