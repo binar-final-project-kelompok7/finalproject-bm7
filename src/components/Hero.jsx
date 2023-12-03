@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div className="container-fluid p-0 d-none d-md-block">
       <div className="row m-0">
-        <div className="col-7">
+        <div className="hero col-7 p-0" >
           <img src={heroImage} />
         </div>
         <div

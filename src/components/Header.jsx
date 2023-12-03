@@ -22,7 +22,7 @@ const Header = () => {
             <input
               placeholder="Cari kursus terbaik..."
               type="text"
-              className="bg-transparent border-0 w-75"
+              className="bg-transparent border-0 w-75 py-3"
             />
             <img
               src={searchHomeNav}

@@ -7,6 +7,7 @@ import ProfileSaya from "./components/ProfileSaya";
 import ChangePassword from "./components/ChangePassword";
 import PaymentHistory from "./components/PaymentHistory";
 import Admin from "./pages/Admin";
+import PaymentStatus from "./components/PaymentStatus";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path="payment-history" element={<PaymentHistory/>}/>
         </Route>
         <Route path="/dashboard-admin" element={<Admin/>}>
-          {/* <Route path="" element/> */} /* Routing untuk Dashboard status pembayaran dan kelola kelas
+          <Route path="payment-status" element={<PaymentStatus/>}/> /* Routing untuk Dashboard status pembayaran dan kelola kelas
         </Route>
       </Routes>
     </BrowserRouter>
