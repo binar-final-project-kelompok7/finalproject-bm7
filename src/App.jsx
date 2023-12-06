@@ -15,6 +15,15 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/otp" element={<OTP />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/account-settings" element={<AccountSetings />}>
+          <Route path="edit-profile" element={<ProfileSaya />} />
+          <Route path="change-password" element={<ChangePassword />} />
+          <Route path="payment-history" element={<PaymentHistory />} />
+        </Route>
+        <Route path="/dashboard-admin" element={<Admin />}>
+          <Route path="payment-status" element={<PaymentStatus />} /> /* Routing
+          untuk Dashboard status pembayaran dan kelola kelas
+        </Route>
       </Routes>
     </BrowserRouter>
   );
