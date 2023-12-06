@@ -8,6 +8,9 @@ import ResetPassword from "./pages/ResetPassword";
 import KelasSaya from "./pages/KelasSaya";
 import Course from "./pages/Course";
 import AdminLogin from "./pages/AdminLogin";
+import KelasSaya from "./pages/KelasSaya";
+import Course from "./pages/Course";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
