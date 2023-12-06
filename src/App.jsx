@@ -1,4 +1,6 @@
-import { useState } from "react";
+import KelasSaya from "./pages/KelasSaya";
+import Course from "./pages/Course";
+import AdminLogin from "./pages/AdminLogin";
 import "./App.css";
 import Home from "./pages/Home";
 import AccountSetings from "./pages/AccountSetings";
@@ -15,13 +17,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/account-settings" element={<AccountSetings />}>
-          <Route path="edit-profile" element={<ProfileSaya/>}/>
-          <Route path="change-password" element={<ChangePassword/>}/>
-          <Route path="payment-history" element={<PaymentHistory/>}/>
+          <Route path="edit-profile" element={<ProfileSaya />} />
+          <Route path="change-password" element={<ChangePassword />} />
+          <Route path="payment-history" element={<PaymentHistory />} />
         </Route>
-        <Route path="/dashboard-admin" element={<Admin/>}>
-          <Route path="payment-status" element={<PaymentStatus/>}/> /* Routing untuk Dashboard status pembayaran dan kelola kelas
+        <Route path="/dashboard-admin" element={<Admin />}>
+          <Route path="payment-status" element={<PaymentStatus />} /> /* Routing untuk Dashboard status pembayaran dan kelola kelas
         </Route>
+        <Route path="/myclass" element={<KelasSaya />} />
+        <Route path="/course" element={<Course />} />
+        <Route path="/adminLogin" element={<AdminLogin />} />
       </Routes>
     </BrowserRouter>
   );
