@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import OTP from "./pages/OTP";
 import ResetPassword from "./pages/ResetPassword";
+import KelasSaya from "./pages/KelasSaya";
+import Course from "./pages/Course";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route path="payment-status" element={<PaymentStatus />} /> /* Routing
           untuk Dashboard status pembayaran dan kelola kelas
         </Route>
+        <Route path="/myclass" element={<KelasSaya />} />
+        <Route path="/course" element={<Course />} />
+        <Route path="/adminLogin" element={<AdminLogin />} />
       </Routes>
     </BrowserRouter>
   );
