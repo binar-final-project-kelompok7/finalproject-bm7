@@ -1,0 +1,9 @@
+.desktopIconOtp{
+    width: 50%;
+}
+
+@media screen and (max-width: 425px) {
+    .desktopIconOtp{
+        display: none;
+    }
+}
