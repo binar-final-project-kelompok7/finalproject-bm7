@@ -29,7 +29,7 @@ const Course = () => {
       <div className="KelasSaya-Container">
         <div className="KelasSaya-Header">
           <div className="KS-Header">
-            <h1>Kelas Berjalan</h1>
+            <h1>Topik Kelas</h1>
             <button
               className="filter-toggle"
               onClick={(e) => {
@@ -154,7 +154,7 @@ const Course = () => {
                     <p>120 menit</p>
                   </div>
                 </div>
-                <div className="ks-card-content-3">Premium</div>
+                <div className="ks-card-content-3 Premium">Premium</div>
               </div>
               <div className="ks-card-content">
                 <img src={imageimg} alt="" />
@@ -181,7 +181,7 @@ const Course = () => {
                     <p>120 menit</p>
                   </div>
                 </div>
-                <div className="ks-card-content-3">Premium</div>
+                <div className="ks-card-content-3 Premium">Premium</div>
               </div>
               <div className="ks-card-content">
                 <img src={imageimg} alt="" />
@@ -208,7 +208,34 @@ const Course = () => {
                     <p>120 menit</p>
                   </div>
                 </div>
-                <div className="ks-card-content-3">Premium</div>
+                <div className="ks-card-content-3 Premium">Premium</div>
+              </div>
+              <div className="ks-card-content">
+                <img src={imageimg} alt="" />
+                <div className="ks-card-content-1">
+                  <p>UI/UX Design</p>
+                  <div>
+                    <img src={star} alt="" />
+                    4.7
+                  </div>
+                </div>
+                <p className="titlecourse">Belajar Web Designer dengan Figma</p>
+                <p className="creator">by Angela Doe </p>
+                <div className="ks-card-content-2">
+                  <div>
+                    <img src={level} alt="" />
+                    <p>Intermediate Level</p>
+                  </div>
+                  <div>
+                    <img src={modul} alt="" />
+                    <p>10 Modul</p>
+                  </div>
+                  <div>
+                    <img src={timeimg} alt="" />
+                    <p>120 menit</p>
+                  </div>
+                </div>
+                <div className="ks-card-content-3 Gratis">Mulai Kelas</div>
               </div>
             </div>
           </div>

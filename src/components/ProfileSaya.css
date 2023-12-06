@@ -1,0 +1,19 @@
+.containerMyProfile{
+    width: 25%;
+}
+
+.containerMyProfile img{
+    width: 90px;
+    height: 90px;
+    border: 3px solid #6148FF;
+}
+
+.buttonSave{
+    background-color: #6148FF;
+}
+
+@media screen and (max-width: 425px) {
+    .containerMyProfile{
+        width: 75%;
+    }
+}
