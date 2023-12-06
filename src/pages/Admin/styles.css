@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+.table-secondary {
+  background-color: #ebf3fc;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}

@@ -1,0 +1,29 @@
+.login{
+    width: 50%;
+}
+
+.mainContentLogin{
+    width: 50%;
+}
+
+.desktopIconLogin{
+    width: 50%;    
+}
+
+@media screen and (max-width: 425px){
+    .login{
+        width: 100%;
+    }
+
+    .mainContentLogin{
+        width: 80%;
+    }
+
+    .containerOpsiDaftar{
+        margin-top: 200px;        
+    }
+
+    .desktopIconLogin{
+        display: none;        
+    }
+}

@@ -1,0 +1,29 @@
+.register{
+    width: 50%;
+}
+
+.mainContentRegister{
+    width: 50%;
+}
+
+.desktopIconRegister{
+    width: 50%;
+}
+
+@media screen and (max-width: 425px){
+    .register{
+        width: 100%;
+    }
+
+    .mainContentRegister{
+        width: 80%;
+    }
+
+    .opsiLogin{
+        margin-top: 100px;
+    }
+
+    .desktopIconRegister{
+        display: none;
+    }
+}
