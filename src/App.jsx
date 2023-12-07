@@ -14,6 +14,10 @@ import ChangePassword from "./components/ChangePassword";
 import PaymentHistory from "./components/PaymentHistory";
 import Admin from "./pages/Admin";
 import PaymentStatus from "./components/PaymentStatus";
+import PaySuccess from "./components/PaySuccess.jsx";
+import DetailCLass from "./components/DetailCLass.jsx";
+import DetailPay from "./components/DetailPay.jsx";
+import PlayVideo from "./components/PlayVideo.jsx";
 
 function App() {
   return (
@@ -35,6 +39,10 @@ function App() {
         <Route path="/myclass" element={<KelasSaya />} />
         <Route path="/course" element={<Course />} />
         <Route path="/adminLogin" element={<AdminLogin />} />
+        <Route path="/detailclass" element={<DetailCLass />} />
+        <Route path="/detail-pay" element={<DetailPay />} />
+        <Route path="/PaySuccess" element={<PaySuccess />} />
+        <Route path="/PlayVideo" element={<PlayVideo />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,164 @@
+
+.top-content{
+  padding-top: 20px;
+  width: 100%;
+  justify-content: flex-start;
+  display: flex;
+  align-items: flex-start;
+}
+
+.back{
+  padding-left: 100px;
+  padding-right: 200px;
+  padding-bottom: 130px;
+}
+.payclass{
+  width: 80%;
+  color:#fff;
+  border-color: #FF0000;
+  border-radius: 999px;
+  background-color: #FF0000;
+  padding: 10px 10px 10px 10px;
+}
+.warning-pay{
+  margin-top: 40px;
+  width: 50%;
+  background-color: #FF0000;
+  color: #fff;
+  border-radius: 10px;
+  border-color: #FF0000;
+  padding: 10px 10px 10px 10px;
+}
+.columns-container {
+  padding-left: 170px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.accordion{
+  height: 50vh;
+}
+
+
+.class-payment{
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65%;
+  padding-bottom: 50px;
+  border-color: #6148FF;
+}
+.textpayment{
+  padding-left: 100px;
+}
+.CE{
+  display: flex;
+}
+
+
+
+.mid-content{
+  margin-top: -30px;
+  height: 109vh;
+}
+.price-details{
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+}
+.img-pay{
+  padding-left: 150px;
+  padding-bottom: 50px;
+}
+.congrats{
+  font-size: 40px;
+  color: #6148FF;
+  font-weight: 700;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  padding-right: 20px;
+}
+.tfwork{
+  font-weight: 700;
+  font-size: 20px;
+}
+.toemail{
+  font-size: 18px;
+}
+
+@media (max-width: 568px) {
+  body{
+    background-color: #EBF3FC;
+  }
+  .navbar-toggler{
+    display: none;
+  }
+  .columns-container {
+    width: 100%;
+    flex-direction: column-reverse;
+    padding-left: 0;
+  }
+  .col{
+    width: 80%;
+  }
+.accordion{
+  width: 100%;
+  margin-top: 0;
+}
+.class-payment{
+  margin-top: -70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-color: #fff;
+  border-radius: 20px;
+}
+
+.textpayment{
+  padding-left: 0;
+}
+.img-pay{
+  padding-left: 0;
+}
+.warning-pay{
+ display: none;
+}
+.kembali{
+  display: none;
+}
+
+.card-deskripsi{
+  width: 70%;
+}
+.back{
+  padding-left: 20px;
+  padding-right: 500px;
+  padding-bottom: 130px;
+}
+h3{
+display: none;
+}
+.payclass{
+  width: auto;
+  color:#fff;
+  border-color: #FF0000;
+  border-radius: 999px;
+  background-color: #FF0000;
+  padding: 10px 10px 10px 10px;
+}
+.price-details{
+  display: flex;
+  padding-left: 20px;
+}
+.column{
+  padding-right: 20px;
+}
+.h2payclass{
+  display: none;
+}
+
+}
