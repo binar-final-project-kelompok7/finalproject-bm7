@@ -14,6 +14,7 @@ import ChangePassword from "./components/ChangePassword";
 import PaymentHistory from "./components/PaymentHistory";
 import Admin from "./pages/Admin";
 import PaymentStatus from "./components/PaymentStatus";
+import ManageClass from "./pages/Admin/ManageClass";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         </Route>
         <Route path="/dashboard-admin" element={<Admin />}>
           <Route path="payment-status" element={<PaymentStatus />} />
+          <Route path="kelola-kelas" element={<ManageClass />} />
         </Route>
         <Route path="/myclass" element={<KelasSaya />} />
         <Route path="/course" element={<Course />} />

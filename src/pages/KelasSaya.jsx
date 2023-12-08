@@ -7,6 +7,8 @@ import level from "../assets/level.png";
 import modul from "../assets/modul.png";
 import timeimg from "../assets/time.png";
 import progress from "../assets/progress_check.png";
+import Header from "../components/Header";
+import BottomNav from "../components/BottomNav";
 const KelasSaya = () => {
   const [activeButton, setActiveButton] = useState(null);
   const [modalVisible, setModalVisible] = useState(true);
@@ -27,6 +29,7 @@ const KelasSaya = () => {
 
   return (
     <div className="KelasSaya-background">
+      <Header />
       <div className="KelasSaya-Container">
         <div className="KelasSaya-Header">
           <div className="KS-Header">
@@ -266,6 +269,7 @@ const KelasSaya = () => {
           </div>
         </div>
       </div>
+      <BottomNav />
     </div>
   );
 };
