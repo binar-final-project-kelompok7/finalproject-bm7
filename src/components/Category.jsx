@@ -3,13 +3,13 @@ import categoryImage from '../assets/categoryImage.png'
 
 const Category = () => {
   return (
-    <div className="container">
+    <div className="container mt-4">
       <div className="row">
         <div className="col-6">
-          <h4 className="text-start">Kategori Belajar</h4>
+          <h4 className="text-start fw-bold">Kategori Belajar</h4>
         </div>
         <div className="col-6 text-end">
-          <button className="allButton bg-transparent" style={{color: "#6148FF"}}>
+          <button className="allButton bg-transparent fw-bolder" style={{color: "#6148FF"}}>
             Lihat Semua
           </button>
         </div>

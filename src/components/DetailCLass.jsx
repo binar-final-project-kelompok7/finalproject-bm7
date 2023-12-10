@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import "../style/DetailCLass.css";
 import Pup from "./Popup";
+import Header from "./Header";
+import BottomNav from "./BottomNav";
 
 function PlayVideo() {
   const [activeSection, setActiveSection] = useState("tentang");
@@ -17,6 +19,7 @@ function PlayVideo() {
   return (
     <>
       <div className="dekstop">
+        <Header/>
         <div className="section" style={{ width: "100%", height: "100%", backgroundColor: "#fff", justifyContent: "start", alignItems: "center", display: "flex", marginTop: "50px" }}>
           <div className="cardkanan" style={{ paddingLeft: "950px", marginTop: "120px" }}>
             <div className="Materi-card" style={{ position: "absolute", backgroundColor: "#fff", boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)", marginTop: "-200px", paddingTop: "20px", borderRadius: "20px", paddingRight: "50px" }}>
@@ -173,6 +176,7 @@ function PlayVideo() {
             </ul>
           </div>
         </div>
+        <BottomNav/>
       </div>
 
       <div className="mobile">

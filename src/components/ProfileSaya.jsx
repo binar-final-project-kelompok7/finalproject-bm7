@@ -7,17 +7,17 @@ const ProfileSaya = () => {
     <div className='containerMyProfile d-flex flex-column w-md-50 mx-auto pt-4'>
         <img className='rounded-circle mx-auto' src={profile} alt="" />
         <form action="" className='d-flex flex-column text-start'>
-            <label htmlFor="">Nama</label>
-            <input type="text" className='bg-transparent text-black'/>
-            <label htmlFor="">Email</label>
-            <input type="text" className='bg-transparent text-black' />
-            <label htmlFor="">Nomor Telepon</label>
-            <input type="text" className='bg-transparent text-black' />
-            <label htmlFor="">Negara</label>
-            <input type="text" className='bg-transparent text-black' />
-            <label htmlFor="">Kota</label>
-            <input type="text" className='bg-transparent text-black' />
-            <button className='buttonSave rounded-5 text-white my-4'>Simpan Profil Saya</button>
+            <label className='mt-3' htmlFor="" style={{fontSize: '12px'}}>Nama</label>
+            <input type="text" className='bg-transparent text-black rounded-3 border-1'/>
+            <label className='mt-3' htmlFor="" style={{fontSize: '12px'}}>Email</label>
+            <input type="text" className='bg-transparent text-black rounded-3 border-1' />
+            <label className='mt-3' htmlFor="" style={{fontSize: '12px'}}>Nomor Telepon</label>
+            <input type="text" className='bg-transparent text-black rounded-3 border-1' />
+            <label className='mt-3' htmlFor="" style={{fontSize: '12px'}}>Negara</label>
+            <input type="text" className='bg-transparent text-black rounded-3 border-1' />
+            <label className='mt-3' htmlFor="" style={{fontSize: '12px'}}>Kota</label>
+            <input type="text" className='bg-transparent text-black rounded-3 border-1' />
+            <button className='buttonSave rounded-5 text-white mt-3'>Simpan Profil Saya</button>
         </form>
     </div>
   )

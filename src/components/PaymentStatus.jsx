@@ -1,5 +1,6 @@
 import React from "react";
 import SearchIcon from "../assets/searchIcon2.png";
+import filterIcon from "../assets/filterIcon.png"
 
 const PaymentStatus = () => {
 
@@ -17,9 +18,9 @@ const PaymentStatus = () => {
     <div className="mx-auto mt-5" style={{ width: "80%"}}>
       <div className="d-flex justify-content-between">
         <h3>Status Pembayaran</h3>
-        <div className="d-flex align-items-center">
-          <button>Filter</button>
-          <img src={SearchIcon} alt="" />
+        <div className="d-flex align-items-center gap-3">
+        <button style={{border: '1px solid #6148FF', color: '#6148FF'}} className="rounded-5 py-1 px-3 d-flex gap-2 align-items-center fw-bold"><img src={filterIcon}/>Filter</button>
+          <img src={SearchIcon}/>
         </div>
       </div>
       <div style={{overflowY: 'auto', height: '300px'}}>

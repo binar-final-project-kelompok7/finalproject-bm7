@@ -3,6 +3,8 @@ import { BsArrowLeft } from "react-icons/bs";
 import "../style/DetailCLass.css";
 import videobg from "../assets/video.mp4";
 import "../style/video.css";
+import Header from "./Header";
+import BottomNav from "./BottomNav";
 
 function PlayVideo() {
   const [activeSection, setActiveSection] = useState("tentang");
@@ -36,6 +38,7 @@ function PlayVideo() {
 
   return (
     <>
+    <Header/>
       <div className="dekstop">
         <div className="section" style={{ width: "100%", height: "100%", backgroundColor: "#fff", justifyContent: "start", alignItems: "center", display: "flex", marginTop: "50px" }}>
           <div className="cardkanan" style={{ paddingLeft: "950px", marginTop: "120px" }}>
@@ -366,6 +369,7 @@ function PlayVideo() {
         )}
         <hr></hr>
       </div>
+      <BottomNav/>
     </>
   );
 }
