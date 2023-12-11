@@ -1,0 +1,51 @@
+
+  /*payment-work*/
+  .success{
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .paywork{
+    border-radius: 999px;
+    margin-top: 50px;
+    width: 62%;
+    background-color: #73CA5C;
+    border-color: #73CA5C;
+    padding: 10px 10px 10px 10px;
+    color:#fff;
+  }
+  .imagepay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .transaksi{
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .start{
+    margin-top: 40px;
+    padding: 10px 10px 10px 10px;
+    width: auto;
+    background-color: #6148FF;
+    color:#fff;
+    border-color: #6148FF;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+  .tfwork{
+    display: block;
+    text-align: center;
+  }
+  @media (max-width: 500px) {
+    .navbar-toggler{
+      display: none;
+    }
+    .paywork{
+      display: none;
+
+  }
+}

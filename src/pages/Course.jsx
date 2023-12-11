@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./KelasSaya.css";
 import searchIcon from "../assets/search-icon.png";
 import imageimg from "../assets/img.png";
@@ -6,6 +6,8 @@ import star from "../assets/star.png";
 import level from "../assets/level.png";
 import modul from "../assets/modul.png";
 import timeimg from "../assets/time.png";
+import BottomNav from "../components/BottomNav";
+import Header from "../components/Header";
 
 const Course = () => {
   const [activeButton, setActiveButton] = useState(null);
@@ -14,9 +16,9 @@ const Course = () => {
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
     document.querySelectorAll("button").forEach((button) => {
-      button.classList.remove("active");
+      button.classList.remove("active-ks");
     });
-    document.getElementById(`button-${buttonNumber}`).classList.add("active");
+    document.getElementById(`button-${buttonNumber}`).classList.add("active-ks");
   };
 
   const toggleDropdown = () => {
@@ -26,6 +28,7 @@ const Course = () => {
   };
   return (
     <div className="KelasSaya-background">
+      <Header />
       <div className="KelasSaya-Container">
         <div className="KelasSaya-Header">
           <div className="KS-Header">
@@ -118,13 +121,13 @@ const Course = () => {
           </div>
           <div className="KelasSaya-isi">
             <div className="button-isi-ks">
-              <button id="button-1" onClick={() => handleButtonClick(1)} className={activeButton === 1 ? "active" : ""}>
+              <button id="button-1" onClick={() => handleButtonClick(1)} className={activeButton === 1 ? "active-ks" : ""}>
                 All
               </button>
-              <button id="button-2" onClick={() => handleButtonClick(2)} className={activeButton === 2 ? "active" : ""}>
+              <button id="button-2" onClick={() => handleButtonClick(2)} className={activeButton === 2 ? "active-ks" : ""}>
                 Kelas Premium
               </button>
-              <button id="button-3" onClick={() => handleButtonClick(3)} className={activeButton === 3 ? "active" : ""}>
+              <button id="button-3" onClick={() => handleButtonClick(3)} className={activeButton === 3 ? "active-ks" : ""}>
                 Kelas Gratis
               </button>
             </div>
@@ -241,6 +244,7 @@ const Course = () => {
           </div>
         </div>
       </div>
+      <BottomNav />
     </div>
   );
 };
