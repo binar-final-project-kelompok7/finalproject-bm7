@@ -75,27 +75,31 @@ const ManageClass = () => {
       </div>
       <div style={{overflowY: 'auto', height: '300px'}}>
       <table>
-        <tr>
-          <th className="p-2">Kode Kelas</th>
-          <th className="p-2">Kategori</th>
-          <th className="p-2">Nama Kelas</th>
-          <th className="p-2">Tipe Kelas</th>
-          <th className="p-2">Level</th>
-          <th className="p-2">Harga Kelas</th>
-          <th className="p-2">Aksi</th>
-        </tr>
+        <thead>
+          <tr style={{fontSize: '14px'}}>
+            <th className="p-2">Kode Kelas</th>
+            <th className="p-2">Kategori</th>
+            <th className="p-2">Nama Kelas</th>
+            <th className="p-2">Tipe Kelas</th>
+            <th className="p-2">Level</th>
+            <th className="p-2">Harga Kelas</th>
+            <th className="p-2">Aksi</th>
+          </tr>
+        </thead>
 
-        {paymentData.map((payment, id) => (
-        <tr key={id}>
-          <td className="p-2">{payment.id}</td>
-          <td className="p-2">{payment.category}</td>
-          <td className="p-2">{payment.className}</td>
-          <td className="p-2">{payment.typeClass}</td>
-          <td className="p-2">{payment.level}</td>
-          <td className="p-2">{payment.classPrice}</td>
-          <td className="p-2"><button style={{backgroundColor: '#6148FF'}} className="bg-primary text-white rounded-5 py-1 px-3">Ubah</button> <button className="bg-danger text-white rounded-5 py-1 px-3">Hapus</button> </td>
-        </tr>
-        ))}
+        <tbody>
+          {paymentData.map((payment, id) => (
+          <tr style={{fontSize: '13px'}} key={id}>
+            <td className="p-2">{payment.id}</td>
+            <td className="p-2">{payment.category}</td>
+            <td className="p-2">{payment.className}</td>
+            <td className="p-2">{payment.typeClass}</td>
+            <td className="p-2">{payment.level}</td>
+            <td className="p-2">{payment.classPrice}</td>
+            <td className="p-2 d-flex gap-2"><button style={{backgroundColor: '#6148FF', fontSize: '10px'}} className="text-white rounded-5 py-1 px-2">Ubah</button> <button style={{fontSize: '10px', backgroundColor: '#FF0000'}} className="text-white rounded-5 py-1 px-2">Hapus</button> </td>
+         </tr>
+          ))}
+        </tbody>
       </table>
       </div>
     </div>
