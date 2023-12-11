@@ -1,6 +1,7 @@
 import "../style/PaySuccess.css";
 import React, { useState } from "react";
 import StartStudy from "./StartStudy";
+import Header from "./Header";
 
 function PaySuccess() {
   const [isPopupVisible, setPopupVisible] = useState(true);
@@ -11,6 +12,7 @@ function PaySuccess() {
 
   return (
     <>
+    <Header/>
       <div className="success">
         <button className="paywork">Terimakasih atas pembayaran transaksi</button>
         <h1 className="congrats">Selamat!</h1>

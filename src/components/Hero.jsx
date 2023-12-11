@@ -15,7 +15,7 @@ const Hero = () => {
           <h2 className="text-white">Belajar dari Praktisi Terbaik!</h2>
           <button
             className="bg-white fw-bold rounded-4"
-            
+            onClick={() => window.location='/course'}
           >
             IKUTI KELAS
           </button>
