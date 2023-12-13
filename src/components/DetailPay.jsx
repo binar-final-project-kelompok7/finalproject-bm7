@@ -1,9 +1,11 @@
 import "../style/DetailPay.css";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Header from "./Header";
 function DetailPay() {
   return (
     <>
+    <Header/>
       <div className="top-content">
         <Link to="/" className="back" style={{ fontSize: "17px", fontWeight: "700", textDecoration: "none", color: "#000", marginTop: "-25px" }}>
           <BsArrowLeft style={{ marginRight: "15px", fontSize: "20px" }} />

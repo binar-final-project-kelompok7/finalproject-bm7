@@ -1,11 +1,10 @@
 import React from "react";
-import Logo from "../assets/Logo-LoginAdmn.png";
 import "./AdminLogin.css";
 const AdminLogin = () => {
   return (
     <div className="Adm-Container">
       <div className="AdmL-Logo">
-        <img src={Logo} alt="" />
+        <h1 className="text-white">CourseIn</h1>
       </div>
       <div className="AdmL-form">
         <h1>Login</h1>
