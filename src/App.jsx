@@ -21,9 +21,6 @@ import PlayVideo from "./components/PlayVideo.jsx";
 import AdminPopup from "./pages/Admin/AdminPopup.jsx";
 import ManageClass from "./pages/Admin/ManageClass.jsx";
 
-import AdminPopup from "./components/AdminPopup.jsx";
-import ManageClass from "./pages/Admin/ManageClass.jsx";
-
 function App() {
   return (
     <BrowserRouter>
