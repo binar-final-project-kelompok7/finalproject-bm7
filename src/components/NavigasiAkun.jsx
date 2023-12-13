@@ -4,7 +4,7 @@ import changePassIcon from "../assets/changePassIcon.png";
 import purchaseIcon from "../assets/purchaseIcon.png";
 import logoutIcon from "../assets/logoutIcon.png";
 import { NavLink } from 'react-router-dom';
-// import './NavigasiAkun.css'
+import './NavigasiAkun.css'
 
 const NavigasiAkun = ({onTabChange}) => {
   return (
