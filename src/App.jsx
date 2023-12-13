@@ -21,6 +21,9 @@ import PlayVideo from "./components/PlayVideo.jsx";
 import AdminPopup from "./pages/Admin/AdminPopup.jsx";
 import ManageClass from "./pages/Admin/ManageClass.jsx";
 
+import AdminPopup from "./components/AdminPopup.jsx";
+import ManageClass from "./pages/Admin/ManageClass.jsx";
+
 function App() {
   return (
     <BrowserRouter>
@@ -35,11 +38,19 @@ function App() {
           <Route path="change-password" element={<ChangePassword />} />
           <Route path="payment-history" element={<PaymentHistory />} />
         </Route>
+
         <Route path="/dashboard-admin" element={<Admin />}>      
           <Route path="payment-status" element={<PaymentStatus />}/>
           <Route path="manage-class" element={<ManageClass />}/>
           <Route path="adminPopup" element={<AdminPopup/>} />
           </Route>
+
+        <Route path="/dashboard-admin" element={<Admin />}>
+          <Route path="payment-status" element={<PaymentStatus />} />
+          <Route path="manage-class" element={<ManageClass/>}/>
+        </Route>
+        <Route path="/adminPopup" element={<AdminPopup/>} />
+
         <Route path="/myclass" element={<KelasSaya />} />
         <Route path="/course" element={<Course />} />
         <Route path="/adminLogin" element={<AdminLogin />} />
