@@ -18,7 +18,8 @@ import PaySuccess from "./components/PaySuccess.jsx";
 import DetailCLass from "./components/DetailCLass.jsx";
 import DetailPay from "./components/DetailPay.jsx";
 import PlayVideo from "./components/PlayVideo.jsx";
-import ManageClass from "./pages/Admin/ManageClass";
+import ManageClass from "./pages/Admin/ManageClass.jsx";
+import YourComponent from "./pages/testPostuser.jsx";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
         </Route>
         <Route path="/dashboard-admin" element={<Admin />}>
           <Route path="payment-status" element={<PaymentStatus />} />
-          <Route path="kelola-kelas" element={<ManageClass />} />
+          <Route path="manage-class" element={<ManageClass />} />
         </Route>
         <Route path="/myclass" element={<KelasSaya />} />
         <Route path="/course" element={<Course />} />
@@ -45,6 +46,7 @@ function App() {
         <Route path="/detail-pay" element={<DetailPay />} />
         <Route path="/PaySuccess" element={<PaySuccess />} />
         <Route path="/PlayVideo" element={<PlayVideo />} />
+        <Route path="/test" element={<YourComponent />} />
       </Routes>
     </BrowserRouter>
   );

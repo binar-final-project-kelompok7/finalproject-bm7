@@ -9,7 +9,7 @@ const NavigasiAdmin = () => {
         <NavLink className="py-2 bg-primary text-white text-decoration-none" to="/dashboard-admin/payment-status">
           Dashboard
         </NavLink>
-        <NavLink className="py-2 bg-primary text-white text-decoration-none" to="kelola-kelas">
+        <NavLink className="py-2 bg-primary text-white text-decoration-none" to="/dashboard-admin/manage-class">
           Kelola Kelas
         </NavLink>
         <NavLink className="py-2 bg-primary text-white text-decoration-none" to="">

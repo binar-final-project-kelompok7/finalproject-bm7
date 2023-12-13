@@ -16,9 +16,9 @@ const KelasSaya = () => {
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
     document.querySelectorAll("button").forEach((button) => {
-      button.classList.remove("active-ks");
+      button.classList.remove("activedBtn");
     });
-    document.getElementById(`button-${buttonNumber}`).classList.add("active-ks");
+    document.getElementById(`button-${buttonNumber}`).classList.add("activedBtn");
   };
 
   const toggleDropdown = () => {
@@ -122,13 +122,13 @@ const KelasSaya = () => {
           </div>
           <div className="KelasSaya-isi">
             <div className="button-isi-ks">
-              <button id="button-1" onClick={() => handleButtonClick(1)} className={activeButton === 1 ? "active-ks" : ""}>
+              <button id="button-1" onClick={() => handleButtonClick(1)} className={activeButton === 1 ? "activedBtn" : ""}>
                 All
               </button>
-              <button id="button-2" onClick={() => handleButtonClick(2)} className={activeButton === 2 ? "active-ks" : ""}>
+              <button id="button-2" onClick={() => handleButtonClick(2)} className={activeButton === 2 ? "activedBtn" : ""}>
                 In Progress
               </button>
-              <button id="button-3" onClick={() => handleButtonClick(3)} className={activeButton === 3 ? "active-ks" : ""}>
+              <button id="button-3" onClick={() => handleButtonClick(3)} className={activeButton === 3 ? "activedBtn" : ""}>
                 Selesai
               </button>
             </div>

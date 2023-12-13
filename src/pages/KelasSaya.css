@@ -80,7 +80,7 @@
   border: none;
 }
 
-.active-ks {
+.activedBtn {
   background-color: rgba(97, 72, 255, 1) !important;
   color: white;
 }
@@ -113,7 +113,8 @@
   justify-content: space-around;
   flex-wrap: wrap;
   box-sizing: border-box;
-  align-content: space-around;
+  align-content: flex-start;
+  padding-bottom: 100px;
 }
 
 .ks-card-content {

@@ -12,11 +12,11 @@ const BottomNav = () => {
               <img src={homeIcon} alt="" />
               <p>Beranda</p>
             </div>
-            <div className='w-25'>
+            <div onClick={() => window.location.href = '/myclass'} className='w-25'>
               <img src={classIcon} alt="" />
               <p>Kelas</p>
             </div>
-            <div className='w-25'>
+            <div onClick={() => window.location.href = '/course'} className='w-25'>
               <img src={courseIcon} alt="" />
               <p>Kursus</p>
             </div>
