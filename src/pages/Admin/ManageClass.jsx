@@ -64,7 +64,7 @@ const ManageClass = () => {
   ];
 
   return (
-    <div className="mx-auto mt-5" style={{ width: "80%"}}>
+    <div className="mx-auto mt-5" style={{ width: "90%"}}>
       <div className="d-flex justify-content-between">
         <h3>Kelola Kelas</h3>
         <div className="d-flex align-items-center gap-3">
