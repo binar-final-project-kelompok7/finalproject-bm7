@@ -1,5 +1,6 @@
 import React from "react";
 import SearchIcon from "../assets/searchIcon2.png";
+import filterIcon from "../assets/filterIcon.png"
 
 const PaymentStatus = () => {
 
@@ -17,32 +18,36 @@ const PaymentStatus = () => {
     <div className="mx-auto mt-5" style={{ width: "80%"}}>
       <div className="d-flex justify-content-between">
         <h3>Status Pembayaran</h3>
-        <div className="d-flex align-items-center">
-          <button>Filter</button>
-          <img src={SearchIcon} alt="" />
+        <div className="d-flex align-items-center gap-3">
+        <button style={{border: '1px solid #6148FF', color: '#6148FF'}} className="rounded-5 py-1 px-3 d-flex gap-2 align-items-center fw-bold"><img src={filterIcon}/>Filter</button>
+          <img src={SearchIcon}/>
         </div>
       </div>
-      <div style={{overflowY: 'auto', height: '300px'}}>
+      <div style={{ overflowY: 'auto', maxHeight: '300px' }}>
       <table>
-        <tr>
-          <th className="p-2">ID</th>
-          <th className="p-2">Kategori</th>
-          <th className="p-2">Kelas Premium</th>
-          <th className="p-2">Status</th>
-          <th className="p-2">Metode Pembayaran</th>
-          <th className="p-2">Tanggal Bayar</th>
-        </tr>
-
-        {PaymentStatusData.map((payment, id) => (
-        <tr key={id}>
-          <td className="p-2">{payment.id}</td>
-          <td className="p-2">{payment.category}</td>
-          <td className="p-2">{payment.className}</td>
-          <td className={payment.status ? 'text-success p-2' : 'text-danger p-2'}>{payment.status ? 'Sudah Bayar' : 'Belum Bayar'}</td>
-          <td className="p-2">{payment.paymentMethod}</td>
-          <td className="p-2">{payment.paymentDate}</td>
-        </tr>
-        ))}
+        <thead>
+          <tr style={{fontSize: '14px'}}>
+            <th className="p-2">ID</th>
+            <th className="p-2">Kategori</th>
+            <th className="p-2">Kelas Premium</th>
+            <th className="p-2">Status</th>
+            <th className="p-2">Metode Pembayaran</th>
+            <th className="p-2">Tanggal Bayar</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          {PaymentStatusData.map((payment, id) => (
+          <tr style={{fontSize: '13px'}} key={id}>
+            <td className="p-2">{payment.id}</td>
+            <td className="p-2">{payment.category}</td>
+            <td className="p-2">{payment.className}</td>
+            <td className={payment.status ? 'text-success p-2' : 'text-danger p-2'}>{payment.status ? 'Sudah Bayar' : 'Belum Bayar'}</td>
+            <td className="p-2">{payment.paymentMethod}</td>
+            <td className="p-2">{payment.paymentDate}</td>
+            </tr>
+            ))}
+        </tbody>
       </table>
       </div>
     </div>

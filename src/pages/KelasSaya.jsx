@@ -7,6 +7,8 @@ import level from "../assets/level.png";
 import modul from "../assets/modul.png";
 import timeimg from "../assets/time.png";
 import progress from "../assets/progress_check.png";
+import Header from "../components/Header";
+import BottomNav from "../components/BottomNav";
 const KelasSaya = () => {
   const [activeButton, setActiveButton] = useState(null);
   const [modalVisible, setModalVisible] = useState(true);
@@ -14,9 +16,9 @@ const KelasSaya = () => {
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
     document.querySelectorAll("button").forEach((button) => {
-      button.classList.remove("active");
+      button.classList.remove("activedBtn");
     });
-    document.getElementById(`button-${buttonNumber}`).classList.add("active");
+    document.getElementById(`button-${buttonNumber}`).classList.add("activedBtn");
   };
 
   const toggleDropdown = () => {
@@ -27,6 +29,7 @@ const KelasSaya = () => {
 
   return (
     <div className="KelasSaya-background">
+      <Header/>
       <div className="KelasSaya-Container">
         <div className="KelasSaya-Header">
           <div className="KS-Header">
@@ -119,13 +122,13 @@ const KelasSaya = () => {
           </div>
           <div className="KelasSaya-isi">
             <div className="button-isi-ks">
-              <button id="button-1" onClick={() => handleButtonClick(1)} className={activeButton === 1 ? "active" : ""}>
+              <button id="button-1" onClick={() => handleButtonClick(1)} className={activeButton === 1 ? "activedBtn" : ""}>
                 All
               </button>
-              <button id="button-2" onClick={() => handleButtonClick(2)} className={activeButton === 2 ? "active" : ""}>
+              <button id="button-2" onClick={() => handleButtonClick(2)} className={activeButton === 2 ? "activedBtn" : ""}>
                 In Progress
               </button>
-              <button id="button-3" onClick={() => handleButtonClick(3)} className={activeButton === 3 ? "active" : ""}>
+              <button id="button-3" onClick={() => handleButtonClick(3)} className={activeButton === 3 ? "activedBtn" : ""}>
                 Selesai
               </button>
             </div>
@@ -266,6 +269,7 @@ const KelasSaya = () => {
           </div>
         </div>
       </div>
+      <BottomNav/>
     </div>
   );
 };

@@ -18,6 +18,8 @@ import PaySuccess from "./components/PaySuccess.jsx";
 import DetailCLass from "./components/DetailCLass.jsx";
 import DetailPay from "./components/DetailPay.jsx";
 import PlayVideo from "./components/PlayVideo.jsx";
+import ManageClass from "./pages/Admin/ManageClass.jsx";
+import AdminPopup from "./components/AdminPopup.jsx";
 
 function App() {
   return (
@@ -35,7 +37,9 @@ function App() {
         </Route>
         <Route path="/dashboard-admin" element={<Admin />}>
           <Route path="payment-status" element={<PaymentStatus />} />
+          <Route path="manage-class" element={<ManageClass/>}/>
         </Route>
+        <Route path="/adminPopup" element={<AdminPopup />} />
         <Route path="/myclass" element={<KelasSaya />} />
         <Route path="/course" element={<Course />} />
         <Route path="/adminLogin" element={<AdminLogin />} />
