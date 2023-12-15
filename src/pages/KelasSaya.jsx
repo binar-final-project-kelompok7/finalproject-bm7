@@ -29,7 +29,7 @@ const KelasSaya = () => {
 
   return (
     <div className="KelasSaya-background">
-      <Header/>
+      <Header />
       <div className="KelasSaya-Container">
         <div className="KelasSaya-Header">
           <div className="KS-Header">
@@ -269,7 +269,7 @@ const KelasSaya = () => {
           </div>
         </div>
       </div>
-      <BottomNav/>
+      <BottomNav />
     </div>
   );
 };
