@@ -73,7 +73,6 @@ function AdminPopup() {
           </div>
         </div>
       </div>
-
     </>
   );
 }
