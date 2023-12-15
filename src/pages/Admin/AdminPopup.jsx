@@ -45,12 +45,12 @@ function AdminPopupTambah() {
       );
 
       console.log("Berhasil:", response.data);
+      window.location.reload();
       // Handle success, e.g., update component state or display success message
     } catch (error) {
       console.error("Gagal:", error.response.data);
       // Handle failure, e.g., display error message
     }
-    window.location.reload();
   };
 
   return (
