@@ -1,25 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "../../assets/searchIcon2.png";
 import addIcon from "../../assets/addIcon.png";
 import filterIcon from "../../assets/filterIcon.png";
-import AdminPopup from "./AdminPopup";
+import AdminPopupTambah from "./AdminPopup";
+import axios from "axios";
 
 const ManageClass = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [courseData, setCourseData] = useState([]);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    // Fetch data from the API
-    fetch(
-      "https://course-in-production.up.railway.app/api/v1/courses?page=0&size=10"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Fetched data:", data.data);
-        setCourseData(data.data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://course-in-production.up.railway.app/api/v1/courses?page=0&size=10",
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              Authorization:
+                "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjYzNjQ3MywiZXhwIjoxNzAzMjQxMjczfQ.8FIRyYsWtihb87gqae4x9AEVJd7nfzn9woIflxUAbTA",
+            },
+          }
+        );
+
+        setCourses(response.data.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData();
   }, []);
+
   return (
     <div className="mx-auto mt-5" style={{ width: "80%" }}>
       <div className="d-flex justify-content-between">
@@ -46,13 +59,13 @@ const ManageClass = () => {
           <img src={SearchIcon} />
         </div>
       </div>
-      {isPopupOpen && <AdminPopup closeModal={() => setPopupOpen(false)} />}
       <div style={{ overflowY: "auto", height: "300px" }}>
         <table>
           <thead>
             <tr style={{ fontSize: "14px" }}>
               <th className="p-2">Kode Kelas</th>
               <th className="p-2">Kategori</th>
+              <th className="p-2">Author Kelas</th>
               <th className="p-2">Nama Kelas</th>
               <th className="p-2">Tipe Kelas</th>
               <th className="p-2">Level</th>
@@ -62,10 +75,11 @@ const ManageClass = () => {
           </thead>
 
           <tbody>
-            {courseData.map((course, id) => (
-              <tr style={{ fontSize: "13px" }} key={id}>
+            {courses.map((course) => (
+              <tr style={{ fontSize: "13px" }} key={course.code}>
                 <td className="p-2">{course.code}</td>
                 <td className="p-2">{course.category}</td>
+                <td className="p-2">{course.author}</td>
                 <td className="p-2">{course.name}</td>
                 <td className="p-2">{course.type}</td>
                 <td className="p-2">{course.level}</td>
@@ -87,6 +101,9 @@ const ManageClass = () => {
               </tr>
             ))}
           </tbody>
+          {isPopupOpen && (
+            <AdminPopupTambah closeModal={() => setPopupOpen(false)} />
+          )}
         </table>
       </div>
     </div>
