@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function AdminPopupTambah() {
+function AdminPopupEdit() {
   const [courseData, setCourseData] = useState({
     author: "",
     name: "",
@@ -31,7 +31,7 @@ function AdminPopupTambah() {
   };
   const handleSubmit = async () => {
     try {
-      const response = await axios.post(
+      const response = await axios.patch(
         "https://course-in-production.up.railway.app/api/v1/courses",
         courseData,
         {
@@ -285,4 +285,4 @@ function AdminPopupTambah() {
   );
 }
 
-export default AdminPopupTambah;
+export default AdminPopupEdit;
