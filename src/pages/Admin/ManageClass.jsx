@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchIcon from "../../assets/searchIcon2.png";
 import addIcon from "../../assets/addIcon.png";
 import filterIcon from "../../assets/filterIcon.png";
@@ -6,65 +6,20 @@ import AdminPopup from "./AdminPopup";
 
 const ManageClass = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const paymentData = [
-    {
-      id: "UIUX0123",
-      category: "UI/UX Design",
-      className: "Belajar Web Designer dengan Figma",
-      typeClass: "GRATIS",
-      level: "Beginner ",
-      classPrice: "Rp. 0",
-    },
-    {
-      id: "DS0223",
-      category: "Data Science",
-      className: "Data Cleaning untuk pemula",
-      typeClass: "GRATIS",
-      level: "Beginner ",
-      classPrice: "Rp. 0",
-    },
-    {
-      id: "DS0223",
-      category: "Data Science",
-      className: "Data Cleaning untuk Professional",
-      typeClass: "PREMIUM",
-      level: "Advanced ",
-      classPrice: "Rp 199,000",
-    },
-    {
-      id: "PM0123",
-      category: "Product Management",
-      className: "Scrum dalam tim kompleks",
-      typeClass: "PREMIUM",
-      level: "Intermediate ",
-      classPrice: "Rp 299,000",
-    },
-    {
-      id: "PM0123",
-      category: "Product Management",
-      className: "Penerapan manajemen Agile",
-      typeClass: "PREMIUM",
-      level: "Advanced ",
-      classPrice: "Rp 349,000",
-    },
-    {
-      id: "AD1023",
-      category: "Android Development",
-      className: "Mengenal Android Studio",
-      typeClass: "GRATIS",
-      level: "Beginner ",
-      classPrice: "Rp. 0",
-    },
-    {
-      id: "PM0123",
-      category: "Product Management",
-      className: "CSS dan HTML dalam seminggu",
-      typeClass: "GRATIS",
-      level: "Beginner ",
-      classPrice: "Rp. 0",
-    },
-  ];
+  const [courseData, setCourseData] = useState([]);
 
+  useEffect(() => {
+    // Fetch data from the API
+    fetch(
+      "https://course-in-production.up.railway.app/api/v1/courses?page=0&size=10"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched data:", data.data);
+        setCourseData(data.data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
   return (
     <div className="mx-auto mt-5" style={{ width: "80%" }}>
       <div className="d-flex justify-content-between">
@@ -107,14 +62,14 @@ const ManageClass = () => {
           </thead>
 
           <tbody>
-            {paymentData.map((payment, id) => (
+            {courseData.map((course, id) => (
               <tr style={{ fontSize: "13px" }} key={id}>
-                <td className="p-2">{payment.id}</td>
-                <td className="p-2">{payment.category}</td>
-                <td className="p-2">{payment.className}</td>
-                <td className="p-2">{payment.typeClass}</td>
-                <td className="p-2">{payment.level}</td>
-                <td className="p-2">{payment.classPrice}</td>
+                <td className="p-2">{course.code}</td>
+                <td className="p-2">{course.category}</td>
+                <td className="p-2">{course.name}</td>
+                <td className="p-2">{course.type}</td>
+                <td className="p-2">{course.level}</td>
+                <td className="p-2">{course.price}</td>
                 <td className="p-2 d-flex gap-2">
                   <button
                     style={{ backgroundColor: "#6148FF", fontSize: "10px" }}
