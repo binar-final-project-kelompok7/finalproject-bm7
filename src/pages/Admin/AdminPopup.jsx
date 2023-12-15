@@ -1,5 +1,4 @@
 import React from "react";
-import "../style/Admin.css";
 
 function AdminPopup() {
   return (
@@ -74,10 +73,6 @@ function AdminPopup() {
           </div>
         </div>
       </div>
-
-      <a className="btn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style={{ backgroundColor: "#6148FF", color: "#fff", height: "20px", fontSize: "15px", padding: "0px" }}>
-        Tambah
-      </a>
     </>
   );
 }

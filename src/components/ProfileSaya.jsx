@@ -5,6 +5,7 @@ import './ProfileSaya.css'
 const ProfileSaya = () => {
   return (
     <div className='containerMyProfile d-flex flex-column w-md-50 mx-auto pt-4'>
+      <div className="rounded"></div>
         <img className='rounded-circle mx-auto' src={profile} alt="" />
         <form action="" className='d-flex flex-column text-start'>
             <label className='mt-3' htmlFor="" style={{fontSize: '12px'}}>Nama</label>

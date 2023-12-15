@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchIcon from "../../assets/searchIcon2.png";
 import addIcon from "../../assets/addIcon.png";
 import filterIcon from "../../assets/filterIcon.png";
-import AdminPopup from "../../components/AdminPopup";
+import AdminPopup from "./AdminPopup";
 
 const ManageClass = () => {
+  const [isPopupOpen, setPopupOpen] = useState(false);
   const paymentData = [
     {
       id: "UIUX0123",
@@ -69,9 +70,9 @@ const ManageClass = () => {
       <div className="d-flex justify-content-between">
         <h3>Kelola Kelas</h3>
         <div className="d-flex align-items-center gap-3">
-          <button style={{ backgroundColor: "#6148FF" }} className="rounded-5 py-1 px-3 text-white d-flex gap-2 align-items-center">
-            <img src={addIcon} />
-            <AdminPopup />
+          <button style={{ backgroundColor: "#6148FF" }} className="rounded-5 py-1 px-3 text-white d-flex gap-2 align-items-center" data-bs-toggle="modal" href="#exampleModalToggle" role="button" onClick={() => setPopupOpen(true)}>
+            <img src={addIcon} alt="Add Icon" />
+            Tambah
           </button>
           <button style={{ border: "1px solid #6148FF", color: "#6148FF" }} className="rounded-5 py-1 px-3 d-flex gap-2 align-items-center fw-bold">
             <img src={filterIcon} />
@@ -80,6 +81,7 @@ const ManageClass = () => {
           <img src={SearchIcon} />
         </div>
       </div>
+      {isPopupOpen && <AdminPopup closeModal={() => setPopupOpen(false)} />}
       <div style={{ overflowY: "auto", height: "300px" }}>
         <table>
           <thead>
