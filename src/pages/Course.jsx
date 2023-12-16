@@ -45,16 +45,16 @@ const Course = () => {
     switch (buttonNumber) {
       case 1:
         break;
-      case 2: // Kelas Premium
+      case 2:
         setFilterOptions({
           ...filterOptions,
           type: "PREMIUM",
         });
         break;
-      case 3: // Kelas Gratis
+      case 3:
         setFilterOptions({
           ...filterOptions,
-          type: "GRATIS",
+          type: "FREE",
         });
         break;
       default:

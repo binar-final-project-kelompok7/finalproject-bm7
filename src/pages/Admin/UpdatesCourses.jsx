@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useAuthGuard from "./AdminAuthCheck";
-function AdminPopupTambah() {
+
+function AdminPopupUpdate({ courseCode }) {
   const { authToken } = useAuthGuard();
   const [courseData, setCourseData] = useState({
     author: "",
@@ -15,6 +16,38 @@ function AdminPopupTambah() {
     description: "",
     intendeds: [""],
   });
+
+  useEffect(() => {
+    const fetchCourseDetails = async () => {
+      try {
+        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`, {
+          headers: {
+            Accept: "application/json",
+            Authorization: `${authToken}`,
+          },
+        });
+
+        const fetchedCourseData = response.data.data;
+
+        // Update course data
+        setCourseData({
+          author: fetchedCourseData.author,
+          name: fetchedCourseData.name,
+          category: fetchedCourseData.category,
+          code: fetchedCourseData.code,
+          type: fetchedCourseData.type,
+          level: fetchedCourseData.level,
+          price: fetchedCourseData.price,
+          link: fetchedCourseData.link,
+          description: fetchedCourseData.description,
+          intendeds: fetchedCourseData.intendeds || [""],
+        });
+      } catch (error) {
+        console.error("Failed to fetch course details:", error);
+      }
+    };
+    fetchCourseDetails();
+  }, [courseCode, authToken]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -33,7 +66,7 @@ function AdminPopupTambah() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("https://course-in-production.up.railway.app/api/v1/courses", courseData, {
+      const response = await axios.patch(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`, courseData, {
         headers: {
           Accept: "application/json",
           Authorization: `${authToken}`,
@@ -55,12 +88,15 @@ function AdminPopupTambah() {
 
   return (
     <>
-      <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
+      <button style={{ backgroundColor: "#6148FF", fontSize: "10px" }} className="text-white rounded-5 py-1 px-2" data-bs-toggle="modal" href={`#exampleModalToggle-${courseCode}`} role="button">
+        Ubah
+      </button>
+      <div className="modal fade" id={`exampleModalToggle-${courseCode}`} aria-hidden="true" aria-labelledby={`exampleModalToggleLabel-${courseCode}`} tabIndex="-1">
         <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "80%" }}>
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalToggleLabel" style={{ color: "#6148FF", fontSize: "30px", fontWeight: "700", paddingLeft: "45%" }}>
-                Tambah Kelas
+                Ubah Kelas
               </h1>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -92,7 +128,7 @@ function AdminPopupTambah() {
               </div>
               <div className="mb-1">
                 <label htmlFor="code" className="form-label">
-                  Kode Kelas
+                  {courseCode}
                 </label>
                 <input type="text" className="form-control" id="code" value={courseData.code} onChange={handleChange} placeholder="Text" style={{ width: "80%", height: "50px", borderRadius: "15px" }} />
               </div>
@@ -166,4 +202,4 @@ function AdminPopupTambah() {
   );
 }
 
-export default AdminPopupTambah;
+export default AdminPopupUpdate;
