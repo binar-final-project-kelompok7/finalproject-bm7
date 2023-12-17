@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import searchHomeNav from "../assets/searchIcon.png";
 import masukButton from "../assets/buttonLoginHome.png";
 import profile from "../assets/profile.png";
@@ -10,6 +10,13 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(token){
+      setIsLogin(true);
+    }
+  }, []);
 
   return (
     <nav className="navbar-expand-lg navbar-background">
@@ -30,7 +37,7 @@ const Header = () => {
             <img src={myClassIcon} alt="" />
             <p className="m-0 text-white">Kelas</p>
           </div>
-          {isLogin ? <img onClick={() => (window.location.href = "/account-settings")} src={profile} /> : <img onClick={() => setIsLogin(true)} src={masukButton} />}
+          {isLogin ? <img onClick={() => (window.location.href = "/account-settings")} src={profile} /> : <img onClick={() => (window.location.href = "/login")} src={masukButton} />}
         </div>
       </div>
     </nav>
