@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./KelasSaya.css";
 import searchIcon from "../assets/search-icon.png";
-import imageimg from "../assets/img.png";
-import star from "../assets/star.png";
-import level from "../assets/level.png";
-import modul from "../assets/modul.png";
-import timeimg from "../assets/time.png";
 import Header from "../components/Header";
 import BottomNav from "../components/BottomNav";
 import axios from "axios";
+import CourseCard from "../components/CourseCard";
+import CourseFilter from "../components/CourseFilter";
 
 const Course = () => {
   const [activeButton, setActiveButton] = useState(1);
@@ -155,64 +152,7 @@ const Course = () => {
             }}
             onClick={() => setModalVisible(true)}
           >
-            <form className="filter" onClick={(e) => e.stopPropagation()}>
-              <h1>Filter</h1>
-              <div className="isiFilter">
-                <div>
-                  <input type="checkbox" id="palingbaru" checked={filterOptions.palingbaru} onChange={() => handleCheckboxChange("palingbaru")} />
-                  <label htmlFor="palingbaru">Paling Baru</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="palingpopuler" checked={filterOptions.palingpopuler} onChange={() => handleCheckboxChange("palingpopuler")} />
-                  <label htmlFor="palingpopuler">Paling Populer</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="promo" checked={filterOptions.promo} onChange={() => handleCheckboxChange("promo")} />
-                  <label htmlFor="promo">Promo</label>
-                </div>
-              </div>
-              <h1>Kategori</h1>
-              <div className="isiFilter">
-                <div>
-                  <input type="checkbox" id="UI/UXDesign" checked={filterOptions.UIUXDesign} onChange={() => handleCheckboxChange("UIUXDesign")} />
-                  <label htmlFor="UI/UXDesign">UI/UX Design</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="WebDevelopment" checked={filterOptions.WebDevelopment} onChange={() => handleCheckboxChange("WebDevelopment")} />
-                  <label htmlFor="WebDevelopment">Web Development</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="AndroidDevelopment" checked={filterOptions.AndroidDevelopment} onChange={() => handleCheckboxChange("AndroidDevelopment")} />
-                  <label htmlFor="AndroidDevelopment">Android Development</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="DataScience" checked={filterOptions.DataScience} onChange={() => handleCheckboxChange("DataScience")} />
-                  <label htmlFor="DataScience">Data Science</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="BusinessIntelligence" checked={filterOptions.BusinessIntelligence} onChange={() => handleCheckboxChange("BusinessIntelligence")} />
-                  <label htmlFor="BusinessIntelligence">Business Intelligence</label>
-                </div>
-              </div>
-              <h1>Level Kesulitan</h1>
-              <div className="isiFilter">
-                <div>
-                  <input type="checkbox" id="BeginnerLevel" checked={filterOptions.BeginnerLevel} onChange={() => handleCheckboxChange("BeginnerLevel")} />
-                  <label htmlFor="BeginnerLevel">Beginner Level</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="IntermediateLevel" checked={filterOptions.IntermediateLevel} onChange={() => handleCheckboxChange("IntermediateLevel")} />
-                  <label htmlFor="IntermediateLevel">Intermediate Level</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="AdvancedLevel" checked={filterOptions.AdvancedLevel} onChange={() => handleCheckboxChange("AdvancedLevel")} />
-                  <label htmlFor="AdvancedLevel">Advanced Level</label>
-                </div>
-              </div>
-              <button type="button" onClick={handleClearFilters}>
-                Hapus Filter
-              </button>
-            </form>
+            <CourseFilter filterOptions={filterOptions} handleCheckboxChange={handleCheckboxChange} handleClearFilters={handleClearFilters} />
           </div>
           <div className="KelasSaya-isi">
             <div className="button-isi-ks">
@@ -228,33 +168,7 @@ const Course = () => {
             </div>
             <div className="ks-card-container">
               {filteredCourses.map((course) => (
-                <div className="ks-card-content" key={course.code}>
-                  <img src={imageimg} alt="" />
-                  <div className="ks-card-content-1">
-                    <p>{course.category}</p>
-                    <div>
-                      <img src={star} alt="" />
-                      4.7
-                    </div>
-                  </div>
-                  <p className="titlecourse">{course.name}</p>
-                  <p className="creator">by {course.author} </p>
-                  <div className="ks-card-content-2">
-                    <div>
-                      <img src={level} alt="" />
-                      <p>{course.level}</p>
-                    </div>
-                    <div>
-                      <img src={modul} alt="" />
-                      <p>10 Modul</p>
-                    </div>
-                    <div>
-                      <img src={timeimg} alt="" />
-                      <p>120 menit</p>
-                    </div>
-                  </div>
-                  <div className={`ks-card-content-3 ${course.type.toLowerCase()}`}>{course.type}</div>
-                </div>
+                <CourseCard key={course.code} course={course} />
               ))}
             </div>
           </div>
