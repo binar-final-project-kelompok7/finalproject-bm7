@@ -78,7 +78,6 @@ function AdminPopupUpdate({ courseCode }) {
       window.location.reload();
     } catch (error) {
       console.error("Gagal:", error.response.data);
-      // Handle failure, e.g., display error message
     }
   };
 
@@ -128,7 +127,7 @@ function AdminPopupUpdate({ courseCode }) {
               </div>
               <div className="mb-1">
                 <label htmlFor="code" className="form-label">
-                  {courseCode}
+                  Kode Kelas
                 </label>
                 <input type="text" className="form-control" id="code" value={courseData.code} onChange={handleChange} placeholder="Text" style={{ width: "80%", height: "50px", borderRadius: "15px" }} />
               </div>
