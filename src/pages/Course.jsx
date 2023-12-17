@@ -6,32 +6,42 @@ import BottomNav from "../components/BottomNav";
 import axios from "axios";
 import CourseCard from "../components/CourseCard";
 import CourseFilter from "../components/CourseFilter";
+import CoursePagination from "../components/CoursePagination";
 
 const Course = () => {
   const [activeButton, setActiveButton] = useState(1);
   const [modalVisible, setModalVisible] = useState(true);
   const [courses, setCourses] = useState([]);
-
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://course-in-production.up.railway.app/api/v1/courses?page=0&size=10", {
-          method: "GET",
+        const response = await axios.get("https://course-in-production.up.railway.app/api/v1/courses", {
+          params: {
+            page: currentPage,
+            size: 10,
+          },
           headers: {
             Accept: "application/json",
             Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWZpIiwiaWF0IjoxNzAyMDQyMzc5LCJleHAiOjE3MDI2NDcxNzl9.6XZFn4He0mJsF1CtIqbo5U8NO_DitNGhO8fRJP0p3Rg",
           },
         });
 
-        // Set the courses state with the data array
         setCourses(response.data.data);
+        setTotalPages(response.data.paging.totalPage);
       } catch (error) {
         console.error("Error:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
     document.querySelectorAll("button").forEach((button) => {
@@ -171,6 +181,7 @@ const Course = () => {
                 <CourseCard key={course.code} course={course} />
               ))}
             </div>
+            <CoursePagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
           </div>
         </div>
       </div>
