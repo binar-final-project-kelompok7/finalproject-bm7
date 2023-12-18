@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import imageimg from "../assets/img.png";
 import star from "../assets/star.png";
 import level from "../assets/level.png";
@@ -32,7 +33,9 @@ const CourseCard = ({ course }) => {
           <p>120 menit</p>
         </div>
       </div>
-      <div className={`ks-card-content-3 ${course.type.toLowerCase()}`}>{course.type}</div>
+      <div className={`ks-card-content-3 ${course.type.toLowerCase()}`}>
+        <Link to={`/detailclass/${course.code}`}>{course.type}</Link>
+      </div>
     </div>
   );
 };
