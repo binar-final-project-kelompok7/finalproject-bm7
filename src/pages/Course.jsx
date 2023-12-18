@@ -1,40 +1,47 @@
 import React, { useState, useEffect } from "react";
 import "./KelasSaya.css";
 import searchIcon from "../assets/search-icon.png";
-import imageimg from "../assets/img.png";
-import star from "../assets/star.png";
-import level from "../assets/level.png";
-import modul from "../assets/modul.png";
-import timeimg from "../assets/time.png";
 import Header from "../components/Header";
 import BottomNav from "../components/BottomNav";
 import axios from "axios";
+import CourseCard from "../components/CourseCard";
+import CourseFilter from "../components/CourseFilter";
+import CoursePagination from "../components/CoursePagination";
 
 const Course = () => {
   const [activeButton, setActiveButton] = useState(1);
   const [modalVisible, setModalVisible] = useState(true);
   const [courses, setCourses] = useState([]);
-
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://course-in-production.up.railway.app/api/v1/courses?page=0&size=10", {
-          method: "GET",
+        const response = await axios.get("https://course-in-production.up.railway.app/api/v1/courses", {
+          params: {
+            page: currentPage,
+            size: 10,
+          },
           headers: {
             Accept: "application/json",
             Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWZpIiwiaWF0IjoxNzAyMDQyMzc5LCJleHAiOjE3MDI2NDcxNzl9.6XZFn4He0mJsF1CtIqbo5U8NO_DitNGhO8fRJP0p3Rg",
           },
         });
 
-        // Set the courses state with the data array
         setCourses(response.data.data);
+        setTotalPages(response.data.paging.totalPage);
       } catch (error) {
         console.error("Error:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
     document.querySelectorAll("button").forEach((button) => {
@@ -45,16 +52,16 @@ const Course = () => {
     switch (buttonNumber) {
       case 1:
         break;
-      case 2: // Kelas Premium
+      case 2:
         setFilterOptions({
           ...filterOptions,
           type: "PREMIUM",
         });
         break;
-      case 3: // Kelas Gratis
+      case 3:
         setFilterOptions({
           ...filterOptions,
-          type: "GRATIS",
+          type: "FREE",
         });
         break;
       default:
@@ -155,64 +162,7 @@ const Course = () => {
             }}
             onClick={() => setModalVisible(true)}
           >
-            <form className="filter" onClick={(e) => e.stopPropagation()}>
-              <h1>Filter</h1>
-              <div className="isiFilter">
-                <div>
-                  <input type="checkbox" id="palingbaru" checked={filterOptions.palingbaru} onChange={() => handleCheckboxChange("palingbaru")} />
-                  <label htmlFor="palingbaru">Paling Baru</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="palingpopuler" checked={filterOptions.palingpopuler} onChange={() => handleCheckboxChange("palingpopuler")} />
-                  <label htmlFor="palingpopuler">Paling Populer</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="promo" checked={filterOptions.promo} onChange={() => handleCheckboxChange("promo")} />
-                  <label htmlFor="promo">Promo</label>
-                </div>
-              </div>
-              <h1>Kategori</h1>
-              <div className="isiFilter">
-                <div>
-                  <input type="checkbox" id="UI/UXDesign" checked={filterOptions.UIUXDesign} onChange={() => handleCheckboxChange("UIUXDesign")} />
-                  <label htmlFor="UI/UXDesign">UI/UX Design</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="WebDevelopment" checked={filterOptions.WebDevelopment} onChange={() => handleCheckboxChange("WebDevelopment")} />
-                  <label htmlFor="WebDevelopment">Web Development</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="AndroidDevelopment" checked={filterOptions.AndroidDevelopment} onChange={() => handleCheckboxChange("AndroidDevelopment")} />
-                  <label htmlFor="AndroidDevelopment">Android Development</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="DataScience" checked={filterOptions.DataScience} onChange={() => handleCheckboxChange("DataScience")} />
-                  <label htmlFor="DataScience">Data Science</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="BusinessIntelligence" checked={filterOptions.BusinessIntelligence} onChange={() => handleCheckboxChange("BusinessIntelligence")} />
-                  <label htmlFor="BusinessIntelligence">Business Intelligence</label>
-                </div>
-              </div>
-              <h1>Level Kesulitan</h1>
-              <div className="isiFilter">
-                <div>
-                  <input type="checkbox" id="BeginnerLevel" checked={filterOptions.BeginnerLevel} onChange={() => handleCheckboxChange("BeginnerLevel")} />
-                  <label htmlFor="BeginnerLevel">Beginner Level</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="IntermediateLevel" checked={filterOptions.IntermediateLevel} onChange={() => handleCheckboxChange("IntermediateLevel")} />
-                  <label htmlFor="IntermediateLevel">Intermediate Level</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="AdvancedLevel" checked={filterOptions.AdvancedLevel} onChange={() => handleCheckboxChange("AdvancedLevel")} />
-                  <label htmlFor="AdvancedLevel">Advanced Level</label>
-                </div>
-              </div>
-              <button type="button" onClick={handleClearFilters}>
-                Hapus Filter
-              </button>
-            </form>
+            <CourseFilter filterOptions={filterOptions} handleCheckboxChange={handleCheckboxChange} handleClearFilters={handleClearFilters} />
           </div>
           <div className="KelasSaya-isi">
             <div className="button-isi-ks">
@@ -228,35 +178,10 @@ const Course = () => {
             </div>
             <div className="ks-card-container">
               {filteredCourses.map((course) => (
-                <div className="ks-card-content" key={course.code}>
-                  <img src={imageimg} alt="" />
-                  <div className="ks-card-content-1">
-                    <p>{course.category}</p>
-                    <div>
-                      <img src={star} alt="" />
-                      4.7
-                    </div>
-                  </div>
-                  <p className="titlecourse">{course.name}</p>
-                  <p className="creator">by {course.author} </p>
-                  <div className="ks-card-content-2">
-                    <div>
-                      <img src={level} alt="" />
-                      <p>{course.level}</p>
-                    </div>
-                    <div>
-                      <img src={modul} alt="" />
-                      <p>10 Modul</p>
-                    </div>
-                    <div>
-                      <img src={timeimg} alt="" />
-                      <p>120 menit</p>
-                    </div>
-                  </div>
-                  <div className={`ks-card-content-3 ${course.type.toLowerCase()}`}>{course.type}</div>
-                </div>
+                <CourseCard key={course.code} course={course} />
               ))}
             </div>
+            <CoursePagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
           </div>
         </div>
       </div>

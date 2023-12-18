@@ -12,7 +12,7 @@
 .KelasSaya-Container {
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
+  padding-top: 30px;
   position: relative;
   margin: 0px 200px;
 }
@@ -284,6 +284,15 @@
 .filter-modal {
   display: block;
 }
+
+.c-pagination {
+  height: 20px;
+}
+
+.c-pagination button {
+  height: 20px;
+  width: 20px;
+}
 @media only screen and (max-width: 1024px) {
   .KelasSaya-Container {
     margin: 0px;
@@ -379,6 +388,7 @@
   .KelasSaya-Header .search {
     width: 300px;
     justify-content: space-between;
+    display: none;
   }
   .KelasSaya-Header .search input {
     width: 270px;

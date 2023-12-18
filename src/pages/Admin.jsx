@@ -4,18 +4,19 @@ import usersIcon from "../assets/usersIcon.png";
 import NavigasiAdmin from "../components/NavigasiAdmin";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
+import useAuthGuard from "./Admin/AdminAuthCheck";
 
 const Admin = () => {
+  const { authToken } = useAuthGuard();
   const [activeUser, setActiveUser] = useState(null);
   const [countCourse, setCountCourse] = useState(null);
   const [countPremium, setCountPremium] = useState(null);
-
   useEffect(() => {
     const fetchData = async () => {
       const baseURL = "https://course-in-production.up.railway.app/api/v1";
       const headers = {
         Accept: "application/json",
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjYzNjQ3MywiZXhwIjoxNzAzMjQxMjczfQ.8FIRyYsWtihb87gqae4x9AEVJd7nfzn9woIflxUAbTA",
+        Authorization: `${authToken}`,
         "Content-Type": "application/json",
       };
 
@@ -34,7 +35,7 @@ const Admin = () => {
     };
 
     fetchData();
-  }, []);
+  }, [authToken]);
   return (
     <div className="d-flex">
       <NavigasiAdmin />
