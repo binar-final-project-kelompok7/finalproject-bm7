@@ -4,11 +4,14 @@ import addIcon from "../../assets/addIcon.png";
 import filterIcon from "../../assets/filterIcon.png";
 import AdminPopupTambah from "./AdminPopup";
 import axios from "axios";
+import AdminPopupUpdate from "./UpdatesCourses";
+import DeleteCourse from "./AdminDeleteCourse";
+import useAuthGuard from "./AdminAuthCheck";
 
 const ManageClass = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [courses, setCourses] = useState([]);
-
+  const { authToken } = useAuthGuard();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,8 +21,7 @@ const ManageClass = () => {
             method: "GET",
             headers: {
               Accept: "application/json",
-              Authorization:
-                "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjYzNjQ3MywiZXhwIjoxNzAzMjQxMjczfQ.8FIRyYsWtihb87gqae4x9AEVJd7nfzn9woIflxUAbTA",
+              Authorization: `${authToken}`,
             },
           }
         );
@@ -31,7 +33,7 @@ const ManageClass = () => {
     };
 
     fetchData();
-  }, []);
+  }, [authToken]);
 
   return (
     <div className="mx-auto mt-5" style={{ width: "80%" }}>

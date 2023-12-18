@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import useAuthGuard from "./AdminAuthCheck";
 function AdminPopupTambah() {
+  const { authToken } = useAuthGuard();
   const [courseData, setCourseData] = useState({
     author: "",
     name: "",
@@ -15,7 +16,7 @@ function AdminPopupTambah() {
     intendeds: [""],
   });
 
-  const handleChange = (e, index) => {
+  const handleChange = (e) => {
     const { id, value } = e.target;
     if (id.startsWith("intended-")) {
       const newIntendeds = [...courseData.intendeds];
@@ -29,6 +30,7 @@ function AdminPopupTambah() {
   const handleAddIntended = () => {
     setCourseData({ ...courseData, intendeds: [...courseData.intendeds, ""] });
   };
+
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
@@ -37,8 +39,7 @@ function AdminPopupTambah() {
         {
           headers: {
             Accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjYzNjQ3MywiZXhwIjoxNzAzMjQxMjczfQ.8FIRyYsWtihb87gqae4x9AEVJd7nfzn9woIflxUAbTA",
+            Authorization: `${authToken}`,
             "Content-Type": "application/json",
           },
         }
@@ -46,12 +47,21 @@ function AdminPopupTambah() {
 
       console.log("Berhasil:", response.data);
       window.location.reload();
-      // Handle success, e.g., update component state or display success message
     } catch (error) {
       console.error("Gagal:", error.response.data);
       // Handle failure, e.g., display error message
     }
   };
+
+  const categories = [
+    "UIUX_DESIGN",
+    "WEB_DEVELOPMENT",
+    "ANDROID_DEVELOPMENT",
+    "DATA_SCIENCE",
+    "BUSINESS_INTELLIGENCE",
+  ];
+  const levels = ["BEGINNER", "INTERMEDIATE", "ADVANCED"];
+  const types = ["FREE", "PREMIUM"];
 
   return (
     <>
@@ -128,15 +138,22 @@ function AdminPopupTambah() {
                 <label htmlFor="category" className="form-label">
                   category
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
                   id="category"
                   value={courseData.category}
-                  onChange={handleChange}
-                  placeholder="Text"
-                  style={{ width: "80%", height: "50px", borderRadius: "15px" }}
-                />
+                  onChange={(e) =>
+                    setCourseData({ ...courseData, category: e.target.value })
+                  }
+                >
+                  <option>Pilih Category</option>
+                  {categories.map((category, index) => (
+                    <option value={category} key={index}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="mb-1">
                 <label htmlFor="code" className="form-label">
@@ -156,29 +173,43 @@ function AdminPopupTambah() {
                 <label htmlFor="type" className="form-label">
                   Tipe Kelas
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
                   id="type"
                   value={courseData.type}
-                  onChange={handleChange}
-                  placeholder="Text"
-                  style={{ width: "80%", height: "50px", borderRadius: "15px" }}
-                />
+                  onChange={(e) =>
+                    setCourseData({ ...courseData, type: e.target.value })
+                  }
+                >
+                  <option>Pilih Tipe Kelas</option>
+                  {types.map((type, index) => (
+                    <option value={type} key={index}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="mb-1">
                 <label htmlFor="level" className="form-label">
                   Level
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
                   id="level"
                   value={courseData.level}
-                  onChange={handleChange}
-                  placeholder="Text"
-                  style={{ width: "80%", height: "50px", borderRadius: "15px" }}
-                />
+                  onChange={(e) =>
+                    setCourseData({ ...courseData, level: e.target.value })
+                  }
+                >
+                  <option>Pilih Level Kelas</option>
+                  {levels.map((level, index) => (
+                    <option value={level} key={index}>
+                      {level}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="mb-1">
                 <label htmlFor="price" className="form-label">
