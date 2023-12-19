@@ -6,6 +6,28 @@ import Header from "./Header";
 import BottomNav from "./BottomNav";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+//import gambar
+import Mdi from "../assets/img/mdi_progress-check.png";
+import percent from "../assets/img/percent.png";
+import CircleImg from "../assets/img/circle/Circle.png";
+import Circle2Img from "../assets/img/circle/Circle2.png";
+import Circle3Img from "../assets/img/circle/Circle3.png";
+import Circle4Img from "../assets/img/circle/Circle4.png";
+import Circle5Img from "../assets/img/circle/Circle5.png";
+import Circle6Img from "../assets/img/circle/Circle6.png";
+import Circle7Img from "../assets/img/circle/Circle7.png";
+import Circle8Img from "../assets/img/circle/Circle8.png";
+import Circle9Img from "../assets/img/circle/Circle9.png";
+import Circle10Img from "../assets/img/circle/Circle10.png";
+import Circle11Img from "../assets/img/circle/Circle11.png";
+import Fill1Img from "../assets/img/Fill-1.png";
+import Fill2Img from "../assets/img/Fill-2.png";
+import PlayVideoImg from "../assets/img/play-video.png";
+import MdiBadgeOutlineImg from "../assets/img/mdi_badge-outline.png";
+import ClarityBookLineImg from "../assets/img/clarity_book-line.png";
+import RiTimeFillImg from "../assets/img/ri_time-fill.png";
+import BxsLockImg from "../assets/img/bxs_lock.png";
+import StartImg from "../assets/img/start.png";
 
 function DetailClass() {
   const [activeSection, setActiveSection] = useState("tentang");
@@ -19,9 +41,11 @@ function DetailClass() {
   const togglePopup = () => {
     setPopupVisible(!isPopupVisible);
   };
+  const Kembali = () => {
+    window.history.back();
+  };
 
   useEffect(() => {
-    // Fetch data menggunakan Axios
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -82,8 +106,8 @@ function DetailClass() {
                   <h4 style={{ fontWeight: "700", width: "200px" }}>
                     Materi Belajar
                   </h4>
-                  <img src="./img/mdi_progress-check.png"></img>
-                  <img src="./img/percent.png"></img>
+                  <img src={Mdi}></img>
+                  <img src={percent}></img>
                 </h4>
                 <div className="chapter1">
                   <div
@@ -103,24 +127,24 @@ function DetailClass() {
                   <ul>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle.png"
+                        src={CircleImg}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "78%" }}>
                         Tujuan Mengikuti Kelas Design System
                       </h7>
-                      <img src="./img/Fill-1.png" alt="Fill" />
+                      <img src={Fill1Img} alt="Fill" />
                     </li>
                     <hr></hr>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle2.png"
+                        src={Circle2Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "78%" }}>Pengenalan Design System</h7>
-                      <img src="./img/Fill-1.png" alt="Fill" />
+                      <img src={Fill1Img} alt="Fill" />
                     </li>
                     <hr></hr>
                     <li
@@ -137,12 +161,12 @@ function DetailClass() {
                       onClick={togglePopup}
                     >
                       <img
-                        src="./img/circle/Circle3.png"
+                        src={Circle3Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "78%" }}>Pengenalan Design System</h7>
-                      <img src="./img/Fill-2.png" alt="Fill" />
+                      <img src={Fill2Img} alt="Fill" />
                     </li>
                     <hr></hr>
                   </ul>
@@ -165,84 +189,84 @@ function DetailClass() {
                   <ul>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle4.png"
+                        src={Circle4Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "77%" }}>Color Palette</h7>
-                      <img src="./img/bxs_lock.png" alt="Fill" />
+                      <img src={BxsLockImg} alt="Fill" />
                     </li>
                     <hr></hr>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle5.png"
+                        src={Circle5Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "77%" }}>
                         Typography, Layout dan Grid
                       </h7>
-                      <img src="./img/bxs_lock.png" alt="Fill" />
+                      <img src={BxsLockImg} alt="Fill" />
                     </li>
                     <hr></hr>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle6.png"
+                        src={Circle6Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "77%" }}>Membuat Components</h7>
-                      <img src="./img/bxs_lock.png" alt="Fill" />
+                      <img src={BxsLockImg} alt="Fill" />
                     </li>
                     <hr></hr>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle7.png"
+                        src={Circle7Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "77%" }}>Membuat Components</h7>
-                      <img src="./img/bxs_lock.png" alt="Fill" />
+                      <img src={BxsLockImg} alt="Fill" />
                     </li>
                     <hr></hr>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle8.png"
+                        src={Circle8Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "77%" }}>Membuat Components</h7>
-                      <img src="./img/bxs_lock.png" alt="Fill" />
+                      <img src={BxsLockImg} alt="Fill" />
                     </li>
                     <hr></hr>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle9.png"
+                        src={Circle9Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "77%" }}>Membuat Components</h7>
-                      <img src="./img/bxs_lock.png" alt="Fill" />
+                      <img src={BxsLockImg} alt="Fill" />
                     </li>
                     <hr></hr>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle10.png"
+                        src={Circle10Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "77%" }}>Color Palette</h7>
-                      <img src="./img/bxs_lock.png" alt="Fill" />
+                      <img src={BxsLockImg} alt="Fill" />
                     </li>
                     <hr></hr>
                     <li style={{ display: "flex", alignItems: "center" }}>
                       <img
-                        src="./img/circle/Circle11.png"
+                        src={Circle11Img}
                         alt="Circle"
                         style={{ marginRight: "10px" }}
                       />
                       <h7 style={{ width: "77%" }}>Color Palette</h7>
-                      <img src="./img/bxs_lock.png" alt="Fill" />
+                      <img src={BxsLockImg} alt="Fill" />
                     </li>
                     <hr></hr>
                   </ul>
@@ -269,30 +293,31 @@ function DetailClass() {
               >
                 <BsArrowLeft
                   style={{ fontSize: "20px", marginRight: "20px" }}
+                  onClick={Kembali}
                 />
                 Kelas Lainnya
               </h3>
               <div className="items" style={{ paddingRight: "350px" }}>
                 <h3 style={{ color: "#6148FF", fontWeight: "700" }}>
-                  UI/UX Design
+                  {courseData.category}
                 </h3>
-                <h3>Intro to Basic of User Interaction Design</h3>
-                <h6>by Simon Doe</h6>
+                <h3>{courseData.name}</h3>
+                <h6>by {courseData.author}</h6>
               </div>
               <div className="columns">
                 <div className="column">
                   <p style={{ color: "#6148FF" }}>
-                    <img src="./img/mdi_badge-outline.png"></img> Beginner Level
+                    <img src={MdiBadgeOutlineImg}></img> {courseData.level}
                   </p>
                 </div>
                 <div className="column">
                   <p>
-                    <img src="./img/clarity_book-line.png"></img> 5 Modul
+                    <img src={ClarityBookLineImg}></img> 5 Modul
                   </p>
                 </div>
                 <div className="column">
                   <p>
-                    <img src="./img/ri_time-fill.png"></img> 45 Menit
+                    <img src={RiTimeFillImg}></img> 45 Menit
                   </p>
                 </div>
               </div>
@@ -321,7 +346,7 @@ function DetailClass() {
               }}
             >
               <img
-                src="./img/play-video.png"
+                src={PlayVideoImg}
                 style={{ width: "15%", height: "120px", marginTop: "110px" }}
               ></img>
             </div>
@@ -330,19 +355,18 @@ function DetailClass() {
               <p>{courseData.description}</p>
               <h2>Kelas Ini Ditujukan Untuk</h2>
               <ul style={{ marginLeft: "-30px" }}>
-                <li>1. Anda yang ingin memahami poin penting design system</li>
-                <li>
-                  2. Anda yang ingin membantu perusahaan lebih optimal dalam
-                  membuat design produk
-                </li>
-                <li>3. Anda yang ingin latihan membangun design system</li>
-                <li>4. Anda yang ingin latihan membangun design system</li>
+                {courseData.intendeds.map((intended, index) => (
+                  <li key={index}>
+                    {index + 1}. {intended}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
           <BottomNav />
         </div>
       )}
+
       <div className="mobile">
         <div className="other">
           <img
@@ -360,7 +384,7 @@ function DetailClass() {
           }}
         >
           <img
-            src="./img/play-video.png"
+            src={PlayVideoImg}
             style={{ paddingTop: "40px", paddingBottom: "40px" }}
             class=""
             data-bs-toggle="modal"
@@ -385,7 +409,7 @@ function DetailClass() {
             UI/UX Design
           </h4>
           <div className="rate">
-            <img src="./img/start.png" alt="star"></img>5.0
+            <img src={StartImg} alt="star"></img>5.0
           </div>
         </div>
         <h6
@@ -410,14 +434,13 @@ function DetailClass() {
           }}
         >
           <p style={{ fontSize: "12px", color: "#6148FF" }}>
-            <img src="./img/mdi_badge-outline.png" alt="badge"></img>Beginner
-            Level
+            <img src={MdiBadgeOutlineImg} alt="badge"></img>Beginner Level
           </p>
           <p style={{ fontSize: "12px" }}>
-            <img src="./img/clarity_book-line.png" alt="book"></img>5 Modul
+            <img src={ClarityBookLineImg} alt="book"></img>5 Modul
           </p>
           <p style={{ fontSize: "12px" }}>
-            <img src="./img/ri_time-fill.png" alt="time"></img>45 Menit
+            <img src={RiTimeFillImg} alt="time"></img>45 Menit
           </p>
         </div>
         <div className="tombol">
@@ -435,7 +458,7 @@ function DetailClass() {
           </button>
         </div>
 
-        {activeSection === "tentang" && (
+        {/* {activeSection === "tentang" && (
           <div className="tentang">
             <div className="join2">
               <button>
@@ -486,9 +509,9 @@ function DetailClass() {
               </ul>
             </div>
           </div>
-        )}
+        )} */}
 
-        {activeSection === "classmateri" && (
+        {/* {activeSection === "classmateri" && (
           <div className="classmateri">
             <div className="chapter1">
               <h4
@@ -531,7 +554,7 @@ function DetailClass() {
                   <h7 style={{ width: "78%", fontSize: "15px" }}>
                     Tujuan Mengikuti Kelas Design System
                   </h7>
-                  <img src="./img/Fill-1.png" alt="Fill" />
+                  <img src={Fill1Img} alt="Fill" />
                 </li>
                 <hr></hr>
                 <li
@@ -549,7 +572,7 @@ function DetailClass() {
                   <h7 style={{ width: "78%", fontSize: "15px" }}>
                     Pengenalan Design System
                   </h7>
-                  <img src="./img/Fill-1.png" alt="Fill" />
+                  <img src={Fill1Img} alt="Fill" />
                 </li>
                 <hr></hr>
                 <li
@@ -566,7 +589,7 @@ function DetailClass() {
                   onClick={togglePopup}
                 >
                   <img
-                    src="./img/circle/Circle3.png"
+                    src={Circle3Img}
                     alt="Circle"
                     style={{ marginRight: "10px" }}
                   />
@@ -602,14 +625,14 @@ function DetailClass() {
                   }}
                 >
                   <img
-                    src="./img/circle/Circle4.png"
+                    src={Circle4Img}
                     alt="Circle"
                     style={{ marginRight: "10px" }}
                   />
                   <h7 style={{ width: "77%", fontSize: "15px" }}>
                     Color Palette
                   </h7>
-                  <img src="./img/bxs_lock.png" alt="Fill" />
+                  <img src={BxsLockImg} alt="Fill" />
                 </li>
                 <hr></hr>
                 <li
@@ -627,7 +650,7 @@ function DetailClass() {
                   <h7 style={{ width: "77%", fontSize: "15px" }}>
                     Typography, Layout dan Grid
                   </h7>
-                  <img src="./img/bxs_lock.png" alt="Fill" />
+                  <img src={BxsLockImg} alt="Fill" />
                 </li>
                 <hr></hr>
                 <li
@@ -645,7 +668,7 @@ function DetailClass() {
                   <h7 style={{ width: "77%", fontSize: "15px" }}>
                     Membuat Components
                   </h7>
-                  <img src="./img/bxs_lock.png" alt="Fill" />
+                  <img src={BxsLockImg} alt="Fill" />
                 </li>
                 <hr></hr>
                 <li
@@ -656,14 +679,14 @@ function DetailClass() {
                   }}
                 >
                   <img
-                    src="./img/circle/Circle7.png"
+                    src={Circle7Img}
                     alt="Circle"
                     style={{ marginRight: "10px" }}
                   />
                   <h7 style={{ width: "77%", fontSize: "15px" }}>
                     Membuat Components
                   </h7>
-                  <img src="./img/bxs_lock.png" alt="Fill" />
+                  <img src={BxsLockImg} alt="Fill" />
                 </li>
                 <hr></hr>
                 <li
@@ -674,14 +697,14 @@ function DetailClass() {
                   }}
                 >
                   <img
-                    src="./img/circle/Circle8.png"
+                    src={Circle8Img}
                     alt="Circle"
                     style={{ marginRight: "10px" }}
                   />
                   <h7 style={{ width: "77%", fontSize: "15px" }}>
                     Membuat Components
                   </h7>
-                  <img src="./img/bxs_lock.png" alt="Fill" />
+                  <img src={BxsLockImg} alt="Fill" />
                 </li>
                 <hr></hr>
                 <li
@@ -692,14 +715,14 @@ function DetailClass() {
                   }}
                 >
                   <img
-                    src="./img/circle/Circle9.png"
+                    src={Circle9Img}
                     alt="Circle"
                     style={{ marginRight: "10px" }}
                   />
                   <h7 style={{ width: "77%", fontSize: "15px" }}>
                     Membuat Components
                   </h7>
-                  <img src="./img/bxs_lock.png" alt="Fill" />
+                  <img src={BxsLockImg} alt="Fill" />
                 </li>
                 <hr></hr>
                 <li
@@ -710,14 +733,14 @@ function DetailClass() {
                   }}
                 >
                   <img
-                    src="./img/circle/Circle10.png"
+                    src={Circle10Img}
                     alt="Circle"
                     style={{ marginRight: "10px" }}
                   />
                   <h7 style={{ width: "77%", fontSize: "15px" }}>
                     Color Palette
                   </h7>
-                  <img src="./img/bxs_lock.png" alt="Fill" />
+                  <img src={BxsLockImg} alt="Fill" />
                 </li>
                 <hr></hr>
                 <li
@@ -728,21 +751,21 @@ function DetailClass() {
                   }}
                 >
                   <img
-                    src="./img/circle/Circle11.png"
+                    src={Circle11Img}
                     alt="Circle"
                     style={{ marginRight: "10px" }}
                   />
                   <h7 style={{ width: "77%", fontSize: "15px" }}>
                     Color Palette
                   </h7>
-                  <img src="./img/bxs_lock.png" alt="Fill" />
+                  <img src={BxsLockImg} alt="Fill" />
                 </li>
                 <hr></hr>
               </ul>
               {isPopupVisible && <Pup />}
             </div>
           </div>
-        )}
+        )} */}
         <hr></hr>
       </div>
     </>
