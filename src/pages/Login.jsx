@@ -3,10 +3,12 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
+import Cookies from "universal-cookie";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const cookies = new Cookies();
 
   const navigate = useNavigate();
 
@@ -29,9 +31,12 @@ function Login() {
       };
 
       const response = await axios.request(config);
-      const token = response.headers["authorization"].split(" ")[1];
+      const token = response.headers["authorization"].split(" ")[1];      
 
-      localStorage.setItem("token", token);
+      cookies.set("jwt_authorization", token,{
+        expires: new Date(Date.now() + 3600 * 1000)
+      });
+
       navigate("/");
     } catch (error) {      
       if (error.response) {
