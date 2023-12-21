@@ -6,17 +6,27 @@ import myClassIcon from "../assets/classNavIcon.png";
 import "../App.css";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+  const cookies = new Cookies();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if(token){
-      setIsLogin(true);
-    }
-  }, []);
+    const checkLoginStatus = () =>{
+      const token = cookies.get('jwt_authorization');
+      if(token){
+        setIsLogin(true);
+      }else{
+        setIsLogin(false);
+      }
+    };
+
+    checkLoginStatus();
+    const interval = setInterval(checkLoginStatus, 1000);
+    return () => clearInterval(interval);
+  }, [cookies]);
 
   return (
     <nav className="navbar-expand-lg navbar-background">
