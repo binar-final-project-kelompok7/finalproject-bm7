@@ -11,21 +11,14 @@ import MdiBadgeOutlineImg from "../assets/img/mdi_badge-outline.png";
 import ClarityBookLineImg from "../assets/img/clarity_book-line.png";
 import RiTimeFillImg from "../assets/img/ri_time-fill.png";
 import StartImg from "../assets/img/start.png";
+// import BxsLockImg from "../assets/img/bxs_lock.png";
 
 function DetailClass() {
-import BxsLockImg from "../assets/img/bxs_lock.png";
-import StartImg from "../assets/img/start.png";
-
-function DetailClass() {
-  const [activeSection, setActiveSection] = useState("tentang");
-  const [isPopupVisible, setPopupVisible] = useState(true);
+  // const [activeSection, setActiveSection] = useState("tentang");
+  // const [isPopupVisible, setPopupVisible] = useState(true);
   const { courseCode } = useParams();
   const [courseData, setCourseData] = useState(null);
 
-
-  const Kembali = () => {
-    window.history.back();
-  };
   const Kembali = () => {
     window.history.back();
   };
@@ -53,7 +46,7 @@ function DetailClass() {
           console.error("Course code is undefined.");
           return;
         }
-  
+
         const response = await axios.get(
           `https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`,
           {
@@ -62,17 +55,16 @@ function DetailClass() {
             },
           }
         );
-  
+
         setCourseData(response.data.data);
         console.log("Course Data:", response.data.data);
       } catch (error) {
         console.error("Error fetching course data:", error);
       }
     };
-  
+
     fetchData();
   }, [courseCode]);
-  
 
   return (
     <>
@@ -91,9 +83,7 @@ function DetailClass() {
               marginTop: "50px",
             }}
           >
-           
             <div
-
               className="title"
               style={{
                 display: "flex",
@@ -104,7 +94,6 @@ function DetailClass() {
                 width: "100%",
               }}
             >
-
               <h3
                 className="back"
                 style={{ fontSize: "17px", fontWeight: "700" }}
@@ -172,14 +161,13 @@ function DetailClass() {
               <p>{courseData.description}</p>
               <h2>Kelas Ini Ditujukan Untuk</h2>
               <ul style={{ marginLeft: "-30px" }}>
-
-  {courseData.intendeds && courseData.intendeds.map((intended, index) => (
-    <li key={index}>
-      {index + 1}. {intended}
-    </li>
-  ))}
-</ul>
-
+                {courseData.intendeds &&
+                  courseData.intendeds.map((intended, index) => (
+                    <li key={index}>
+                      {index + 1}. {intended}
+                    </li>
+                  ))}
+              </ul>
             </div>
           </div>
           <BottomNav />
@@ -209,7 +197,6 @@ function DetailClass() {
             data-bs-toggle="modal"
             href="#exampleModalToggle"
             role="button"
-
           ></img>
         </div>
         <div
@@ -262,56 +249,56 @@ function DetailClass() {
             <img src={RiTimeFillImg} alt="time"></img>45 Menit
           </p>
         </div>
-          <div className="tentang">
-            <div className="join2">
-              <button>
-                Join Grup Telegram
-                <img src="./img/gridicons_chat.png" alt="chat"></img>
-              </button>
-            </div>
-            <div
-              className="teks"
-              style={{
-                paddingTop: "40px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                paddingBottom: "50px",
-                textAlign: "left",
-              }}
-            >
-              <h2 style={{ fontWeight: "700" }}>Tentang Kelas</h2>
-              <p>
-                {" "}
-                Design system adalah kumpulan komponen design, code, ataupun
-                dokumentasi yang dapat digunakan sebagai panduan utama yang
-                memunginkan designer serta developer memiliki lebih banyak
-                kontrol atas berbagai platform. Dengan hadirnya design system,
-                dapat menjaga konsistensi tampilan user interface dan
-                meningkatkan user experience menjadi lebih baik. Disisi bisnis,
-                design system sangat berguna dalam menghemat waktu dan biaya
-                ketika mengembangkan suatu produk. Bersama mentor XXX, kita akan
-                mempelajari design system dari mulai manfaat, alur kerja
-                pembuatannya, tools yang digunakan, hingga pada akhirnya, kita
-                akan membuat MVP dari design system. Selain itu, mentor juga
-                akan menjelaskan berbagai resource yang dibutuhkan untuk mencari
-                inspirasi mengenai design system. Kelas ini sesuai untuk Anda
-                yang ingin memahami apa itu design system. Tidak hanya ditujukan
-                untuk UI/UX Designer ataupun Developer, kelas ini sangat sesuai
-                untuk stakeholder lain agar dapat memudahkan tim dalam bekerja
-                sama. Yuk segera daftar dan kami tunggu di kelas ya!
-              </p>
-              <h2 style={{ fontWeight: "700" }}>Kelas Ini Ditujukan Untuk</h2>
-              <ul style={{ marginLeft: "-30px", textAlign: "start" }}>
-                <li>1. Anda yang ingin memahami poin penting design system</li>
-                <li>
-                  2. Anda yang ingin membantu perusahaan lebih optimal dalam
-                  membuat design produk
-                </li>
-                <li>3. Anda yang ingin latihan membangun design system</li>
-                <li>4. Anda yang ingin latihan membangun design system</li>
-              </ul>
-            </div>
+        <div className="tentang">
+          <div className="join2">
+            <button>
+              Join Grup Telegram
+              <img src="./img/gridicons_chat.png" alt="chat"></img>
+            </button>
           </div>
+          <div
+            className="teks"
+            style={{
+              paddingTop: "40px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              paddingBottom: "50px",
+              textAlign: "left",
+            }}
+          >
+            <h2 style={{ fontWeight: "700" }}>Tentang Kelas</h2>
+            <p>
+              {" "}
+              Design system adalah kumpulan komponen design, code, ataupun
+              dokumentasi yang dapat digunakan sebagai panduan utama yang
+              memunginkan designer serta developer memiliki lebih banyak kontrol
+              atas berbagai platform. Dengan hadirnya design system, dapat
+              menjaga konsistensi tampilan user interface dan meningkatkan user
+              experience menjadi lebih baik. Disisi bisnis, design system sangat
+              berguna dalam menghemat waktu dan biaya ketika mengembangkan suatu
+              produk. Bersama mentor XXX, kita akan mempelajari design system
+              dari mulai manfaat, alur kerja pembuatannya, tools yang digunakan,
+              hingga pada akhirnya, kita akan membuat MVP dari design system.
+              Selain itu, mentor juga akan menjelaskan berbagai resource yang
+              dibutuhkan untuk mencari inspirasi mengenai design system. Kelas
+              ini sesuai untuk Anda yang ingin memahami apa itu design system.
+              Tidak hanya ditujukan untuk UI/UX Designer ataupun Developer,
+              kelas ini sangat sesuai untuk stakeholder lain agar dapat
+              memudahkan tim dalam bekerja sama. Yuk segera daftar dan kami
+              tunggu di kelas ya!
+            </p>
+            <h2 style={{ fontWeight: "700" }}>Kelas Ini Ditujukan Untuk</h2>
+            <ul style={{ marginLeft: "-30px", textAlign: "start" }}>
+              <li>1. Anda yang ingin memahami poin penting design system</li>
+              <li>
+                2. Anda yang ingin membantu perusahaan lebih optimal dalam
+                membuat design produk
+              </li>
+              <li>3. Anda yang ingin latihan membangun design system</li>
+              <li>4. Anda yang ingin latihan membangun design system</li>
+            </ul>
+          </div>
+        </div>
         <hr></hr>
       </div>
     </>
