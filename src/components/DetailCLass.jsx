@@ -13,6 +13,12 @@ import RiTimeFillImg from "../assets/img/ri_time-fill.png";
 import StartImg from "../assets/img/start.png";
 
 function DetailClass() {
+import BxsLockImg from "../assets/img/bxs_lock.png";
+import StartImg from "../assets/img/start.png";
+
+function DetailClass() {
+  const [activeSection, setActiveSection] = useState("tentang");
+  const [isPopupVisible, setPopupVisible] = useState(true);
   const { courseCode } = useParams();
   const [courseData, setCourseData] = useState(null);
 
@@ -20,6 +26,25 @@ function DetailClass() {
   const Kembali = () => {
     window.history.back();
   };
+  const Kembali = () => {
+    window.history.back();
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`
+        );
+        setCourseData(response.data.data);
+        console.log("Course Data:", response.data.data);
+      } catch (error) {
+        console.error("Error fetching course data:", error);
+      }
+    };
+
+    fetchData();
+  }, [courseCode]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,7 +91,9 @@ function DetailClass() {
               marginTop: "50px",
             }}
           >
+           
             <div
+
               className="title"
               style={{
                 display: "flex",
@@ -145,6 +172,7 @@ function DetailClass() {
               <p>{courseData.description}</p>
               <h2>Kelas Ini Ditujukan Untuk</h2>
               <ul style={{ marginLeft: "-30px" }}>
+
   {courseData.intendeds && courseData.intendeds.map((intended, index) => (
     <li key={index}>
       {index + 1}. {intended}
@@ -181,6 +209,7 @@ function DetailClass() {
             data-bs-toggle="modal"
             href="#exampleModalToggle"
             role="button"
+
           ></img>
         </div>
         <div
@@ -233,8 +262,6 @@ function DetailClass() {
             <img src={RiTimeFillImg} alt="time"></img>45 Menit
           </p>
         </div>
-
-
           <div className="tentang">
             <div className="join2">
               <button>
@@ -285,9 +312,6 @@ function DetailClass() {
               </ul>
             </div>
           </div>
- 
-
-   
         <hr></hr>
       </div>
     </>
