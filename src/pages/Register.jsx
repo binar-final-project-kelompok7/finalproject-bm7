@@ -1,29 +1,51 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
+import axios from "axios";
+import Cookies from "universal-cookie";
 
 function Register() {
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [nama, setNama] = useState("");
-  const [telepon, setTelepon] = useState("");
+  const cookies = new Cookies();
 
-  const handleRegister = () => {
-    if (email && password && nama && telepon) {
-      if (password.length >= 8) {
-        toast.success("Registrasi berhasil");
-        console.log("User registration data:", {
-          email,
-          password,
-          nama,
-          telepon,
-        });
-      } else {
-        toast.error("Password harus lebih dari 8 karakter");
-      }
-    } else {
-      toast.error("Lengkapi semua field untuk registrasi");
+  const navigate = useNavigate();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      let data = JSON.stringify({
+        email,
+        name,        
+        password,
+        username
+      });
+
+      let config = {
+        method: "POST",
+        url: `https://course-in-production.up.railway.app/api/v1/users/register`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      const response = await axios.request(config);   
+      const token = response.headers["authorization"].split(" ")[1];
+      
+      cookies.set("jwt_authorization", token,{
+        expires: new Date(Date.now() + 3600 * 1000)
+      });
+      
+      navigate('/')
+    } catch (error) {
+      if (error.response) {
+        console.error(error.response.data.code, error.response.data.message);
+      }      
     }
   };
 
@@ -42,13 +64,13 @@ function Register() {
           <h2 className="mb-4" style={{ color: "#6148FF" }}>
             Daftar
           </h2>
-          <form id="form" className="d-flex flex-column">
+          <form id="form" onSubmit={onSubmit} className="d-flex flex-column">
             <label>Nama</label>
             <input
               type="text"
               placeholder="Nama Lengkap"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="rounded-4 p-2 mb-3"
             />
             <label>Email</label>
@@ -59,26 +81,27 @@ function Register() {
               onChange={(e) => setEmail(e.target.value)}
               className="rounded-4 p-2 mb-3"
             />
-            <label>Nomor Telepon</label>
+            <label>Username</label>
             <input
               type="text"
-              placeholder="+62"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="johndoe"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="rounded-4 p-2 mb-3"
             />
             <label>Buat Password</label>
             <input
               type="password"
               placeholder="Buat Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="rounded-4 p-2 mb-3"
             />
 
             <button
               className="rounded-3 border-0 p-2 text-white mb-4"
               style={{ backgroundColor: "#6148ff" }}
-              type="button"
-              onClick={handleRegister}
+              type="submit"              
             >
               Daftar
             </button>

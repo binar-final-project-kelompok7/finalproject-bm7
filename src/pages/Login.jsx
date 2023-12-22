@@ -1,24 +1,47 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import axios from "axios";
+import Cookies from "universal-cookie";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const cookies = new Cookies();
 
-  const handleLogin = () => {
-    if (email && password) {
-      // Misalnya, Anda dapat memeriksa email dan password
-      if (email === "rxbow@gmail.com" && password === "Aneh123") {
-        // Autentikasi berhasil
-        toast.success("Login berhasil");
-      } else {
-        // Autentikasi gagal, tampilkan notifikasi error
-        toast.error("Email atau password salah. Silakan coba lagi.");
-      }
-    } else {
-      console.error("Email atau password tidak boleh kosong");
+  const navigate = useNavigate();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      let data = JSON.stringify({
+        username,
+        password,
+      });
+
+      let config = {
+        method: "POST",
+        url: `https://course-in-production.up.railway.app/api/v1/auth/login`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      const response = await axios.request(config);
+      const token = response.headers["authorization"].split(" ")[1];      
+
+      cookies.set("jwt_authorization", token,{
+        expires: new Date(Date.now() + 3600 * 1000)
+      });
+
+      navigate("/");
+    } catch (error) {      
+      if (error.response) {
+        console.error(error.response.data.code, error.response.data.message);
+      }      
     }
   };
 
@@ -37,15 +60,16 @@ function Login() {
           </h2>
           <form
             id="form"
+            onSubmit={onSubmit}
             className="d-flex flex-column justify-content-md-center justify-content-between"
           >
             <div className="d-flex flex-column justify-content-center">
-              <label>Email</label>
+              <label>Username</label>
               <input
                 type="text"
-                placeholder="Contoh: johndoe@gmail.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Contoh: johndoe"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="rounded-4 p-2 mb-3"
               />
               <div className="pass d-flex justify-content-between">
@@ -68,8 +92,7 @@ function Login() {
               <button
                 className="rounded-3 border-0 p-2 text-white mb-4"
                 style={{ backgroundColor: "#6148ff" }}
-                type="button"
-                onClick={handleLogin}
+                type="submit"                
               >
                 Masuk
               </button>
