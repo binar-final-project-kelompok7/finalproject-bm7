@@ -43,14 +43,10 @@ function App() {
         </Route>
 
         <Route path="/adminPopup" element={<AdminPopup />} />
-
         <Route path="/myclass" element={<KelasSaya />} />
         <Route path="/course" element={<Course />} />
         <Route path="/adminLogin" element={<AdminLogin />} />
-
-        <Route path="/detail/:courseCode" element={<DetailCLass />} />
-
-
+        <Route path="/detailclass/:courseCode" element={<DetailCLass />} />
         <Route path="/detail-pay" element={<DetailPay />} />
         <Route path="/PaySuccess" element={<PaySuccess />} />
         <Route path="/PlayVideo" element={<PlayVideo />} />

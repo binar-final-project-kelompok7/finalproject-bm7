@@ -11,10 +11,7 @@ import MdiBadgeOutlineImg from "../assets/img/mdi_badge-outline.png";
 import ClarityBookLineImg from "../assets/img/clarity_book-line.png";
 import RiTimeFillImg from "../assets/img/ri_time-fill.png";
 import StartImg from "../assets/img/start.png";
-
-function DetailClass() {
 import BxsLockImg from "../assets/img/bxs_lock.png";
-import StartImg from "../assets/img/start.png";
 
 function DetailClass() {
   const [activeSection, setActiveSection] = useState("tentang");
@@ -23,9 +20,6 @@ function DetailClass() {
   const [courseData, setCourseData] = useState(null);
 
 
-  const Kembali = () => {
-    window.history.back();
-  };
   const Kembali = () => {
     window.history.back();
   };
@@ -316,6 +310,6 @@ function DetailClass() {
       </div>
     </>
   );
-}
+};
 
 export default DetailClass;
