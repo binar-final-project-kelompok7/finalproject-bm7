@@ -1,31 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import "../style/DetailCLass.css";
-import Pup from "./Popup";
 import Header from "./Header";
 import BottomNav from "./BottomNav";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 //import gambar
-import Mdi from "../assets/img/mdi_progress-check.png";
-import percent from "../assets/img/percent.png";
-import CircleImg from "../assets/img/circle/Circle.png";
-import Circle2Img from "../assets/img/circle/Circle2.png";
-import Circle3Img from "../assets/img/circle/Circle3.png";
-import Circle4Img from "../assets/img/circle/Circle4.png";
-import Circle5Img from "../assets/img/circle/Circle5.png";
-import Circle6Img from "../assets/img/circle/Circle6.png";
-import Circle7Img from "../assets/img/circle/Circle7.png";
-import Circle8Img from "../assets/img/circle/Circle8.png";
-import Circle9Img from "../assets/img/circle/Circle9.png";
-import Circle10Img from "../assets/img/circle/Circle10.png";
-import Circle11Img from "../assets/img/circle/Circle11.png";
-import Fill1Img from "../assets/img/Fill-1.png";
-import Fill2Img from "../assets/img/Fill-2.png";
 import PlayVideoImg from "../assets/img/play-video.png";
 import MdiBadgeOutlineImg from "../assets/img/mdi_badge-outline.png";
 import ClarityBookLineImg from "../assets/img/clarity_book-line.png";
 import RiTimeFillImg from "../assets/img/ri_time-fill.png";
+import StartImg from "../assets/img/start.png";
+
+function DetailClass() {
 import BxsLockImg from "../assets/img/bxs_lock.png";
 import StartImg from "../assets/img/start.png";
 
@@ -35,11 +22,9 @@ function DetailClass() {
   const { courseCode } = useParams();
   const [courseData, setCourseData] = useState(null);
 
-  const handleSectionChange = (section) => {
-    setActiveSection(section);
-  };
-  const togglePopup = () => {
-    setPopupVisible(!isPopupVisible);
+
+  const Kembali = () => {
+    window.history.back();
   };
   const Kembali = () => {
     window.history.back();
@@ -61,6 +46,34 @@ function DetailClass() {
     fetchData();
   }, [courseCode]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (!courseCode) {
+          console.error("Course code is undefined.");
+          return;
+        }
+  
+        const response = await axios.get(
+          `https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`,
+          {
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
+  
+        setCourseData(response.data.data);
+        console.log("Course Data:", response.data.data);
+      } catch (error) {
+        console.error("Error fetching course data:", error);
+      }
+    };
+  
+    fetchData();
+  }, [courseCode]);
+  
+
   return (
     <>
       {courseData && (
@@ -78,202 +91,9 @@ function DetailClass() {
               marginTop: "50px",
             }}
           >
+           
             <div
-              className="cardkanan"
-              style={{ paddingLeft: "950px", marginTop: "120px" }}
-            >
-              <div
-                className="Materi-card"
-                style={{
-                  position: "absolute",
-                  backgroundColor: "#fff",
-                  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                  marginTop: "-200px",
-                  paddingTop: "20px",
-                  borderRadius: "20px",
-                  paddingRight: "50px",
-                }}
-              >
-                <h4
-                  style={{
-                    fontWeight: "700",
-                    paddingTop: "20px",
-                    paddingLeft: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <h4 style={{ fontWeight: "700", width: "200px" }}>
-                    Materi Belajar
-                  </h4>
-                  <img src={Mdi}></img>
-                  <img src={percent}></img>
-                </h4>
-                <div className="chapter1">
-                  <div
-                    className="chp1"
-                    style={{
-                      paddingLeft: "40px",
-                      paddingBottom: "20px",
-                      display: "flex",
-                      alignItems: "center",
-                      color: "#6148FF",
-                      fontWeight: "800",
-                    }}
-                  >
-                    <h7 style={{ width: "75%" }}>Chapter 1 - Pendahuluan</h7>
-                    <h8 style={{ color: "#489CFF" }}>60 menit</h8>
-                  </div>
-                  <ul>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={CircleImg}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "78%" }}>
-                        Tujuan Mengikuti Kelas Design System
-                      </h7>
-                      <img src={Fill1Img} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={Circle2Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "78%" }}>Pengenalan Design System</h7>
-                      <img src={Fill1Img} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                    <li
-                      class=""
-                      data-bs-toggle="modal"
-                      href="#exampleModalToggle"
-                      role="button"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        cursor: "pointer",
-                      }}
-                      id="premium"
-                      onClick={togglePopup}
-                    >
-                      <img
-                        src={Circle3Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "78%" }}>Pengenalan Design System</h7>
-                      <img src={Fill2Img} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                  </ul>
-                </div>
-                <div className="chapter2">
-                  <div
-                    className="chp2"
-                    style={{
-                      paddingLeft: "40px",
-                      paddingBottom: "20px",
-                      display: "flex",
-                      alignItems: "center",
-                      color: "#6148FF",
-                      fontWeight: "800",
-                    }}
-                  >
-                    <h7 style={{ width: "75%" }}>Chapter 2 - Memulai Desain</h7>
-                    <h8 style={{ color: "#489CFF" }}>120 menit</h8>
-                  </div>
-                  <ul>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={Circle4Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "77%" }}>Color Palette</h7>
-                      <img src={BxsLockImg} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={Circle5Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "77%" }}>
-                        Typography, Layout dan Grid
-                      </h7>
-                      <img src={BxsLockImg} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={Circle6Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "77%" }}>Membuat Components</h7>
-                      <img src={BxsLockImg} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={Circle7Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "77%" }}>Membuat Components</h7>
-                      <img src={BxsLockImg} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={Circle8Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "77%" }}>Membuat Components</h7>
-                      <img src={BxsLockImg} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={Circle9Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "77%" }}>Membuat Components</h7>
-                      <img src={BxsLockImg} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={Circle10Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "77%" }}>Color Palette</h7>
-                      <img src={BxsLockImg} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                    <li style={{ display: "flex", alignItems: "center" }}>
-                      <img
-                        src={Circle11Img}
-                        alt="Circle"
-                        style={{ marginRight: "10px" }}
-                      />
-                      <h7 style={{ width: "77%" }}>Color Palette</h7>
-                      <img src={BxsLockImg} alt="Fill" />
-                    </li>
-                    <hr></hr>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div
+
               className="title"
               style={{
                 display: "flex",
@@ -282,10 +102,8 @@ function DetailClass() {
                 marginTop: "-50px",
                 background: "#EBF3FC",
                 width: "100%",
-                marginLeft: "-950px",
               }}
             >
-              <div className="pop">{isPopupVisible && <Pup />}</div>
 
               <h3
                 className="back"
@@ -335,7 +153,6 @@ function DetailClass() {
               data-bs-toggle="modal"
               href="#exampleModalToggle"
               role="button"
-              onClick={togglePopup}
               style={{
                 backgroundColor: "#000000D9",
                 width: "55%",
@@ -355,12 +172,14 @@ function DetailClass() {
               <p>{courseData.description}</p>
               <h2>Kelas Ini Ditujukan Untuk</h2>
               <ul style={{ marginLeft: "-30px" }}>
-                {courseData.intendeds.map((intended, index) => (
-                  <li key={index}>
-                    {index + 1}. {intended}
-                  </li>
-                ))}
-              </ul>
+
+  {courseData.intendeds && courseData.intendeds.map((intended, index) => (
+    <li key={index}>
+      {index + 1}. {intended}
+    </li>
+  ))}
+</ul>
+
             </div>
           </div>
           <BottomNav />
@@ -386,11 +205,11 @@ function DetailClass() {
           <img
             src={PlayVideoImg}
             style={{ paddingTop: "40px", paddingBottom: "40px" }}
-            class=""
+            className=""
             data-bs-toggle="modal"
             href="#exampleModalToggle"
             role="button"
-            onClick={togglePopup}
+
           ></img>
         </div>
         <div
@@ -443,22 +262,6 @@ function DetailClass() {
             <img src={RiTimeFillImg} alt="time"></img>45 Menit
           </p>
         </div>
-        <div className="tombol">
-          <button
-            onClick={() => handleSectionChange("tentang")}
-            className={activeSection === "tentang" ? "active" : ""}
-          >
-            Tentang
-          </button>
-          <button
-            onClick={() => handleSectionChange("classmateri")}
-            className={activeSection === "classmateri" ? "active" : ""}
-          >
-            Materi Kelas
-          </button>
-        </div>
-
-        {/* {activeSection === "tentang" && (
           <div className="tentang">
             <div className="join2">
               <button>
@@ -509,263 +312,6 @@ function DetailClass() {
               </ul>
             </div>
           </div>
-        )} */}
-
-        {/* {activeSection === "classmateri" && (
-          <div className="classmateri">
-            <div className="chapter1">
-              <h4
-                style={{
-                  fontWeight: "700",
-                  width: "45%",
-                  paddingLeft: "20px",
-                  paddingTop: "20px",
-                }}
-              >
-                Materi Belajar
-              </h4>
-              <div
-                className="chp1"
-                style={{
-                  paddingLeft: "20px",
-                  paddingBottom: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  color: "#6148FF",
-                  fontWeight: "800",
-                }}
-              >
-                <h7 style={{ width: "75%" }}>Chapter 1 - Pendahuluan</h7>
-                <h8 style={{ color: "#489CFF" }}>60 menit</h8>
-              </div>
-              <ul>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src="./img/circle/Circle.png"
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "78%", fontSize: "15px" }}>
-                    Tujuan Mengikuti Kelas Design System
-                  </h7>
-                  <img src={Fill1Img} alt="Fill" />
-                </li>
-                <hr></hr>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src="./img/circle/Circle2.png"
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "78%", fontSize: "15px" }}>
-                    Pengenalan Design System
-                  </h7>
-                  <img src={Fill1Img} alt="Fill" />
-                </li>
-                <hr></hr>
-                <li
-                  class=""
-                  data-bs-toggle="modal"
-                  href="#exampleModalToggle"
-                  role="button"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                  id="premium"
-                  onClick={togglePopup}
-                >
-                  <img
-                    src={Circle3Img}
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "78%", fontSize: "15px" }}>
-                    Pengenalan Design System
-                  </h7>
-                  <img src="./img/Fill-2.png" alt="Fill" />
-                </li>
-                <hr></hr>
-              </ul>
-            </div>
-            <div className="chapter2">
-              <div
-                className="chp1"
-                style={{
-                  paddingLeft: "20px",
-                  paddingBottom: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  color: "#6148FF",
-                  fontWeight: "800",
-                }}
-              >
-                <h7 style={{ width: "75%" }}>Chapter 2 - Memulai Desain</h7>
-                <h8 style={{ color: "#489CFF" }}>120 menit</h8>
-              </div>
-              <ul>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src={Circle4Img}
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "77%", fontSize: "15px" }}>
-                    Color Palette
-                  </h7>
-                  <img src={BxsLockImg} alt="Fill" />
-                </li>
-                <hr></hr>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src="./img/circle/Circle5.png"
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "77%", fontSize: "15px" }}>
-                    Typography, Layout dan Grid
-                  </h7>
-                  <img src={BxsLockImg} alt="Fill" />
-                </li>
-                <hr></hr>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src="./img/circle/Circle6.png"
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "77%", fontSize: "15px" }}>
-                    Membuat Components
-                  </h7>
-                  <img src={BxsLockImg} alt="Fill" />
-                </li>
-                <hr></hr>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src={Circle7Img}
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "77%", fontSize: "15px" }}>
-                    Membuat Components
-                  </h7>
-                  <img src={BxsLockImg} alt="Fill" />
-                </li>
-                <hr></hr>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src={Circle8Img}
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "77%", fontSize: "15px" }}>
-                    Membuat Components
-                  </h7>
-                  <img src={BxsLockImg} alt="Fill" />
-                </li>
-                <hr></hr>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src={Circle9Img}
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "77%", fontSize: "15px" }}>
-                    Membuat Components
-                  </h7>
-                  <img src={BxsLockImg} alt="Fill" />
-                </li>
-                <hr></hr>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src={Circle10Img}
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "77%", fontSize: "15px" }}>
-                    Color Palette
-                  </h7>
-                  <img src={BxsLockImg} alt="Fill" />
-                </li>
-                <hr></hr>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginLeft: "-20px",
-                  }}
-                >
-                  <img
-                    src={Circle11Img}
-                    alt="Circle"
-                    style={{ marginRight: "10px" }}
-                  />
-                  <h7 style={{ width: "77%", fontSize: "15px" }}>
-                    Color Palette
-                  </h7>
-                  <img src={BxsLockImg} alt="Fill" />
-                </li>
-                <hr></hr>
-              </ul>
-              {isPopupVisible && <Pup />}
-            </div>
-          </div>
-        )} */}
         <hr></hr>
       </div>
     </>
