@@ -31,17 +31,24 @@ function Login() {
       };
 
       const response = await axios.request(config);
-      const token = response.headers["authorization"].split(" ")[1];      
+      const token = response.headers["authorization"].split(" ")[1];
+      const apiUsername = response.data.data.username;
 
-      cookies.set("jwt_authorization", token,{
-        expires: new Date(Date.now() + 3600 * 1000)
+      console.log(apiUsername);
+
+      cookies.set("jwt_authorization", token, {
+        expires: new Date(Date.now() + 3600 * 1000),
+      });
+
+      cookies.set("api_username", apiUsername, {
+        expires: new Date(Date.now() + 3600 * 1000),
       });
 
       navigate("/");
-    } catch (error) {      
+    } catch (error) {
       if (error.response) {
         console.error(error.response.data.code, error.response.data.message);
-      }      
+      }
     }
   };
 
@@ -92,7 +99,7 @@ function Login() {
               <button
                 className="rounded-3 border-0 p-2 text-white mb-4"
                 style={{ backgroundColor: "#6148ff" }}
-                type="submit"                
+                type="submit"
               >
                 Masuk
               </button>
