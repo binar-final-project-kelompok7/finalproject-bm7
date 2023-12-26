@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import "../style/DetailCLass.css";
+import Pup from "./Popup";
 import Header from "./Header";
 import BottomNav from "./BottomNav";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-//import gambar
 import PlayVideoImg from "../assets/img/play-video.png";
 import MdiBadgeOutlineImg from "../assets/img/mdi_badge-outline.png";
 import ClarityBookLineImg from "../assets/img/clarity_book-line.png";
@@ -13,10 +13,13 @@ import RiTimeFillImg from "../assets/img/ri_time-fill.png";
 import StartImg from "../assets/img/start.png";
 
 function DetailClass() {
+  const [isPopupVisible, setPopupVisible] = useState(true);
   const { courseCode } = useParams();
   const [courseData, setCourseData] = useState(null);
 
-
+  const togglePopup = () => {
+    setPopupVisible(!isPopupVisible);
+  };
   const Kembali = () => {
     window.history.back();
   };
@@ -24,30 +27,18 @@ function DetailClass() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (!courseCode) {
-          console.error("Course code is undefined.");
-          return;
-        }
-  
         const response = await axios.get(
-          `https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`,
-          {
-            headers: {
-              Accept: "application/json",
-            },
-          }
+          `https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`
         );
-  
         setCourseData(response.data.data);
         console.log("Course Data:", response.data.data);
       } catch (error) {
         console.error("Error fetching course data:", error);
       }
     };
-  
+
     fetchData();
   }, [courseCode]);
-  
 
   return (
     <>
@@ -65,7 +56,7 @@ function DetailClass() {
               display: "flex",
               marginTop: "50px",
             }}
-          >
+>
             <div
               className="title"
               style={{
@@ -77,6 +68,7 @@ function DetailClass() {
                 width: "100%",
               }}
             >
+              <div className="pop">{isPopupVisible && <Pup />}</div>
 
               <h3
                 className="back"
@@ -126,6 +118,7 @@ function DetailClass() {
               data-bs-toggle="modal"
               href="#exampleModalToggle"
               role="button"
+              onClick={togglePopup}
               style={{
                 backgroundColor: "#000000D9",
                 width: "55%",
@@ -145,13 +138,12 @@ function DetailClass() {
               <p>{courseData.description}</p>
               <h2>Kelas Ini Ditujukan Untuk</h2>
               <ul style={{ marginLeft: "-30px" }}>
-  {courseData.intendeds && courseData.intendeds.map((intended, index) => (
-    <li key={index}>
-      {index + 1}. {intended}
-    </li>
-  ))}
-</ul>
-
+                {courseData.intendeds.map((intended, index) => (
+                  <li key={index}>
+                    {index + 1}. {intended}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
           <BottomNav />
@@ -181,6 +173,7 @@ function DetailClass() {
             data-bs-toggle="modal"
             href="#exampleModalToggle"
             role="button"
+            onClick={togglePopup}
           ></img>
         </div>
         <div
@@ -234,7 +227,6 @@ function DetailClass() {
           </p>
         </div>
 
-
           <div className="tentang">
             <div className="join2">
               <button>
@@ -285,9 +277,7 @@ function DetailClass() {
               </ul>
             </div>
           </div>
- 
-
-   
+          <div className="pop">{isPopupVisible && <Pup />}</div>
         <hr></hr>
       </div>
     </>

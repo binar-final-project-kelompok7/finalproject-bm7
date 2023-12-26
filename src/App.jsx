@@ -20,39 +20,44 @@ import DetailPay from "./components/DetailPay.jsx";
 import PlayVideo from "./components/PlayVideo.jsx";
 import AdminPopup from "./pages/Admin/AdminPopup.jsx";
 import ManageClass from "./pages/Admin/ManageClass.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/otp" element={<OTP />} />
-        <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/account-settings" element={<AccountSetings />}>
-          <Route path="edit-profile" element={<ProfileSaya />} />
-          <Route path="change-password" element={<ChangePassword />} />
-          <Route path="payment-history" element={<PaymentHistory />} />
-        </Route>
+    <>
+      <ToastContainer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/otp" element={<OTP />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/account-settings" element={<AccountSetings />}>
+            <Route path="edit-profile/:username" element={<ProfileSaya />} />
+            <Route path="change-password" element={<ChangePassword />} />
+            <Route path="payment-history" element={<PaymentHistory />} />
+          </Route>
 
-        <Route path="/dashboard-admin" element={<Admin />}>
-          <Route path="payment-status" element={<PaymentStatus />} />
-          <Route path="manage-class" element={<ManageClass />} />
-          <Route path="adminPopup" element={<AdminPopup />} />
-        </Route>
+          <Route path="/dashboard-admin" element={<Admin />}>
+            <Route path="payment-status" element={<PaymentStatus />} />
+            <Route path="manage-class" element={<ManageClass />} />
+            <Route path="adminPopup" element={<AdminPopup />} />
+          </Route>
 
-        <Route path="/adminPopup" element={<AdminPopup />} />
+          <Route path="/adminPopup" element={<AdminPopup />} />
 
-        <Route path="/myclass" element={<KelasSaya />} />
-        <Route path="/course" element={<Course />} />
-        <Route path="/adminLogin" element={<AdminLogin />} />
-        <Route path="/detail/:courseCode" element={<DetailCLass />} />
-        <Route path="/detail-pay" element={<DetailPay />} />
-        <Route path="/PaySuccess" element={<PaySuccess />} />
-        <Route path="/PlayVideo" element={<PlayVideo />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="/myclass" element={<KelasSaya />} />
+          <Route path="/course" element={<Course />} />
+          <Route path="/adminLogin" element={<AdminLogin />} />
+          <Route path="/detailclass/:courseCode" element={<DetailCLass />} />
+          <Route path="/detail-pay" element={<DetailPay />} />
+          <Route path="/PaySuccess" element={<PaySuccess />} />
+          <Route path="/PlayVideo" element={<PlayVideo />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
