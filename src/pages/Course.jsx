@@ -14,6 +14,9 @@ const Course = () => {
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,6 +47,7 @@ const Course = () => {
 
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
+    
     document.querySelectorAll("button").forEach((button) => {
       button.classList.remove("activedBtn");
     });
@@ -103,11 +107,12 @@ const Course = () => {
       AdvancedLevel: false,
     });
   };
-  const [searchQuery, setSearchQuery] = useState(""); // State for the search query
 
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+const handleSearchChange = (event) => {
+  setSearchQuery(event.target.value);
+};
+
+  
   const filteredCourses = courses.filter((course) => {
     const isTypeMatch = activeButton === 1 || (activeButton === 2 && course.type === "PREMIUM") || (activeButton === 3 && course.type === "FREE");
     const isFilterMatch =
@@ -132,7 +137,7 @@ const Course = () => {
 
   return (
     <div className="KelasSaya-background">
-      <Header />
+       <Header setFilterOptions={setFilterOptions} />
       <div className="KelasSaya-Container">
         <div className="KelasSaya-Header">
           <div className="KS-Header">
@@ -162,7 +167,8 @@ const Course = () => {
             }}
             onClick={() => setModalVisible(true)}
           >
-            <CourseFilter filterOptions={filterOptions} handleCheckboxChange={handleCheckboxChange} handleClearFilters={handleClearFilters} />
+            <CourseFilter filterOptions={filterOptions} handleCheckboxChange={handleCheckboxChange} />
+
           </div>
           <div className="KelasSaya-isi">
             <div className="button-isi-ks">
