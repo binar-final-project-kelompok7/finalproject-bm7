@@ -122,7 +122,7 @@ const Popular = () => {
     className="popularContent d-flex flex-column text-start"
     style={{ width: "323px" }}
   >
-    <Link to={`/detail/${course.coursecode}`} key={`link-${course.coursecode}`} style={{color:'#000',textDecoration:'none'}}>
+    <Link to={`/detailclass/${course.code}`} style={{textDecoration:'none'}}> 
       <img src={classImage} alt="gambar" />
       <h6 style={{ fontWeight: "600", color: "#6148FF", marginTop: "20px" }}>{course.category}</h6>
       <h6 style={{ fontWeight: "600", }}>{course.name}</h6>

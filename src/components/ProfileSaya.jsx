@@ -3,7 +3,7 @@ import Axios from "axios";
 import Cookies from "universal-cookie";
 import profile from "../assets/profileIcon.png";
 import "./ProfileSaya.css";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 
 const ProfileSaya = () => {
   const [username, setUsername] = useState("");
@@ -33,7 +33,9 @@ const ProfileSaya = () => {
       console.log("success get profile");
     } catch (error) {
       console.error("Error getting profile:", error.message);
-      toast.error("Terjadi kesalahan, coba lagi.");
+      toast.error("Error getting profile. Please try again.", {
+        theme: "colored",
+      });
     } finally {
       setLoading(false);
     }
@@ -42,7 +44,7 @@ const ProfileSaya = () => {
   const handleSaveProfile = async (e) => {
     e.preventDefault();
     if (!username.trim() || !name.trim() || !email.trim()) {
-      toast.error("Semua kolom harus terisi ya");
+      toast.error("Semua kolom harus terisi ya", { theme: "colored" });
       return;
     }
 
@@ -75,10 +77,12 @@ const ProfileSaya = () => {
       setUsername(updatedData.username);
       setName(updatedData.name);
       setEmail(updatedData.email);
-      toast.success("Profil berhasil diubah");
+      toast.success("Profile saved successfully", { theme: "colored" });
     } catch (error) {
       console.error("Error saving profile:", error.message);
-      toast.error("Error, Data gagal disimpan");
+      toast.error("Error saving profile. Please try again.", {
+        theme: "colored",
+      });
     } finally {
       setLoading(false);
     }
