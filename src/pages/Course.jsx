@@ -107,7 +107,7 @@ const Course = () => {
       AdvancedLevel: false,
     });
   };
-// Inside Course component
+
 const handleSearchChange = (event) => {
   setSearchQuery(event.target.value);
 };
