@@ -20,13 +20,12 @@ import DetailPay from "./components/DetailPay.jsx";
 import PlayVideo from "./components/PlayVideo.jsx";
 import AdminPopup from "./pages/Admin/AdminPopup.jsx";
 import ManageClass from "./pages/Admin/ManageClass.jsx";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
-      <ToastContainer />
+      <Toaster />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
