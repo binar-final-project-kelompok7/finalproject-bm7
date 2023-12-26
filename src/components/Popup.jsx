@@ -86,7 +86,7 @@ function Pup() {
                   </div>
                   <button className="buy">Beli Rp {courseData.price}</button>
                 </div>
-                <Link to="/detail-pay">
+                <Link to={`/detail-pay/${courseCode}`}>
                   <button className="buynow">
                     Beli Sekarang<img src={NextImg} alt="next"></img>
                   </button>

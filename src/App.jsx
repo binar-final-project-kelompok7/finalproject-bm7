@@ -52,9 +52,9 @@ function App() {
           <Route path="/course" element={<Course />} />
           <Route path="/adminLogin" element={<AdminLogin />} />
           <Route path="/detailclass/:courseCode" element={<DetailCLass />} />
-          <Route path="/detail-pay" element={<DetailPay />} />
-          <Route path="/PaySuccess" element={<PaySuccess />} />
-          <Route path="/PlayVideo" element={<PlayVideo />} />
+          <Route path="/detail-pay/:courseCode" element={<DetailPay />} />
+          <Route path="/PaySuccess/:courseCode" element={<PaySuccess />} />
+          <Route path="/PlayVideo/:courseCode" element={<PlayVideo />} />
         </Routes>
       </BrowserRouter>
     </>

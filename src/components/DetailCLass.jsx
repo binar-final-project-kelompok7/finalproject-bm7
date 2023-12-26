@@ -105,7 +105,9 @@ function DetailClass() {
                 </div>
               </div>
               <div className="btnjoin">
-                <button className="join">Join Grup Telegram</button>
+              <a href="https://t.me/your_telegram_group" target="_blank" rel="noopener noreferrer">
+  <button className="join">Join Telegram</button>
+</a>
               </div>
             </div>
           </div>
