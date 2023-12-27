@@ -12,12 +12,12 @@ function PlayVideo() {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    // Fetch data from your API
+ 
     fetch("https://course-in-production.up.railway.app/api/v1/courses/${courseCode}")
       .then(response => response.json())
       .then(data => setCourseData(data))
       .catch(error => console.error("Error fetching data:", error));
-  }, []); // Empty dependency array ensures the effect runs only once
+  }, []); 
 
   const handlePlayPause = () => {
     const video = videoRef.current;
