@@ -9,7 +9,7 @@ const DeleteCourse = ({ courseCode }) => {
       const apiUrl = `https://course-in-production.up.railway.app/api/v1/courses/delete/${courseCode}`;
       const headers = {
         "Content-Type": "application/json",
-        Authorization: `${authToken}`,
+        Authorization: `Bearer ${authToken}`,
       };
 
       const response = await axios.delete(apiUrl, { headers });

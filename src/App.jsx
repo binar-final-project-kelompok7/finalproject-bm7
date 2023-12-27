@@ -43,10 +43,7 @@ function App() {
           <Route path="/dashboard-admin" element={<Admin />}>
             <Route path="payment-status" element={<PaymentStatus />} />
             <Route path="manage-class" element={<ManageClass />} />
-            <Route path="adminPopup" element={<AdminPopup />} />
           </Route>
-
-          <Route path="/adminPopup" element={<AdminPopup />} />
 
           <Route path="/myclass" element={<KelasSaya />} />
           <Route path="/course" element={<Course />} />

@@ -1,30 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 const useAuthGuard = () => {
   const navigate = useNavigate();
-  const [authToken, setAuthToken] = useState(null);
+  const cookies = new Cookies();
+  const authToken = cookies.get("authToken");
 
   useEffect(() => {
-    const tokenFromCookie = getCookie("authToken");
-
-    if (!tokenFromCookie) {
+    if (!authToken) {
       navigate("/adminLogin");
-    } else {
-      setAuthToken(tokenFromCookie);
     }
-  }, [navigate]);
-
-  const getCookie = (name) => {
-    const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
-    for (const cookie of cookies) {
-      const [cookieName, cookieValue] = cookie.split("=");
-      if (cookieName === name) {
-        return cookieValue;
-      }
-    }
-    return null;
-  };
+  }, [authToken, navigate]);
 
   return { authToken };
 };
