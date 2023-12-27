@@ -16,30 +16,51 @@ const Course = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
 
-  
+  const [filterOptions, setFilterOptions] = useState({
+    palingbaru: false,
+    palingpopuler: false,
+    promo: false,
+    UIUXDesign: false,
+    WebDevelopment: false,
+    AndroidDevelopment: false,
+    DataScience: false,
+    BusinessIntelligence: false,
+    BeginnerLevel: false,
+    IntermediateLevel: false,
+    AdvancedLevel: false,
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
+        let params = {
+          page: currentPage,
+          size: 10,
+        };
+
+        if (filterOptions.palingbaru) {
+          params.filters = "NEWEST";
+        } else if (filterOptions.palingpopuler) {
+          params.filters = "POPULAR";
+        } else if (filterOptions.promo) {
+          params.filters = "DISCOUNT";
+        }
+
         const response = await axios.get("https://course-in-production.up.railway.app/api/v1/courses", {
-          params: {
-            page: currentPage,
-            size: 10,
-          },
+          params,
           headers: {
             Accept: "application/json",
-            Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWZpIiwiaWF0IjoxNzAyMDQyMzc5LCJleHAiOjE3MDI2NDcxNzl9.6XZFn4He0mJsF1CtIqbo5U8NO_DitNGhO8fRJP0p3Rg",
           },
         });
 
         setCourses(response.data.data);
         setTotalPages(response.data.paging.totalPage);
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, [currentPage]);
+  }, [currentPage, filterOptions]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -47,7 +68,7 @@ const Course = () => {
 
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
-    
+
     document.querySelectorAll("button").forEach((button) => {
       button.classList.remove("activedBtn");
     });
@@ -78,19 +99,6 @@ const Course = () => {
       setModalVisible(!modalVisible);
     }
   };
-  const [filterOptions, setFilterOptions] = useState({
-    palingbaru: false,
-    palingpopuler: false,
-    promo: false,
-    UIUXDesign: false,
-    WebDevelopment: false,
-    AndroidDevelopment: false,
-    DataScience: false,
-    BusinessIntelligence: false,
-    BeginnerLevel: false,
-    IntermediateLevel: false,
-    AdvancedLevel: false,
-  });
 
   const handleClearFilters = () => {
     setFilterOptions({
@@ -108,18 +116,17 @@ const Course = () => {
     });
   };
 
-const handleSearchChange = (event) => {
-  setSearchQuery(event.target.value);
-};
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
-  
   const filteredCourses = courses.filter((course) => {
     const isTypeMatch = activeButton === 1 || (activeButton === 2 && course.type === "PREMIUM") || (activeButton === 3 && course.type === "FREE");
     const isFilterMatch =
-      (!filterOptions.palingbaru || course.isPalingBaru) &&
-      (!filterOptions.palingpopuler || course.isPalingPopuler) &&
-      (!filterOptions.promo || course.isPromo) &&
-      (!filterOptions.UIUXDesign || course.category === "UI/UX_Design") &&
+      (!filterOptions.palingbaru || filterOptions.palingbaru) &&
+      (!filterOptions.palingpopuler || filterOptions.palingpopuler) &&
+      (!filterOptions.promo || filterOptions.promo) &&
+      (!filterOptions.UIUXDesign || course.category === "UIUX_DESIGN") &&
       (!filterOptions.WebDevelopment || course.category === "WEB_DEVELOPMENT") &&
       (!filterOptions.AndroidDevelopment || course.category === "ANDROID_DEVELOPMENT") &&
       (!filterOptions.DataScience || course.category === "DATA_SCIENCE") &&
@@ -137,7 +144,7 @@ const handleSearchChange = (event) => {
 
   return (
     <div className="KelasSaya-background">
-       <Header setFilterOptions={setFilterOptions} />
+      <Header setFilterOptions={setFilterOptions} />
       <div className="KelasSaya-Container">
         <div className="KelasSaya-Header">
           <div className="KS-Header">
@@ -167,8 +174,7 @@ const handleSearchChange = (event) => {
             }}
             onClick={() => setModalVisible(true)}
           >
-            <CourseFilter filterOptions={filterOptions} handleCheckboxChange={handleCheckboxChange} />
-
+            <CourseFilter filterOptions={filterOptions} handleCheckboxChange={handleCheckboxChange} handleClearFilters={handleClearFilters} />
           </div>
           <div className="KelasSaya-isi">
             <div className="button-isi-ks">

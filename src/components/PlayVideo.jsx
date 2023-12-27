@@ -4,21 +4,21 @@ import "../style/DetailCLass.css";
 import "../style/video.css";
 import Header from "./Header";
 import BottomNav from "./BottomNav";
+import { useParams } from "react-router-dom";
 
 function PlayVideo() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [courseData, setCourseData] = useState({});
   const videoRef = useRef(null);
-
+  const { courseCode } = useParams();
   useEffect(() => {
     // Fetch data from your API
-    fetch("https://course-in-production.up.railway.app/api/v1/courses/${courseCode}")
-      .then(response => response.json())
-      .then(data => setCourseData(data))
-      .catch(error => console.error("Error fetching data:", error));
+    fetch(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`)
+      .then((response) => response.json())
+      .then((data) => setCourseData(data.data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []); // Empty dependency array ensures the effect runs only once
-
   const handlePlayPause = () => {
     const video = videoRef.current;
     if (isPlaying) {
@@ -40,10 +40,10 @@ function PlayVideo() {
   };
   return (
     <>
-    <Header/>
+      <Header />
       <div className="dekstop">
         <div className="section" style={{ width: "100%", height: "100%", backgroundColor: "#fff", justifyContent: "start", alignItems: "center", display: "flex", marginTop: "50px" }}>
-          <div className="title" style={{ display: "flex", flexDirection: "column", justifyContent: "start", marginTop: "-50px", background: "#EBF3FC", width: "100%"}}>
+          <div className="title" style={{ display: "flex", flexDirection: "column", justifyContent: "start", marginTop: "-50px", background: "#EBF3FC", width: "100%" }}>
             <h3 className="back" style={{ fontSize: "17px", fontWeight: "700" }}>
               <BsArrowLeft style={{ fontSize: "20px", marginRight: "20px" }} />
               Kelas Lainnya
@@ -77,26 +77,36 @@ function PlayVideo() {
         </div>
         <div className="section2" style={{ paddingTop: "50px", paddingLeft: "100px" }}>
           <div className="video-container">
-
-          <div className="video" style={{
-        backgroundColor: "#000000D9",
-        width: "50%",
-        height: "370px",
-        display: "flex",
-        justifyContent: "center",
-        position: "relative",
-      }}>
- <video ref={videoRef} src={courseData.link} autoPlay loop muted style={{ width: "100%", height: "100%", objectFit: "cover" }} onClick={handlePlayPause}></video>
-        <div className="overlay">
-          <div className="buttons" style={{ marginTop: "85%" }}>
-            <button className="left-button">Kelas Lainnya</button>
-            <button className="right-button" onClick={handleFullScreen}>
-              {isFullScreen ? "Minimize" : "Fullscreen"}
-            </button>
-          </div>
-        </div>
-      </div>
-
+            <div
+              className="video"
+              style={{
+                backgroundColor: "#000000D9",
+                width: "50%",
+                height: "370px",
+                display: "flex",
+                justifyContent: "center",
+                position: "relative",
+              }}
+            >
+              <iframe
+                ref={videoRef}
+                src={courseData.link}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                onClick={handlePlayPause}
+              ></iframe>
+              <div className="overlay">
+                <div className="buttons" style={{ marginTop: "85%" }}>
+                  <button className="left-button">Kelas Lainnya</button>
+                  <button className="right-button" onClick={handleFullScreen}>
+                    {isFullScreen ? "Minimize" : "Fullscreen"}
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="teks" style={{ paddingTop: "40px", width: "50%" }}>
             <h2>Tentang Kelas</h2>
@@ -153,35 +163,35 @@ function PlayVideo() {
             <img src="../img/ri_time-fill.png" alt="time"></img>45 Menit
           </p>
         </div>
-          <div className="tentang">
-            <div className="join2">
-              <button>
-                Join Grup Telegram<img src="./img/gridicons_chat.png" alt="chat"></img>
-              </button>
-            </div>
-            <div className="teks" style={{ paddingTop: "40px", paddingLeft: "20px", paddingRight: "20px", paddingBottom: "50px", textAlign: "left" }}>
-              <h2 style={{ fontWeight: "700" }}>Tentang Kelas</h2>
-              <p>
-                {" "}
-                Design system adalah kumpulan komponen design, code, ataupun dokumentasi yang dapat digunakan sebagai panduan utama yang memunginkan designer serta developer memiliki lebih banyak kontrol atas berbagai platform. Dengan
-                hadirnya design system, dapat menjaga konsistensi tampilan user interface dan meningkatkan user experience menjadi lebih baik. Disisi bisnis, design system sangat berguna dalam menghemat waktu dan biaya ketika mengembangkan
-                suatu produk. Bersama mentor XXX, kita akan mempelajari design system dari mulai manfaat, alur kerja pembuatannya, tools yang digunakan, hingga pada akhirnya, kita akan membuat MVP dari design system. Selain itu, mentor juga
-                akan menjelaskan berbagai resource yang dibutuhkan untuk mencari inspirasi mengenai design system. Kelas ini sesuai untuk Anda yang ingin memahami apa itu design system. Tidak hanya ditujukan untuk UI/UX Designer ataupun
-                Developer, kelas ini sangat sesuai untuk stakeholder lain agar dapat memudahkan tim dalam bekerja sama. Yuk segera daftar dan kami tunggu di kelas ya!
-              </p>
-              <h2 style={{ fontWeight: "700" }}>Kelas Ini Ditujukan Untuk</h2>
-              <ul style={{ marginLeft: "-30px", textAlign: "start" }}>
-                <li>1. Anda yang ingin memahami poin penting design system</li>
-                <li>2. Anda yang ingin membantu perusahaan lebih optimal dalam membuat design produk</li>
-                <li>3. Anda yang ingin latihan membangun design system</li>
-                <li>4. Anda yang ingin latihan membangun design system</li>
-              </ul>
-            </div>
+        <div className="tentang">
+          <div className="join2">
+            <button>
+              Join Grup Telegram<img src="./img/gridicons_chat.png" alt="chat"></img>
+            </button>
           </div>
+          <div className="teks" style={{ paddingTop: "40px", paddingLeft: "20px", paddingRight: "20px", paddingBottom: "50px", textAlign: "left" }}>
+            <h2 style={{ fontWeight: "700" }}>Tentang Kelas</h2>
+            <p>
+              {" "}
+              Design system adalah kumpulan komponen design, code, ataupun dokumentasi yang dapat digunakan sebagai panduan utama yang memunginkan designer serta developer memiliki lebih banyak kontrol atas berbagai platform. Dengan
+              hadirnya design system, dapat menjaga konsistensi tampilan user interface dan meningkatkan user experience menjadi lebih baik. Disisi bisnis, design system sangat berguna dalam menghemat waktu dan biaya ketika mengembangkan
+              suatu produk. Bersama mentor XXX, kita akan mempelajari design system dari mulai manfaat, alur kerja pembuatannya, tools yang digunakan, hingga pada akhirnya, kita akan membuat MVP dari design system. Selain itu, mentor juga
+              akan menjelaskan berbagai resource yang dibutuhkan untuk mencari inspirasi mengenai design system. Kelas ini sesuai untuk Anda yang ingin memahami apa itu design system. Tidak hanya ditujukan untuk UI/UX Designer ataupun
+              Developer, kelas ini sangat sesuai untuk stakeholder lain agar dapat memudahkan tim dalam bekerja sama. Yuk segera daftar dan kami tunggu di kelas ya!
+            </p>
+            <h2 style={{ fontWeight: "700" }}>Kelas Ini Ditujukan Untuk</h2>
+            <ul style={{ marginLeft: "-30px", textAlign: "start" }}>
+              <li>1. Anda yang ingin memahami poin penting design system</li>
+              <li>2. Anda yang ingin membantu perusahaan lebih optimal dalam membuat design produk</li>
+              <li>3. Anda yang ingin latihan membangun design system</li>
+              <li>4. Anda yang ingin latihan membangun design system</li>
+            </ul>
+          </div>
+        </div>
 
         <hr></hr>
       </div>
-      <BottomNav/>
+      <BottomNav />
     </>
   );
 }

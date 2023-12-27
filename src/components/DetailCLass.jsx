@@ -27,9 +27,7 @@ function DetailClass() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`
-        );
+        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`);
         setCourseData(response.data.data);
         console.log("Course Data:", response.data.data);
       } catch (error) {
@@ -56,7 +54,7 @@ function DetailClass() {
               display: "flex",
               marginTop: "50px",
             }}
->
+          >
             <div
               className="title"
               style={{
@@ -70,20 +68,12 @@ function DetailClass() {
             >
               <div className="pop">{isPopupVisible && <Pup />}</div>
 
-              <h3
-                className="back"
-                style={{ fontSize: "17px", fontWeight: "700" }}
-              >
-                <BsArrowLeft
-                  style={{ fontSize: "20px", marginRight: "20px" }}
-                  onClick={Kembali}
-                />
+              <h3 className="back" style={{ fontSize: "17px", fontWeight: "700" }}>
+                <BsArrowLeft style={{ fontSize: "20px", marginRight: "20px" }} onClick={Kembali} />
                 Kelas Lainnya
               </h3>
               <div className="items" style={{ paddingRight: "350px" }}>
-                <h3 style={{ color: "#6148FF", fontWeight: "700" }}>
-                  {courseData.category}
-                </h3>
+                <h3 style={{ color: "#6148FF", fontWeight: "700" }}>{courseData.category}</h3>
                 <h3>{courseData.name}</h3>
                 <h6>by {courseData.author}</h6>
               </div>
@@ -105,16 +95,13 @@ function DetailClass() {
                 </div>
               </div>
               <div className="btnjoin">
-              <a href="https://t.me/your_telegram_group" target="_blank" rel="noopener noreferrer">
-  <button className="join">Join Telegram</button>
-</a>
+                <a href="https://t.me/your_telegram_group" target="_blank" rel="noopener noreferrer">
+                  <button className="join">Join Telegram</button>
+                </a>
               </div>
             </div>
           </div>
-          <div
-            className="section2"
-            style={{ paddingTop: "50px", paddingLeft: "100px" }}
-          >
+          <div className="section2" style={{ paddingTop: "50px", paddingLeft: "100px" }}>
             <div
               className="video"
               data-bs-toggle="modal"
@@ -130,10 +117,7 @@ function DetailClass() {
                 justifyContent: "center",
               }}
             >
-              <img
-                src={PlayVideoImg}
-                style={{ width: "15%", height: "120px", marginTop: "110px" }}
-              ></img>
+              <img src={PlayVideoImg} style={{ width: "15%", height: "120px", marginTop: "110px" }}></img>
             </div>
             <div className="teks" style={{ paddingTop: "40px", width: "50%" }}>
               <h2>Tentang Kelas</h2>
@@ -154,10 +138,7 @@ function DetailClass() {
 
       <div className="mobile">
         <div className="other">
-          <img
-            src="./img/fi_arrow-left.png"
-            style={{ paddingRight: "20px" }}
-          ></img>
+          <img src="./img/fi_arrow-left.png" style={{ paddingRight: "20px" }}></img>
           Kelas Lainnya
         </div>
         <div
@@ -168,20 +149,9 @@ function DetailClass() {
             justifyContent: "center",
           }}
         >
-          <img
-            src={PlayVideoImg}
-            style={{ paddingTop: "40px", paddingBottom: "40px" }}
-            className=""
-            data-bs-toggle="modal"
-            href="#exampleModalToggle"
-            role="button"
-            onClick={togglePopup}
-          ></img>
+          <img src={PlayVideoImg} style={{ paddingTop: "40px", paddingBottom: "40px" }} className="" data-bs-toggle="modal" href="#exampleModalToggle" role="button" onClick={togglePopup}></img>
         </div>
-        <div
-          className="title"
-          style={{ display: "flex", alignItems: "center" }}
-        >
+        <div className="title" style={{ display: "flex", alignItems: "center" }}>
           <h4
             style={{
               color: "#6148FF",
@@ -229,61 +199,46 @@ function DetailClass() {
           </p>
         </div>
 
-          <div className="tentang">
-            <div className="join2">
-              <button>
-                Join Grup Telegram
-                <img src="./img/gridicons_chat.png" alt="chat"></img>
-              </button>
-            </div>
-            <div
-              className="teks"
-              style={{
-                paddingTop: "40px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                paddingBottom: "50px",
-                textAlign: "left",
-              }}
-            >
-              <h2 style={{ fontWeight: "700" }}>Tentang Kelas</h2>
-              <p>
-                {" "}
-                Design system adalah kumpulan komponen design, code, ataupun
-                dokumentasi yang dapat digunakan sebagai panduan utama yang
-                memunginkan designer serta developer memiliki lebih banyak
-                kontrol atas berbagai platform. Dengan hadirnya design system,
-                dapat menjaga konsistensi tampilan user interface dan
-                meningkatkan user experience menjadi lebih baik. Disisi bisnis,
-                design system sangat berguna dalam menghemat waktu dan biaya
-                ketika mengembangkan suatu produk. Bersama mentor XXX, kita akan
-                mempelajari design system dari mulai manfaat, alur kerja
-                pembuatannya, tools yang digunakan, hingga pada akhirnya, kita
-                akan membuat MVP dari design system. Selain itu, mentor juga
-                akan menjelaskan berbagai resource yang dibutuhkan untuk mencari
-                inspirasi mengenai design system. Kelas ini sesuai untuk Anda
-                yang ingin memahami apa itu design system. Tidak hanya ditujukan
-                untuk UI/UX Designer ataupun Developer, kelas ini sangat sesuai
-                untuk stakeholder lain agar dapat memudahkan tim dalam bekerja
-                sama. Yuk segera daftar dan kami tunggu di kelas ya!
-              </p>
-              <h2 style={{ fontWeight: "700" }}>Kelas Ini Ditujukan Untuk</h2>
-              <ul style={{ marginLeft: "-30px", textAlign: "start" }}>
-                <li>1. Anda yang ingin memahami poin penting design system</li>
-                <li>
-                  2. Anda yang ingin membantu perusahaan lebih optimal dalam
-                  membuat design produk
-                </li>
-                <li>3. Anda yang ingin latihan membangun design system</li>
-                <li>4. Anda yang ingin latihan membangun design system</li>
-              </ul>
-            </div>
+        <div className="tentang">
+          <div className="join2">
+            <button>
+              Join Grup Telegram
+              <img src="./img/gridicons_chat.png" alt="chat"></img>
+            </button>
           </div>
-          <div className="pop">{isPopupVisible && <Pup />}</div>
+          <div
+            className="teks"
+            style={{
+              paddingTop: "40px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              paddingBottom: "50px",
+              textAlign: "left",
+            }}
+          >
+            <h2 style={{ fontWeight: "700" }}>Tentang Kelas</h2>
+            <p>
+              {" "}
+              Design system adalah kumpulan komponen design, code, ataupun dokumentasi yang dapat digunakan sebagai panduan utama yang memunginkan designer serta developer memiliki lebih banyak kontrol atas berbagai platform. Dengan
+              hadirnya design system, dapat menjaga konsistensi tampilan user interface dan meningkatkan user experience menjadi lebih baik. Disisi bisnis, design system sangat berguna dalam menghemat waktu dan biaya ketika mengembangkan
+              suatu produk. Bersama mentor XXX, kita akan mempelajari design system dari mulai manfaat, alur kerja pembuatannya, tools yang digunakan, hingga pada akhirnya, kita akan membuat MVP dari design system. Selain itu, mentor juga
+              akan menjelaskan berbagai resource yang dibutuhkan untuk mencari inspirasi mengenai design system. Kelas ini sesuai untuk Anda yang ingin memahami apa itu design system. Tidak hanya ditujukan untuk UI/UX Designer ataupun
+              Developer, kelas ini sangat sesuai untuk stakeholder lain agar dapat memudahkan tim dalam bekerja sama. Yuk segera daftar dan kami tunggu di kelas ya!
+            </p>
+            <h2 style={{ fontWeight: "700" }}>Kelas Ini Ditujukan Untuk</h2>
+            <ul style={{ marginLeft: "-30px", textAlign: "start" }}>
+              <li>1. Anda yang ingin memahami poin penting design system</li>
+              <li>2. Anda yang ingin membantu perusahaan lebih optimal dalam membuat design produk</li>
+              <li>3. Anda yang ingin latihan membangun design system</li>
+              <li>4. Anda yang ingin latihan membangun design system</li>
+            </ul>
+          </div>
+        </div>
+        <div className="pop">{isPopupVisible && <Pup />}</div>
         <hr></hr>
       </div>
     </>
   );
-};
+}
 
 export default DetailClass;

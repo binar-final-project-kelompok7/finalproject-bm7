@@ -9,11 +9,8 @@ function StartStudy() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`
-        );
-        setCourseData(response.data.data); // Assuming the API response has a 'data' property
-        console.log("Course Data:", response.data.data);
+        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`);
+        setCourseData(response.data.data);
       } catch (error) {
         console.error("Error fetching course data:", error);
       }
@@ -40,8 +37,10 @@ function StartStudy() {
                     <img src="../img/boarding.png" alt="image"></img>
                     <h7>Persiapkan hal berikut untuk belajar yang maksimal:</h7>
                     <p style={{ width: "80%", fontSize: "14px", textAlign: "center", paddingTop: "20px" }}>
-                      Mempunyai akun Figma atau Install Adobe XD<br />
-                      Menggunakan internet minimal kecepatan 2Mbps<br />
+                      Mempunyai akun Figma atau Install Adobe XD
+                      <br />
+                      Menggunakan internet minimal kecepatan 2Mbps
+                      <br />
                       Belajar di tempat yang nyaman
                     </p>
                   </div>

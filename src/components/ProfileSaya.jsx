@@ -20,17 +20,13 @@ const ProfileSaya = () => {
   const getdetailUser = async () => {
     try {
       setLoading(true);
-      const response = await Axios.get(
-        `https://course-in-production.up.railway.app/api/v1/users/${usernameProfile}`,
-        {
-          headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await Axios.get(`https://course-in-production.up.railway.app/api/v1/users/${usernameProfile}`, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setUserResponse(response.data.data);
-      console.log("success get profile");
     } catch (error) {
       console.error("Error getting profile:", error.message);
       toast.error("Error getting profile. Please try again.", {
@@ -56,17 +52,13 @@ const ProfileSaya = () => {
         email: email || userResponse.email,
       };
 
-      const patchResponse = await Axios.patch(
-        `https://course-in-production.up.railway.app/api/v1/users/${usernameProfile}`,
-        updatedData,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const patchResponse = await Axios.patch(`https://course-in-production.up.railway.app/api/v1/users/${usernameProfile}`, updatedData, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (updatedData.username) {
         cookies.set("api_username", updatedData.username, {
@@ -90,8 +82,7 @@ const ProfileSaya = () => {
 
   useEffect(() => {
     getdetailUser();
-  }, []);
-
+  }, [usernameProfile, token]);
   return (
     <div className="containerMyProfile d-flex flex-column w-md-50 mx-auto pt-4">
       <div className="rounded"></div>
@@ -100,33 +91,15 @@ const ProfileSaya = () => {
         <label className="mt-3" htmlFor="" style={{ fontSize: "12px" }}>
           Username
         </label>
-        <input
-          type="text"
-          className="bg-transparent text-black rounded-3 border-1"
-          placeholder={userResponse.username}
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <input type="text" className="bg-transparent text-black rounded-3 border-1" placeholder={userResponse.username} value={username} onChange={(e) => setUsername(e.target.value)} />
         <label className="mt-3" htmlFor="" style={{ fontSize: "12px" }}>
           Name
         </label>
-        <input
-          type="text"
-          className="bg-transparent text-black rounded-3 border-1"
-          placeholder={userResponse.name}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <input type="text" className="bg-transparent text-black rounded-3 border-1" placeholder={userResponse.name} value={name} onChange={(e) => setName(e.target.value)} />
         <label className="mt-3" htmlFor="" style={{ fontSize: "12px" }}>
           Email
         </label>
-        <input
-          type="text"
-          className="bg-transparent text-black rounded-3 border-1"
-          placeholder={userResponse.email}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <input type="text" className="bg-transparent text-black rounded-3 border-1" placeholder={userResponse.email} value={email} onChange={(e) => setEmail(e.target.value)} />
         <button
           className="buttonSave rounded-5 text-white mt-3"
           onClick={handleSaveProfile}

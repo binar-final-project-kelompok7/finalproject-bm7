@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import categoryImage from '../assets/categoryImage.png';
+import categoryImage from "../assets/categoryImage.png";
 
 const Category = () => {
   const { courseCode } = useParams();
@@ -23,7 +23,7 @@ const Category = () => {
     };
 
     fetchData();
-  }, [courseCode]); 
+  }, [courseCode]);
 
   return (
     <div className="container mt-4">
@@ -39,9 +39,9 @@ const Category = () => {
       </div>
       <div className="categories d-flex flex-row justify-content-start overflow-auto gap-3">
         {courseData.map((course) => (
-          <div key={course.id} className="category text-center" style={{ width: "285px" }}>
+          <div key={course.code} className="category text-center" style={{ width: "285px" }}>
             <img src={course.image || categoryImage} alt={course.name} />
-            <p style={{fontWeight:'600'}}>{course.category}</p>
+            <p style={{ fontWeight: "600" }}>{course.category}</p>
           </div>
         ))}
       </div>
