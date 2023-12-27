@@ -27,7 +27,6 @@ const ProfileSaya = () => {
         },
       });
       setUserResponse(response.data.data);
-      console.log("success get profile");
     } catch (error) {
       console.error("Error getting profile:", error.message);
       toast.error("Error getting profile. Please try again.", {

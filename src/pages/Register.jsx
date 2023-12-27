@@ -35,8 +35,9 @@ function Register() {
       };
 
       const response = await axios.request(config);
+      console.log(response);
       const token = response.headers["authorization"].split(" ")[1];
-      const apiUsername = response.data.data.username;
+      const apiUsername = username;
 
       cookies.set("jwt_authorization", token, {
         expires: new Date(Date.now() + 3600 * 1000),

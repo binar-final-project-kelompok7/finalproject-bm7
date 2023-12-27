@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import "../style/DetailCLass.css";
+import Pup from "./Popup";
 import Header from "./Header";
 import BottomNav from "./BottomNav";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-//import gambar
 import PlayVideoImg from "../assets/img/play-video.png";
 import MdiBadgeOutlineImg from "../assets/img/mdi_badge-outline.png";
 import ClarityBookLineImg from "../assets/img/clarity_book-line.png";
@@ -13,11 +13,13 @@ import RiTimeFillImg from "../assets/img/ri_time-fill.png";
 import StartImg from "../assets/img/start.png";
 
 function DetailClass() {
-  const [activeSection, setActiveSection] = useState("tentang");
   const [isPopupVisible, setPopupVisible] = useState(true);
   const { courseCode } = useParams();
   const [courseData, setCourseData] = useState(null);
 
+  const togglePopup = () => {
+    setPopupVisible(!isPopupVisible);
+  };
   const Kembali = () => {
     window.history.back();
   };
@@ -26,30 +28,6 @@ function DetailClass() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`);
-        setCourseData(response.data.data);
-        console.log("Course Data:", response.data.data);
-      } catch (error) {
-        console.error("Error fetching course data:", error);
-      }
-    };
-
-    fetchData();
-  }, [courseCode]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (!courseCode) {
-          console.error("Course code is undefined.");
-          return;
-        }
-
-        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`, {
-          headers: {
-            Accept: "application/json",
-          },
-        });
-
         setCourseData(response.data.data);
         console.log("Course Data:", response.data.data);
       } catch (error) {
@@ -88,6 +66,8 @@ function DetailClass() {
                 width: "100%",
               }}
             >
+              <div className="pop">{isPopupVisible && <Pup />}</div>
+
               <h3 className="back" style={{ fontSize: "17px", fontWeight: "700" }}>
                 <BsArrowLeft style={{ fontSize: "20px", marginRight: "20px" }} onClick={Kembali} />
                 Kelas Lainnya
@@ -115,7 +95,9 @@ function DetailClass() {
                 </div>
               </div>
               <div className="btnjoin">
-                <button className="join">Join Grup Telegram</button>
+                <a href="https://t.me/your_telegram_group" target="_blank" rel="noopener noreferrer">
+                  <button className="join">Join Telegram</button>
+                </a>
               </div>
             </div>
           </div>
@@ -125,6 +107,7 @@ function DetailClass() {
               data-bs-toggle="modal"
               href="#exampleModalToggle"
               role="button"
+              onClick={togglePopup}
               style={{
                 backgroundColor: "#000000D9",
                 width: "55%",
@@ -141,12 +124,11 @@ function DetailClass() {
               <p>{courseData.description}</p>
               <h2>Kelas Ini Ditujukan Untuk</h2>
               <ul style={{ marginLeft: "-30px" }}>
-                {courseData.intendeds &&
-                  courseData.intendeds.map((intended, index) => (
-                    <li key={index}>
-                      {index + 1}. {intended}
-                    </li>
-                  ))}
+                {courseData.intendeds.map((intended, index) => (
+                  <li key={index}>
+                    {index + 1}. {intended}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -167,7 +149,7 @@ function DetailClass() {
             justifyContent: "center",
           }}
         >
-          <img src={PlayVideoImg} style={{ paddingTop: "40px", paddingBottom: "40px" }} className="" data-bs-toggle="modal" href="#exampleModalToggle" role="button"></img>
+          <img src={PlayVideoImg} style={{ paddingTop: "40px", paddingBottom: "40px" }} className="" data-bs-toggle="modal" href="#exampleModalToggle" role="button" onClick={togglePopup}></img>
         </div>
         <div className="title" style={{ display: "flex", alignItems: "center" }}>
           <h4
@@ -216,6 +198,7 @@ function DetailClass() {
             <img src={RiTimeFillImg} alt="time"></img>45 Menit
           </p>
         </div>
+
         <div className="tentang">
           <div className="join2">
             <button>
@@ -251,6 +234,7 @@ function DetailClass() {
             </ul>
           </div>
         </div>
+        <div className="pop">{isPopupVisible && <Pup />}</div>
         <hr></hr>
       </div>
     </>
