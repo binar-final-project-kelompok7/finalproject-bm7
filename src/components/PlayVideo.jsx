@@ -118,12 +118,14 @@ function PlayVideo() {
           </div>
         </div>
       </div>
-
+   
       <div className="mobile">
+
         <div className="other">
           <img src="../img/fi_arrow-left.png" style={{ paddingRight: "20px" }}></img>
           Kelas Lainnya
         </div>
+
         <div className="video-container">
           <div className="video" style={{ backgroundColor: "#000000D9", width: "100%", height: "170px", display: "flex", justifyContent: "center" }}>
             <video ref={videoRef} src={courseData.link} autoPlay loop muted style={{ width: "100%", height: "100%", objectFit: "cover" }}></video>
