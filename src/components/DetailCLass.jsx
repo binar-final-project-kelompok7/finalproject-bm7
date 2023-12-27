@@ -284,6 +284,6 @@ function DetailClass() {
       </div>
     </>
   );
-}
+};
 
 export default DetailClass;
