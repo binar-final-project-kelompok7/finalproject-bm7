@@ -20,7 +20,7 @@ const ManageClass = () => {
         const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses?page=${currentPage - 1}&size=5`, {
           headers: {
             Accept: "application/json",
-            Authorization: `${authToken}`,
+            Authorization: `Bearer ${authToken}`,
           },
         });
 

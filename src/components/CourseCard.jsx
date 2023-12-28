@@ -1,16 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import imageimg from "../assets/img.png";
 import star from "../assets/star.png";
 import level from "../assets/level.png";
 import modul from "../assets/modul.png";
 import timeimg from "../assets/time.png";
+import { useNavigate } from "react-router-dom";
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, navigateTo }) => {
   const navigate = useNavigate();
-
   return (
-    <div className="ks-card-content" key={course.code} onClick={() => navigate(`/detailclass/${course.code}`)}>
+    <div className="ks-card-content" key={course.code} onClick={() => navigate(navigateTo)}>
       <img src={imageimg} alt="" />
       <div className="ks-card-content-1">
         <p>{course.category}</p>

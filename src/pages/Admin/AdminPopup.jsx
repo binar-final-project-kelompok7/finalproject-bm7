@@ -33,17 +33,13 @@ function AdminPopupTambah() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post(
-        "https://course-in-production.up.railway.app/api/v1/courses",
-        courseData,
-        {
-          headers: {
-            Accept: "application/json",
-            Authorization: `${authToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post("https://course-in-production.up.railway.app/api/v1/courses", courseData, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+      });
 
       console.log("Berhasil:", response.data);
       window.location.reload();
@@ -53,29 +49,14 @@ function AdminPopupTambah() {
     }
   };
 
-  const categories = [
-    "UIUX_DESIGN",
-    "WEB_DEVELOPMENT",
-    "ANDROID_DEVELOPMENT",
-    "DATA_SCIENCE",
-    "BUSINESS_INTELLIGENCE",
-  ];
+  const categories = ["UIUX_DESIGN", "WEB_DEVELOPMENT", "ANDROID_DEVELOPMENT", "DATA_SCIENCE", "BUSINESS_INTELLIGENCE"];
   const levels = ["BEGINNER", "INTERMEDIATE", "ADVANCED"];
   const types = ["FREE", "PREMIUM"];
 
   return (
     <>
-      <div
-        className="modal fade"
-        id="exampleModalToggle"
-        aria-hidden="true"
-        aria-labelledby="exampleModalToggleLabel"
-        tabIndex="-1"
-      >
-        <div
-          className="modal-dialog modal-dialog-centered"
-          style={{ maxWidth: "80%" }}
-        >
+      <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
+        <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "80%" }}>
           <div className="modal-content">
             <div className="modal-header">
               <h1
@@ -90,12 +71,7 @@ function AdminPopupTambah() {
               >
                 Tambah Kelas
               </h1>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div
               className="modal-body"
@@ -110,43 +86,19 @@ function AdminPopupTambah() {
                 <label htmlFor="name" className="form-label">
                   Nama Kelas
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  value={courseData.name}
-                  onChange={handleChange}
-                  placeholder="Text"
-                  style={{ width: "80%", height: "50px", borderRadius: "15px" }}
-                />
+                <input type="text" className="form-control" id="name" value={courseData.name} onChange={handleChange} placeholder="Text" style={{ width: "80%", height: "50px", borderRadius: "15px" }} />
               </div>
               <div className="mb-1">
                 <label htmlFor="author" className="form-label">
                   Author
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="author"
-                  value={courseData.author}
-                  onChange={handleChange}
-                  placeholder="Text"
-                  style={{ width: "80%", height: "50px", borderRadius: "15px" }}
-                />
+                <input type="text" className="form-control" id="author" value={courseData.author} onChange={handleChange} placeholder="Text" style={{ width: "80%", height: "50px", borderRadius: "15px" }} />
               </div>
               <div className="mb-1">
                 <label htmlFor="category" className="form-label">
                   category
                 </label>
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                  id="category"
-                  value={courseData.category}
-                  onChange={(e) =>
-                    setCourseData({ ...courseData, category: e.target.value })
-                  }
-                >
+                <select className="form-select" aria-label="Default select example" id="category" value={courseData.category} onChange={(e) => setCourseData({ ...courseData, category: e.target.value })}>
                   <option>Pilih Category</option>
                   {categories.map((category, index) => (
                     <option value={category} key={index}>
@@ -159,29 +111,13 @@ function AdminPopupTambah() {
                 <label htmlFor="code" className="form-label">
                   Kode Kelas
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="code"
-                  value={courseData.code}
-                  onChange={handleChange}
-                  placeholder="Text"
-                  style={{ width: "80%", height: "50px", borderRadius: "15px" }}
-                />
+                <input type="text" className="form-control" id="code" value={courseData.code} onChange={handleChange} placeholder="Text" style={{ width: "80%", height: "50px", borderRadius: "15px" }} />
               </div>
               <div className="mb-1">
                 <label htmlFor="type" className="form-label">
                   Tipe Kelas
                 </label>
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                  id="type"
-                  value={courseData.type}
-                  onChange={(e) =>
-                    setCourseData({ ...courseData, type: e.target.value })
-                  }
-                >
+                <select className="form-select" aria-label="Default select example" id="type" value={courseData.type} onChange={(e) => setCourseData({ ...courseData, type: e.target.value })}>
                   <option>Pilih Tipe Kelas</option>
                   {types.map((type, index) => (
                     <option value={type} key={index}>
@@ -194,15 +130,7 @@ function AdminPopupTambah() {
                 <label htmlFor="level" className="form-label">
                   Level
                 </label>
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                  id="level"
-                  value={courseData.level}
-                  onChange={(e) =>
-                    setCourseData({ ...courseData, level: e.target.value })
-                  }
-                >
+                <select className="form-select" aria-label="Default select example" id="level" value={courseData.level} onChange={(e) => setCourseData({ ...courseData, level: e.target.value })}>
                   <option>Pilih Level Kelas</option>
                   {levels.map((level, index) => (
                     <option value={level} key={index}>
@@ -215,29 +143,13 @@ function AdminPopupTambah() {
                 <label htmlFor="price" className="form-label">
                   price
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="price"
-                  value={courseData.price}
-                  onChange={handleChange}
-                  placeholder="Text"
-                  style={{ width: "80%", height: "50px", borderRadius: "15px" }}
-                />
+                <input type="text" className="form-control" id="price" value={courseData.price} onChange={handleChange} placeholder="Text" style={{ width: "80%", height: "50px", borderRadius: "15px" }} />
               </div>
               <div className="mb-1">
                 <label htmlFor="link" className="form-label">
                   Link Video
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="link"
-                  value={courseData.link}
-                  onChange={handleChange}
-                  placeholder="Text"
-                  style={{ width: "80%", height: "50px", borderRadius: "15px" }}
-                />
+                <input type="text" className="form-control" id="link" value={courseData.link} onChange={handleChange} placeholder="Text" style={{ width: "80%", height: "50px", borderRadius: "15px" }} />
               </div>
               <div className="mb-1">
                 <label htmlFor="description" className="form-label">
@@ -278,20 +190,12 @@ function AdminPopupTambah() {
                     />
                   </div>
                 ))}
-                <button
-                  type="button"
-                  className="btn btn-outline-secondary"
-                  onClick={handleAddIntended}
-                  style={{ marginLeft: "10px" }}
-                >
+                <button type="button" className="btn btn-outline-secondary" onClick={handleAddIntended} style={{ marginLeft: "10px" }}>
                   Add Intended
                 </button>
               </div>
             </div>
-            <div
-              className="modal-footer"
-              style={{ display: "flex", justifyContent: "center" }}
-            >
+            <div className="modal-footer" style={{ display: "flex", justifyContent: "center" }}>
               <button
                 type="button"
                 className="btn "

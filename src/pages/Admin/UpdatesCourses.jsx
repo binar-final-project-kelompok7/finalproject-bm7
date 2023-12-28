@@ -23,7 +23,7 @@ function AdminPopupUpdate({ courseCode }) {
         const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`, {
           headers: {
             Accept: "application/json",
-            Authorization: `${authToken}`,
+            Authorization: `Bearer ${authToken}`,
           },
         });
 
@@ -69,7 +69,7 @@ function AdminPopupUpdate({ courseCode }) {
       const response = await axios.patch(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`, courseData, {
         headers: {
           Accept: "application/json",
-          Authorization: `${authToken}`,
+          Authorization: `Bearer ${authToken}`,
           "Content-Type": "application/json",
         },
       });

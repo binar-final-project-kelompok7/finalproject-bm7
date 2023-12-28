@@ -16,7 +16,7 @@ const Admin = () => {
       const baseURL = "https://course-in-production.up.railway.app/api/v1";
       const headers = {
         Accept: "application/json",
-        Authorization: `${authToken}`,
+        Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json",
       };
 

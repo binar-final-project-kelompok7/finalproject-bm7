@@ -53,54 +53,24 @@ function Login() {
   };
 
   return (
-    <section
-      className="container-fluid d-flex justify-content-around align-items-center p-0"
-      style={{ height: "100vh" }}
-    >
+    <section className="container-fluid d-flex justify-content-around align-items-center p-0" style={{ height: "100vh" }}>
       <div className="login d-flex justify-content-center">
-        <div
-          className="mainContentLogin d-flex flex-column justify-content-md-center justify-content-end"
-          style={{ height: "100vh" }}
-        >
+        <div className="mainContentLogin d-flex flex-column justify-content-md-center justify-content-end" style={{ height: "100vh" }}>
           <h2 className="mb-4" style={{ color: "#6148FF" }}>
             Masuk
           </h2>
-          <form
-            id="form"
-            onSubmit={onSubmit}
-            className="d-flex flex-column justify-content-md-center justify-content-between"
-          >
+          <form id="form" onSubmit={onSubmit} className="d-flex flex-column justify-content-md-center justify-content-between">
             <div className="d-flex flex-column justify-content-center">
               <label>Username</label>
-              <input
-                type="text"
-                placeholder="Contoh: johndoe"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="rounded-4 p-2 mb-3"
-              />
+              <input type="text" placeholder="Contoh: johndoe" value={username} onChange={(e) => setUsername(e.target.value)} className="rounded-4 p-2 mb-3" />
               <div className="pass d-flex justify-content-between">
                 <label>Password</label>
-                <Link
-                  to={"/resetpassword"}
-                  className="text-decoration-none fw-medium"
-                  style={{ color: "#6148ff" }}
-                >
+                <Link to={"/resetpassword"} className="text-decoration-none fw-medium" style={{ color: "#6148ff" }}>
                   Lupa kata sandi
                 </Link>
               </div>
-              <input
-                type="password"
-                placeholder="Masukkan password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="rounded-4 p-2 mb-3"
-              />
-              <button
-                className="rounded-3 border-0 p-2 text-white mb-4"
-                style={{ backgroundColor: "#6148ff" }}
-                type="submit"
-              >
+              <input type="password" placeholder="Masukkan password" value={password} onChange={(e) => setPassword(e.target.value)} className="rounded-4 p-2 mb-3" />
+              <button className="rounded-3 border-0 p-2 text-white mb-4" style={{ backgroundColor: "#6148ff" }} type="submit">
                 Masuk
               </button>
             </div>
@@ -115,10 +85,7 @@ function Login() {
           </form>
         </div>
       </div>
-      <div
-        className="desktopIconLogin d-none d-md-flex align-items-center justify-content-center text-white"
-        style={{ height: "100%", backgroundColor: "#6148FF" }}
-      >
+      <div className="desktopIconLogin d-none d-md-flex align-items-center justify-content-center text-white" style={{ height: "100%", backgroundColor: "#6148FF" }}>
         <h1 className="desktopIconText">CourseIn</h1>
       </div>
     </section>

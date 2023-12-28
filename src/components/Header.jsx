@@ -70,9 +70,9 @@ const Header = ({ setFilterOptions }) => {
             <p className="m-0 text-white">Kelas</p>
           </div>
           {isLogin ? (
-            <div className="d-flex align-items-center justify-content-center">
-              <img src={profile} alt="Profile" onClick={() => navigate("/account-settings")} style={{ cursor: "pointer" }} className="me-2" />
-              <p className="m-0 p-0 text-light">Halo, {usernameProfile} </p>
+            <div className="d-flex align-items-center justify-content-center" onClick={() => navigate("/account-settings")}>
+              <img src={profile} alt="Profile" style={{ cursor: "pointer" }} className="me-2" />
+              <p className="m-0 p-0 text-light">{usernameProfile} </p>
             </div>
           ) : (
             <Link to="/login">

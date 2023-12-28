@@ -190,7 +190,7 @@ const Course = () => {
             </div>
             <div className="ks-card-container">
               {filteredCourses.map((course) => (
-                <CourseCard key={course.code} course={course} />
+                <CourseCard key={course.code} course={course} navigateTo={`/detailclass/${course.code}`} />
               ))}
             </div>
             <CoursePagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
