@@ -18,7 +18,6 @@ import PaySuccess from "./components/PaySuccess.jsx";
 import DetailCLass from "./components/DetailCLass.jsx";
 import DetailPay from "./components/DetailPay.jsx";
 import PlayVideo from "./components/PlayVideo.jsx";
-import AdminPopup from "./pages/Admin/AdminPopup.jsx";
 import ManageClass from "./pages/Admin/ManageClass.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -49,8 +48,8 @@ function App() {
           <Route path="/course" element={<Course />} />
           <Route path="/adminLogin" element={<AdminLogin />} />
           <Route path="/detailclass/:courseCode" element={<DetailCLass />} />
-          <Route path="/detail-pay/:courseCode" element={<DetailPay />} />
-          <Route path="/PaySuccess/:courseCode" element={<PaySuccess />} />
+          <Route path="/detail-pay/:orderId" element={<DetailPay />} />
+          <Route path="/PaySuccess" element={<PaySuccess />} />
           <Route path="/PlayVideo/:courseCode" element={<PlayVideo />} />
         </Routes>
       </BrowserRouter>

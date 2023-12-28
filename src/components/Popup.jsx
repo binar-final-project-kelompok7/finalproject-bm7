@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../style/Popup.css";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import BadgeImg from "../assets/img/mdi_badge-outline.png";
@@ -8,19 +8,19 @@ import BookImg from "../assets/img/clarity_book-line.png";
 import TimeImg from "../assets/img/ri_time-fill.png";
 import NextImg from "../assets/img/carbon_next-filled.png";
 import ImageImg from "../assets/img/image.png";
+import Cookies from "universal-cookie";
 
 function Pup() {
   const { courseCode } = useParams();
   const [courseData, setCourseData] = useState(null);
+  const cookies = new Cookies();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`
-        );
+        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`);
         setCourseData(response.data.data);
-        console.log("Course Data:", response.data.data);
       } catch (error) {
         console.error("Error fetching course data:", error);
       }
@@ -28,40 +28,53 @@ function Pup() {
 
     fetchData();
   }, [courseCode]);
+
+  const postOrder = async () => {
+    const usernameProfile = cookies.get("api_username");
+    const token = cookies.get("jwt_authorization");
+    try {
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+
+      const response = await axios.post(
+        "https://course-in-production.up.railway.app/api/v1/orders",
+        {
+          username: usernameProfile,
+          courseCode: courseCode,
+        },
+        { headers }
+      );
+
+      const orderID = response.data.data.orderCode;
+
+      navigate(`/detail-pay/${courseCode}/${orderID}`);
+    } catch (error) {
+      console.error("Error posting order:", error);
+    }
+  };
   return (
     <>
       {courseData && (
-        <div
-          class="modal fade"
-          id="exampleModalToggle"
-          aria-hidden="true"
-          aria-labelledby="exampleModalToggleLabel"
-          tabindex="-1"
-        >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+        <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                <h2
-                  className="title"
-                  style={{ textAlign: "center", fontWeight: "700" }}
-                >
+              <div className="modal-body">
+                <h2 className="title" style={{ textAlign: "center", fontWeight: "700" }}>
                   Selangkah lagi menuju <br></br>
-                  <h2 className="class" style={{ color: "#6148FF" }}>
+                  <p className="className" style={{ color: "#6148FF" }}>
                     KELAS {courseData.type}
-                  </h2>
+                  </p>
                 </h2>
                 <div className="kotak">
                   <img src={ImageImg} alt="image"></img>
                   <h6>{courseData.category}</h6>
-                  <h7>{courseData.name}</h7>
+                  <h6>{courseData.name}</h6>
                   <p>by {courseData.author}</p>
                   <div
                     className="deets"
@@ -84,13 +97,13 @@ function Pup() {
                       <img src={TimeImg} alt="time"></img>45 Menit
                     </p>
                   </div>
-                  <button className="buy">Beli Rp {courseData.price}</button>
-                </div>
-                <Link to={`/detail-pay/${courseCode}`}>
-                  <button className="buynow">
-                    Beli Sekarang<img src={NextImg} alt="next"></img>
+                  <button className="buy" onClick={postOrder}>
+                    Beli Rp {courseData.price}
                   </button>
-                </Link>
+                </div>
+                <button className="buynow" onClick={postOrder}>
+                  Beli Sekarang<img src={NextImg} alt="next"></img>
+                </button>
               </div>
             </div>
           </div>
