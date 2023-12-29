@@ -89,21 +89,20 @@ const getStatusClass = (status) => {
       return "text-success fw-bold";
     case "CANCELED":
       return "text-danger fw-bold";
-    case "PENDING":
+    case "PROCESSING":
       return "text-warning fw-bold";
     default:
       return "";
   }
 };
 
-// Helper function to get the appropriate label for the status
 const getStatusLabel = (status) => {
   switch (status) {
     case "COMPLETED":
       return "Sudah Bayar";
     case "CANCELED":
       return "Dibatalkan";
-    case "PENDING":
+    case "PROCESSING":
       return "Menunggu Pembayaran";
     default:
       return "";
