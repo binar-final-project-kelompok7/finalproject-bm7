@@ -1,52 +1,49 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
-function ResetPassword() {
-  const [emailreset, setEmailReset] = useState("");
+function ConfirmResetPassword() {
+  const location = useLocation();
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const navigate = useNavigate();
 
   const handleSaveClick = async (e) => {
     e.preventDefault();
-    if (emailreset === "") {
-      toast.error("Semua Field Harus Diisi!", {
-        theme: "colored",
-      });
-    } else {
+
+    if (location.state) {
+      const { email, token } = location.state;
+
+      // Now you can use email and token in your API call or any other logic
       try {
         const response = await axios.put(
-          "https://course-in-production.up.railway.app/api/v1/auth/forgot-password",
+          "https://course-in-production.up.railway.app/api/v1/auth/confirm-forgot-password",
           {
-            email: emailreset,
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
+            confirmNewPassword: confirmPassword,
+            email: email,
+            newPassword: password,
+            token: token,
           }
         );
 
-        console.log(response);
-
-        if (response.data.code === 200 && response.data.data.token) {
-          const resetToken = response.data.data.token;
-
-          // Navigates to the reset password confirmation page with the token in the URL
-          navigate(`/resetpassword-confirm/${resetToken}`, {
-            state: { email: emailreset, token: resetToken },
-          });
-        } else {
-          toast.error("Email tidak ditemukan!", {
-            theme: "colored",
-          });
-        }
-      } catch (error) {
-        console.error("Error resetting password:", error);
-        toast.error("Email tidak ditemukan!.", {
+        toast.success("Password Berhasil Diubah!", {
           theme: "colored",
         });
+
+        console.log(response);
+
+        navigate("/login");
+      } catch (error) {
+        toast.error("Gagal mengubah password. Coba lagi nanti.", {
+          theme: "colored",
+        });
+        console.error("Error resetting password:", error);
       }
+    } else {
+      // Handle the case when location.state is undefined
+      console.error("Location state is undefined");
     }
   };
 
@@ -69,14 +66,22 @@ function ResetPassword() {
             className="d-flex flex-column justify-content-md-center justify-content-between"
           >
             <div className="d-flex flex-column justify-content-center">
-              <label>Masukkan email anda</label>
+              <label>Masukkan Password Baru</label>
               <input
-                type="text"
-                value={emailreset}
-                onChange={(e) => setEmailReset(e.target.value)}
+                type="password"
+                placeholder="Masukkan Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="rounded-4 p-2 mb-3"
               />
-
+              <label>Ulangi Password Baru</label>
+              <input
+                type="password"
+                placeholder="Masukkan password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="rounded-4 p-2 mb-3"
+              />
               <button
                 className="rounded-3 border-0 p-2 text-white mb-4"
                 style={{ backgroundColor: "#6148ff" }}
@@ -98,4 +103,4 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword;
+export default ConfirmResetPassword;
