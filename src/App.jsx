@@ -21,6 +21,7 @@ import PlayVideo from "./components/PlayVideo.jsx";
 import ManageClass from "./pages/Admin/ManageClass.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ConfirmResetPassword from "./pages/ConfirmResetPassword.jsx";
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route
+            path="/resetpassword-confirm/:token"
+            element={<ConfirmResetPassword />}
+          />
           <Route path="/account-settings" element={<AccountSetings />}>
             <Route path="edit-profile/:username" element={<ProfileSaya />} />
             <Route path="change-password" element={<ChangePassword />} />
