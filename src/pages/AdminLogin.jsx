@@ -4,6 +4,7 @@ import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AdminLogin.css";
 import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +13,7 @@ const AdminLogin = () => {
   const navigate = useNavigate();
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
+  const cookies = new Cookies();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -32,8 +34,11 @@ const AdminLogin = () => {
             },
           }
         );
-        const token = response.headers.authorization;
-        document.cookie = `authToken=${token}; max-age=${3600}; path=/`;
+        const token = response.headers["authorization"].split(" ")[1];
+
+        cookies.set("authToken", token, {
+          expires: new Date(Date.now() + 3600 * 1000),
+        });
         navigate("/dashboard-admin/payment-status");
       } catch (error) {
         console.error("Login failed:", error.message);

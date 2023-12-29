@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classImage from "../assets/classImage.png";
 import axios from "axios";
 
 const Popular = () => {
   const [popularCourses, setPopularCourses] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +40,7 @@ const Popular = () => {
           </h4>
         </div>
         <div className="col-6 text-end">
-          <button className="allButton bg-transparent fw-bolder" style={{ color: "#6148FF", marginTop: "40px" }}>
+          <button className="allButton bg-transparent fw-bolder" style={{ color: "#6148FF", marginTop: "40px" }} onClick={() => navigate("/course")}>
             Lihat Semua
           </button>
         </div>
