@@ -93,7 +93,7 @@ const Popular = () => {
             className="rounded-5 "
             onClick={() => handleCategoryClick("IOS_DEVELOPMENT")}
           >
-            IOS Development
+            Data Science
           </button>
         </div>
         <div className="navPopular" style={{ width: "280px" }}>
