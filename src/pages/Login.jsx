@@ -23,7 +23,7 @@ function Login() {
 
       let config = {
         method: "POST",
-        url: `https://course-in-production.up.railway.app/api/v1/auth/login`,
+        url: `https://coursein7.uc.r.appspot.com/api/v1/auth/login`,
         headers: {
           "Content-Type": "application/json",
         },
