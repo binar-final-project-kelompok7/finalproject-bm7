@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
@@ -27,17 +27,14 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
-          <Route
-            path="/resetpassword-confirm/:token"
-            element={<ConfirmResetPassword />}
-          />
+          <Route path="/resetpassword-confirm/:token" element={<ConfirmResetPassword />} />
           <Route path="/account-settings" element={<AccountSetings />}>
             <Route path="edit-profile/:username" element={<ProfileSaya />} />
             <Route path="change-password" element={<ChangePassword />} />
@@ -57,7 +54,7 @@ function App() {
           <Route path="/PaySuccess" element={<PaySuccess />} />
           <Route path="/PlayVideo/:courseCode" element={<PlayVideo />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
