@@ -14,6 +14,7 @@ function DetailPay() {
   const cookies = new Cookies();
   const username = cookies.get("api_username");
   const token = cookies.get("jwt_authorization");
+  const [errorAlert, setErrorAlert] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function DetailPay() {
           Accept: "application/json",
         };
 
-        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/users/${username}/orders/${orderId}`, { headers });
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/users/${username}/orders/${orderId}`, { headers });
         setCourseData(response.data.data);
         setLoading(false);
       } catch (error) {
@@ -65,15 +66,22 @@ function DetailPay() {
       const body = {
         paymentMethod: "BANK_TRANSFER",
       };
-      await axios.patch(`https://course-in-production.up.railway.app/api/v1/users/${username}/orders/${orderId}/pay`, body, { headers });
-
+      await axios.patch(`https://coursein7.uc.r.appspot.com/api/v1/users/${username}/orders/${orderId}/pay`, body, { headers });
+      setErrorAlert(null);
       navigate(`/paySuccess`);
     } catch (error) {
-      console.error("Error processing payment:", error);
+      console.error("Error processing payment:", error.response.data.errors);
+
+      setErrorAlert(
+        <div className="alert alert-danger" role="alert">
+          {error.response.data.errors}
+        </div>
+      );
     }
   };
   return (
     <>
+      {errorAlert}
       <Header />
       <div className="top-content">
         <Link

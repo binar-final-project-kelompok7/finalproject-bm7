@@ -11,7 +11,7 @@ const Popular = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://course-in-production.up.railway.app/api/v1/courses", {
+        const response = await axios.get("https://coursein7.uc.r.appspot.com/api/v1/courses", {
           headers: {
             Accept: "application/json",
           },
@@ -93,7 +93,7 @@ const Popular = () => {
             className="rounded-5 "
             onClick={() => handleCategoryClick("IOS_DEVELOPMENT")}
           >
-            IOS Development
+            Data Science
           </button>
         </div>
         <div className="navPopular" style={{ width: "280px" }}>

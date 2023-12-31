@@ -20,7 +20,7 @@ const ProfileSaya = () => {
   const getdetailUser = async () => {
     try {
       setLoading(true);
-      const response = await Axios.get(`https://course-in-production.up.railway.app/api/v1/users/${usernameProfile}`, {
+      const response = await Axios.get(`https://coursein7.uc.r.appspot.com/api/v1/users/${usernameProfile}`, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
@@ -52,7 +52,7 @@ const ProfileSaya = () => {
         email: email || userResponse.email,
       };
 
-      const patchResponse = await Axios.patch(`https://course-in-production.up.railway.app/api/v1/users/${usernameProfile}`, updatedData, {
+      const patchResponse = await Axios.patch(`https://coursein7.uc.r.appspot.com/api/v1/users/${usernameProfile}`, updatedData, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

@@ -19,7 +19,7 @@ const PaymentHistory = () => {
           Accept: "application/json",
         };
 
-        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/users/${username}/orders?page=0&size=10`, { headers });
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/users/${username}/orders?page=0&size=10`, { headers });
 
         setPaymentData(response.data.data);
         setLoading(false);
