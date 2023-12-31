@@ -6,7 +6,8 @@
 
 .KelasSaya-background {
   background-color: rgba(235, 243, 252, 1);
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .KelasSaya-Container {

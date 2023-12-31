@@ -41,7 +41,8 @@ function OTP() {
       } else {
         console.error("Respon dengan status:", response.status);
         console.error("Data kesalahan:", response.data);          
-      }            
+      }
+            
       navigate("/otp");
     } catch (error) {
       // if (error.response) {

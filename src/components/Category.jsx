@@ -10,7 +10,7 @@ const Category = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://course-in-production.up.railway.app/api/v1/courses", {
+        const response = await axios.get("https://coursein7.uc.r.appspot.com/api/v1/courses", {
           headers: {
             Accept: "application/json",
           },

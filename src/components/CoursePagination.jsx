@@ -1,4 +1,3 @@
-// Pagination.js
 import React from "react";
 
 const CoursePagination = ({ currentPage, totalPages, onPageChange }) => {

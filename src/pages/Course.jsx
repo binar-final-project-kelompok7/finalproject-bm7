@@ -45,7 +45,7 @@ const Course = () => {
           params.filters = "DISCOUNT";
         }
 
-        const response = await axios.get("https://course-in-production.up.railway.app/api/v1/courses", {
+        const response = await axios.get("https://coursein7.uc.r.appspot.com/api/v1/courses", {
           params,
           headers: {
             Accept: "application/json",

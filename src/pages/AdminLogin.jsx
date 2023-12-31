@@ -22,7 +22,7 @@ const AdminLogin = () => {
     if (username === "admin123" && password === "admin123") {
       try {
         const response = await axios.post(
-          "https://course-in-production.up.railway.app/api/v1/auth/login",
+          "https://coursein7.uc.r.appspot.com/api/v1/auth/login",
           {
             username: username,
             password: password,

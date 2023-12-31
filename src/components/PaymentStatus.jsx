@@ -12,7 +12,7 @@ const PaymentStatus = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/orders/dashboard?page=${currentPage - 1}&size=7`, {
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/orders/dashboard?page=${currentPage - 1}&size=7`, {
           headers: {
             Accept: "application/json",
             Authorization: `Bearer ${authToken}`,
@@ -26,7 +26,7 @@ const PaymentStatus = () => {
     };
 
     fetchData();
-  }, []);
+  }, [authToken, currentPage]);
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -56,13 +56,13 @@ const PaymentStatus = () => {
           </thead>
 
           <tbody>
-            {paymentStatusData.map((payment) => (
-              <tr style={{ fontSize: "13px" }} key={payment.username}>
+            {paymentStatusData.map((payment, index) => (
+              <tr style={{ fontSize: "13px" }} key={index}>
                 <td className="p-2">{payment.username}</td>
                 <td className="p-2">{payment.category}</td>
                 <td className="p-2">{payment.courseName}</td>
                 <td className={getStatusClass(payment.status) + " p-2"}>{getStatusLabel(payment.status)}</td>
-                <td className="p-2">{payment.paymentMethod}</td>
+                <td className="p-2">BANK TRANSFER</td>
                 <td className="p-2">{payment.completedAt}</td>
               </tr>
             ))}
@@ -89,21 +89,20 @@ const getStatusClass = (status) => {
       return "text-success fw-bold";
     case "CANCELED":
       return "text-danger fw-bold";
-    case "PENDING":
+    case "PROCESSING":
       return "text-warning fw-bold";
     default:
       return "";
   }
 };
 
-// Helper function to get the appropriate label for the status
 const getStatusLabel = (status) => {
   switch (status) {
     case "COMPLETED":
       return "Sudah Bayar";
     case "CANCELED":
       return "Dibatalkan";
-    case "PENDING":
+    case "PROCESSING":
       return "Menunggu Pembayaran";
     default:
       return "";
