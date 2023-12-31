@@ -59,7 +59,7 @@ const PaymentStatus = () => {
               <th className="p-2">Kategori</th>
               <th className="p-2">Kelas Premium</th>
               <th className="p-2">Status</th>
-              <th className="p-2">Metode Pembayaran</th>
+              {/* <th className="p-2">Metode Pembayaran</th> */}
               <th className="p-2">Tanggal Bayar</th>
             </tr>
           </thead>
@@ -73,7 +73,7 @@ const PaymentStatus = () => {
                 <td className={getStatusClass(payment.status) + " p-2"}>
                   {getStatusLabel(payment.status)}
                 </td>
-                <td className="p-2">{payment.paymentMethod}</td>
+                {/* <td className="p-2">{payment.paymentMethod}</td> */}
                 <td className="p-2">{payment.completedAt}</td>
               </tr>
             ))}
