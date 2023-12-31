@@ -1,5 +1,5 @@
 import "./App.css";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -54,7 +54,7 @@ function App() {
           <Route path="/PaySuccess" element={<PaySuccess />} />
           <Route path="/PlayVideo/:courseCode" element={<PlayVideo />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 }

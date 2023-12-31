@@ -14,7 +14,7 @@ function PlayVideo() {
   const { courseCode } = useParams();
   useEffect(() => {
     // Fetch data from your API
-    fetch(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`)
+    fetch(`https://coursein7.uc.r.appspot.com/api/v1/courses/${courseCode}`)
       .then((response) => response.json())
       .then((data) => setCourseData(data.data))
       .catch((error) => console.error("Error fetching data:", error));

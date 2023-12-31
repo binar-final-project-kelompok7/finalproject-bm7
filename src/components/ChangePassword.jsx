@@ -28,7 +28,7 @@ const ChangePassword = () => {
           newPassword: newPassword,
         };
 
-        const patchResponse = await axios.put(`https://course-in-production.up.railway.app/api/v1/users/update-password/${usernameProfile}`, updatedPass, {
+        const patchResponse = await axios.put(`https://coursein7.uc.r.appspot.com/api/v1/users/update-password/${usernameProfile}`, updatedPass, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",

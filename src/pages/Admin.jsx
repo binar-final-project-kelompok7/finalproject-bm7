@@ -13,7 +13,7 @@ const Admin = () => {
   const [countPremium, setCountPremium] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      const baseURL = "https://course-in-production.up.railway.app/api/v1";
+      const baseURL = "https://coursein7.uc.r.appspot.com/api/v1";
       const headers = {
         Accept: "application/json",
         Authorization: `Bearer ${authToken}`,

@@ -66,7 +66,7 @@ function AdminPopupUpdate({ courseCode }) {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.patch(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`, courseData, {
+      const response = await axios.patch(`https://coursein7.uc.r.appspot.com/api/v1/courses/${courseCode}`, courseData, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${authToken}`,

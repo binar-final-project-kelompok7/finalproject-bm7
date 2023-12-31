@@ -36,7 +36,7 @@ function DetailClass() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`);
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/courses/${courseCode}`);
         setCourseData(response.data.data);
       } catch (error) {
         console.error("Error fetching course data:", error);
@@ -138,7 +138,7 @@ function DetailClass() {
                   ))}
                 </ul>
               </div>
-              <div className="btnjoin" onClick={togglePopup} data-bs-toggle="modal" href="#exampleModalToggle">
+              <div className="btnjoin" onClick={togglePopup} data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
                 <button className="join">Beli Sekarang</button>
               </div>
             </div>
@@ -238,7 +238,7 @@ function DetailClass() {
                 </ul>
               </div>
             </div>
-            <div className="join2" onClick={togglePopup} data-bs-toggle="modal" href="#exampleModalToggle">
+            <div className="join2" onClick={togglePopup} data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
               <button>Beli Sekarang</button>
             </div>
             <div className="pop">{isPopupVisible && <Pup />}</div>

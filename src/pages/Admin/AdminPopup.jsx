@@ -33,7 +33,7 @@ function AdminPopupTambah() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("https://course-in-production.up.railway.app/api/v1/courses", courseData, {
+      const response = await axios.post("https://coursein7.uc.r.appspot.com/api/v1/courses", courseData, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${authToken}`,
