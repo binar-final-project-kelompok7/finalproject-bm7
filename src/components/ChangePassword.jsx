@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ChangePassword.css";
+import "../assets/style/ChangePassword.css";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { toast } from "react-toastify";

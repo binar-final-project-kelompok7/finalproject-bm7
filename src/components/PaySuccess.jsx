@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import StartStudy from "./StartStudy";
 import Header from "./Header";
-import "../style/PaySuccess.css";
+import char from "../assets/img/char.png";
+import "../assets/style/PaySuccess.css";
 
 function PaySuccess() {
   const [isPopupVisible, setPopupVisible] = useState(true);
@@ -17,7 +18,7 @@ function PaySuccess() {
       <div className="success">
         <button className="paywork">Terimakasih atas pembayaran transaksi</button>
         <h1 className="congrats">Selamat!</h1>
-        <img src="../img/char.png" alt="Character"></img>
+        <img src={char} alt="Character"></img>
         <h3 className="tfwork">Transaksi pembayaran kelas premium berhasil!</h3>
         <br></br>
         <h4 className="toemail">E-receipt telah dikirimkan ke email.</h4>

@@ -1,0 +1,15 @@
+.payment {
+  width: 400px;
+}
+
+.payment button {
+  background-color: #73ca5c;
+  width: 100px;
+  height: 40px;
+}
+
+@media screen and (max-width: 426px) {
+  .payment {
+    width: 300px;
+  }
+}

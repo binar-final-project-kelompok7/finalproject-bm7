@@ -1,9 +1,9 @@
 import React from "react";
-import imageimg from "../assets/img.png";
-import star from "../assets/star.png";
-import level from "../assets/level.png";
-import modul from "../assets/modul.png";
-import timeimg from "../assets/time.png";
+import imageimg from "../assets/img/img.png";
+import star from "../assets/img/star.png";
+import level from "../assets/img/level.png";
+import modul from "../assets/img/modul.png";
+import timeimg from "../assets/img/time.png";
 import { useNavigate } from "react-router-dom";
 
 const CourseCard = ({ course, navigateTo }) => {
