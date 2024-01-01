@@ -1,19 +1,19 @@
-.containerMyProfile{
-    width: 30%;
+.containerMyProfile {
+  width: 30%;
 }
 
-.containerMyProfile img{
-    width: 90px;
-    height: 90px;
-    border: 3px solid #6148FF;
+.containerMyProfile img {
+  width: 90px;
+  height: 90px;
+  border: 3px solid #6148ff;
 }
 
-.buttonSave{
-    background-color: #6148FF;
+.buttonSave {
+  background-color: #6148ff;
 }
 
-@media screen and (max-width: 425px) {
-    .containerMyProfile{
-        width: 75%;
-    }
+@media screen and (max-width: 426px) {
+  .containerMyProfile {
+    width: 75%;
+  }
 }
