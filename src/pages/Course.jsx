@@ -43,6 +43,16 @@ const Course = () => {
           params.filters = "POPULAR";
         } else if (filterOptions.promo) {
           params.filters = "DISCOUNT";
+        } else if (filterOptions.UIUXDesign) {
+          params.categories = "UIUX_DESIGN";
+        } else if (filterOptions.WebDevelopment) {
+          params.categories = "WEB_DEVELOPMENT";
+        } else if (filterOptions.DataScience) {
+          params.categories = "DATA_SCIENCE";
+        } else if (filterOptions.BusinessIntelligence) {
+          params.categories = "BUSINESS_INTELLIGENCE";
+        } else if (filterOptions.AndroidDevelopment) {
+          params.categories = "ANDROID_DEVELOPMENT";
         }
 
         const response = await axios.get("https://coursein7.uc.r.appspot.com/api/v1/courses", {
