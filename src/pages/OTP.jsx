@@ -10,8 +10,8 @@ import axios from "axios";
 function OTP() {
   const [OTP, setOTP] = useState("");
   const location = useLocation();
-  const {email} = location.state;
-  const emailOtp = email;
+  const email = location.state?.emailRegis;
+  // const emailOtp = email;
   const cookies = new Cookies();
   const navigate = useNavigate();
 
@@ -19,9 +19,9 @@ function OTP() {
 
     try {
       let data = JSON.stringify({
-        email: emailOtp,
+        email: email,
       });
-
+      console.log(email);
       let config = {
         method: "POST",
         url: `https://coursein7.uc.r.appspot.com/api/v1/users/resend-otp`,
@@ -37,13 +37,13 @@ function OTP() {
 
       if (response.status === 200) {
         console.log("OTP dikirim ulang. Cek email Anda!");
-        navigate("/otp");
+        // navigate("/otp");
       } else {
         console.error("Respon dengan status:", response.status);
         console.error("Data kesalahan:", response.data);          
       }
             
-      navigate("/otp");
+      // navigate("/otp");
     } catch (error) {
       // if (error.response) {
       //   console.error(error.response.data.code, error.response.data.message);
@@ -57,7 +57,7 @@ function OTP() {
 
     try {
       let data = JSON.stringify({
-        email,
+        email: email,
         otpCode: OTP,
       });
 

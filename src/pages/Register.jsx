@@ -44,7 +44,7 @@ function Register() {
       // cookies.set("api_username", apiUsername, {
       //   expires: new Date(Date.now() + 3600 * 1000),
       // });
-      navigate("/otp", { state: { email }});
+      navigate(`/otp`, { state: { emailRegis: email }});
     } catch (error) {
       if (error.response) {
         console.error(error.response.data.code, error.response.data.message);
