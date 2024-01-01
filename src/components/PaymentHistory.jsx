@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import classImage from "../assets/classImage.png";
+import classImage from "../assets/img/classImage.png";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BsArrowLeft } from "react-icons/bs";
-import "../style/DetailCLass.css";
+import "../assets/style/DetailCLass.css";
 import Pup from "./Popup";
 import Header from "./Header";
 import BottomNav from "./BottomNav";
@@ -50,8 +50,8 @@ function DetailClass() {
     <>
       {courseData && (
         <>
+          <Header />
           <div className="dekstop">
-            <Header />
             <div
               className="section"
               style={{
@@ -147,7 +147,7 @@ function DetailClass() {
           <div className="pop">{isPopupVisible && <Pup />}</div>
           <div className="mobile">
             <div className="other">
-              <img src="./img/fi_arrow-left.png" style={{ paddingRight: "20px" }}></img>
+              <BsArrowLeft style={{ fontSize: "20px", marginRight: "20px" }} onClick={Kembali} />
               Kelas Lainnya
             </div>
             <div
@@ -211,9 +211,10 @@ function DetailClass() {
 
             <div className="tentang">
               <div className="join2">
-                <button>
-                  Join Grup Telegram
-                  <img src="./img/gridicons_chat.png" alt="chat"></img>
+                <button className="pt-1">
+                  <a href="https://t.me/your_telegram_group" target="_blank" rel="noopener noreferrer" className="text-light d-flex align-items-center justify-content-center pt-0">
+                    <p>Join Telegram</p>
+                  </a>
                 </button>
               </div>
               <div

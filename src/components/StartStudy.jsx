@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import boarding from "../assets/img/board.png";
 function StartStudy() {
   return (
     <>
@@ -15,7 +15,7 @@ function StartStudy() {
                 Onboarding...<br></br>
               </h2>
               <div className="kotak">
-                <img src="../img/boarding.png" alt="image"></img>
+                <img src={boarding} alt="image"></img>
                 <h7>Persiapkan hal berikut untuk belajar yang maksimal:</h7>
                 <p style={{ width: "80%", fontSize: "14px", textAlign: "center", paddingTop: "20px" }}>
                   Mempunyai akun Figma atau Install Adobe XD

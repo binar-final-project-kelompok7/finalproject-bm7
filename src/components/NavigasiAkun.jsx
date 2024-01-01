@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
-import editProfile from "../assets/editProfileIcon.png";
-import changePassIcon from "../assets/changePassIcon.png";
-import purchaseIcon from "../assets/purchaseIcon.png";
-import logoutIcon from "../assets/logoutIcon.png";
-import "./NavigasiAkun.css";
+import editProfile from "../assets/img/editProfileIcon.png";
+import changePassIcon from "../assets/img/changePassIcon.png";
+import purchaseIcon from "../assets/img/purchaseIcon.png";
+import logoutIcon from "../assets/img/logoutIcon.png";
+import "../assets/style/NavigasiAkun.css";
 
 const NavigasiAkun = ({ onTabChange }) => {
   const navigate = useNavigate();
