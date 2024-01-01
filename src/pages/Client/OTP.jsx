@@ -1,5 +1,5 @@
 import React from "react";
-import './OTP.css'
+import '../../assets/style/OTP.css'
 import OTPInput, { ResendOTP } from "otp-input-react";
 import { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";

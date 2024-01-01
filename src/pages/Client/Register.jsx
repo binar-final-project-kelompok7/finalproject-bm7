@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Register.css";
+import "../../assets/style/Register.css";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
