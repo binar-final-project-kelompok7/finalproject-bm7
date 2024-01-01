@@ -7,7 +7,7 @@ import "../assets/style/DetailPay.css";
 import ImageImg from "../assets/img/image.png";
 import Cookies from "universal-cookie";
 import nexticon from "../assets/img/Vector.png";
-import paymentoptions from "../assets/img/paymentoptions.png";
+import paymentoptions from "../assets/img/Paymentoptions.png";
 function DetailPay() {
   const [courseData, setCourseData] = useState(null);
   const [loading, setLoading] = useState(true);
