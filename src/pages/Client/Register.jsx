@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../assets/style/Register.css";
+import "./Register.css";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
@@ -35,17 +35,16 @@ function Register() {
 
       const response = await axios.request(config);
       console.log(response);
-      const token = response.headers["authorization"].split(" ")[1];
-      const apiUsername = username;
+      // const token = response.headers["authorization"].split(" ")[1];
+      // const apiUsername = username;
 
-      cookies.set("jwt_authorization", token, {
-        expires: new Date(Date.now() + 3600 * 1000),
-      });
-      cookies.set("api_username", apiUsername, {
-        expires: new Date(Date.now() + 3600 * 1000),
-      });
-      setErrorAlert(null);
-      navigate("/");
+      // cookies.set("jwt_authorization", token, {
+      //   expires: new Date(Date.now() + 3600 * 1000),
+      // });
+      // cookies.set("api_username", apiUsername, {
+      //   expires: new Date(Date.now() + 3600 * 1000),
+      // });
+      navigate(`/otp`, { state: { emailRegis: email }});
     } catch (error) {
       if (error.response) {
         console.error(error.response.data.code, error.response.data.message);
