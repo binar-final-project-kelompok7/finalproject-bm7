@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BsArrowLeft } from "react-icons/bs";
-import "../style/DetailCLass.css";
+import "../assets/style/DetailCLass.css";
 import Pup from "./Popup";
 import Header from "./Header";
 import BottomNav from "./BottomNav";
@@ -50,8 +50,8 @@ function DetailClass() {
     <>
       {courseData && (
         <>
+          <Header />
           <div className="dekstop">
-            <Header />
             <div
               className="section"
               style={{

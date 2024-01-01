@@ -3,9 +3,11 @@ import { BsArrowLeft } from "react-icons/bs";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
 import axios from "axios";
-import "../style/DetailPay.css";
+import "../assets/style/DetailPay.css";
 import ImageImg from "../assets/img/image.png";
 import Cookies from "universal-cookie";
+import nexticon from "../assets/img/Vector.png";
+import paymentoptions from "../assets/img/paymentoptions.png";
 function DetailPay() {
   const [courseData, setCourseData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -144,7 +146,7 @@ function DetailPay() {
                   </h2>
                   <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
-                      <img className="img-pay" src="../img/Payment options.png"></img>
+                      <img className="img-pay" src={paymentoptions}></img>
                       <div className="textpayment">
                         <h5>Card number</h5>
                         <input style={{ border: "none", width: "50%" }} type="text" placeholder="Enter Number" />
@@ -196,7 +198,7 @@ function DetailPay() {
 
                 <button className="payclass" onClick={handlePayment}>
                   Bayar dan Ikuti Kelas Selamanya
-                  <img src="../img/Vector.png" alt="Next Icon" style={{ paddingLeft: "10px" }} />
+                  <img src={nexticon} alt="Next Icon" style={{ paddingLeft: "10px" }} />
                 </button>
               </div>
             </div>

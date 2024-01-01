@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import SearchIcon from "../assets/searchIcon2.png";
-import filterIcon from "../assets/filterIcon.png";
+import SearchIcon from "../assets/img/searchIcon2.png";
+import filterIcon from "../assets/img/filterIcon.png";
 import axios from "axios";
 import useAuthGuard from "../pages/Admin/AdminAuthCheck";
 

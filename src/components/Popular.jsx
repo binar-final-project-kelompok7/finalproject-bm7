@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import classImage from "../assets/classImage.png";
+import classImage from "../assets/img/classImage.png";
 import axios from "axios";
 
 const Popular = () => {

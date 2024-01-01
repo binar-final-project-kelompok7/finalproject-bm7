@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import categoryImage from "../assets/categoryImage.png";
+import categoryImage from "../assets/img/categoryImage.png";
 
 const Category = () => {
   const { courseCode } = useParams();

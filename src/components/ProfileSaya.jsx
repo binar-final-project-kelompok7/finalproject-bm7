@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Cookies from "universal-cookie";
-import profile from "../assets/profileIcon.png";
-import "./ProfileSaya.css";
+import profile from "../assets/img/profileIcon.png";
+import "../assets/style/ProfileSaya.css";
 import { toast } from "react-toastify";
 
 const ProfileSaya = () => {
