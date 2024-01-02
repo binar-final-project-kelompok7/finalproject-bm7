@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import categoryImage from "../assets/categoryImage.png";
+import categoryImage from "../assets/img/categoryImage.png";
 
 const Category = () => {
   const { courseCode } = useParams();
@@ -10,7 +10,7 @@ const Category = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://course-in-production.up.railway.app/api/v1/courses", {
+        const response = await axios.get("https://coursein7.uc.r.appspot.com/api/v1/courses", {
           headers: {
             Accept: "application/json",
           },

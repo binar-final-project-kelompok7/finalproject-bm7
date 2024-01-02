@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BsArrowLeft } from "react-icons/bs";
-import "../style/DetailCLass.css";
+import "../assets/style/DetailCLass.css";
 import Pup from "./Popup";
 import Header from "./Header";
 import BottomNav from "./BottomNav";
@@ -36,7 +36,7 @@ function DetailClass() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses/${courseCode}`);
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/courses/${courseCode}`);
         setCourseData(response.data.data);
       } catch (error) {
         console.error("Error fetching course data:", error);
@@ -50,8 +50,8 @@ function DetailClass() {
     <>
       {courseData && (
         <>
+          <Header />
           <div className="dekstop">
-            <Header />
             <div
               className="section"
               style={{
@@ -138,7 +138,7 @@ function DetailClass() {
                   ))}
                 </ul>
               </div>
-              <div className="btnjoin" onClick={togglePopup} data-bs-toggle="modal" href="#exampleModalToggle">
+              <div className="btnjoin" onClick={togglePopup} data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
                 <button className="join">Beli Sekarang</button>
               </div>
             </div>
@@ -147,7 +147,7 @@ function DetailClass() {
           <div className="pop">{isPopupVisible && <Pup />}</div>
           <div className="mobile">
             <div className="other">
-              <img src="./img/fi_arrow-left.png" style={{ paddingRight: "20px" }}></img>
+              <BsArrowLeft style={{ fontSize: "20px", marginRight: "20px" }} onClick={Kembali} />
               Kelas Lainnya
             </div>
             <div
@@ -211,9 +211,10 @@ function DetailClass() {
 
             <div className="tentang">
               <div className="join2">
-                <button>
-                  Join Grup Telegram
-                  <img src="./img/gridicons_chat.png" alt="chat"></img>
+                <button className="pt-1">
+                  <a href="https://t.me/your_telegram_group" target="_blank" rel="noopener noreferrer" className="text-light d-flex align-items-center justify-content-center pt-0">
+                    <p>Join Telegram</p>
+                  </a>
                 </button>
               </div>
               <div
@@ -238,7 +239,7 @@ function DetailClass() {
                 </ul>
               </div>
             </div>
-            <div className="join2" onClick={togglePopup} data-bs-toggle="modal" href="#exampleModalToggle">
+            <div className="join2" onClick={togglePopup} data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
               <button>Beli Sekarang</button>
             </div>
             <div className="pop">{isPopupVisible && <Pup />}</div>

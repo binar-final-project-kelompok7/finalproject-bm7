@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ChangePassword.css";
+import "../assets/style/ChangePassword.css";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { toast } from "react-toastify";
@@ -28,7 +28,7 @@ const ChangePassword = () => {
           newPassword: newPassword,
         };
 
-        const patchResponse = await axios.put(`https://course-in-production.up.railway.app/api/v1/users/update-password/${usernameProfile}`, updatedPass, {
+        const patchResponse = await axios.put(`https://coursein7.uc.r.appspot.com/api/v1/users/update-password/${usernameProfile}`, updatedPass, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",

@@ -1,18 +1,18 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import OTP from "./pages/OTP";
-import ResetPassword from "./pages/ResetPassword";
-import KelasSaya from "./pages/KelasSaya";
-import Course from "./pages/Course";
-import AdminLogin from "./pages/AdminLogin";
-import AccountSetings from "./pages/AccountSetings";
+import Login from "./pages/Client/Login";
+import Home from "./pages/Client/Home";
+import Register from "./pages/Client/Register";
+import OTP from "./pages/Client/OTP";
+import ResetPassword from "./pages/Client/ResetPassword";
+import KelasSaya from "./pages/Client/KelasSaya";
+import Course from "./pages/Client/Course";
+import AdminLogin from "./pages/Admin/AdminLogin";
+import AccountSetings from "./pages/Client/AccountSetings";
 import ProfileSaya from "./components/ProfileSaya";
 import ChangePassword from "./components/ChangePassword";
 import PaymentHistory from "./components/PaymentHistory";
-import Admin from "./pages/Admin";
+import Admin from "./pages/Admin/Admin";
 import PaymentStatus from "./components/PaymentStatus";
 import PaySuccess from "./components/PaySuccess.jsx";
 import DetailCLass from "./components/DetailCLass.jsx";
@@ -21,7 +21,7 @@ import PlayVideo from "./components/PlayVideo.jsx";
 import ManageClass from "./pages/Admin/ManageClass.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ConfirmResetPassword from "./pages/ConfirmResetPassword.jsx";
+import ConfirmResetPassword from "./pages/Client/ConfirmResetPassword.jsx";
 
 function App() {
   return (
@@ -34,10 +34,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
-          <Route
-            path="/resetpassword-confirm/:token"
-            element={<ConfirmResetPassword />}
-          />
+          <Route path="/resetpassword-confirm/:token" element={<ConfirmResetPassword />} />
           <Route path="/account-settings" element={<AccountSetings />}>
             <Route path="edit-profile/:username" element={<ProfileSaya />} />
             <Route path="change-password" element={<ChangePassword />} />

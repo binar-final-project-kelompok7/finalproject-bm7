@@ -6,7 +6,7 @@ const DeleteCourse = ({ courseCode }) => {
   const { authToken } = useAuthGuard();
   const handleDelete = async () => {
     try {
-      const apiUrl = `https://course-in-production.up.railway.app/api/v1/courses/delete/${courseCode}`;
+      const apiUrl = `https://coursein7.uc.r.appspot.com/api/v1/courses/delete/${courseCode}`;
       const headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${authToken}`,

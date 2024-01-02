@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import classImage from "../assets/classImage.png";
+import classImage from "../assets/img/classImage.png";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const PaymentHistory = () => {
           Accept: "application/json",
         };
 
-        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/users/${username}/orders?page=0&size=10`, { headers });
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/users/${username}/orders?page=0&size=10`, { headers });
 
         setPaymentData(response.data.data);
         setLoading(false);

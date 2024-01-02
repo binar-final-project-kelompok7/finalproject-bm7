@@ -3,9 +3,11 @@ import { BsArrowLeft } from "react-icons/bs";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
 import axios from "axios";
-import "../style/DetailPay.css";
+import "../assets/style/DetailPay.css";
 import ImageImg from "../assets/img/image.png";
 import Cookies from "universal-cookie";
+import nexticon from "../assets/img/Vector.png";
+import paymentoptions from "../assets/img/Paymentoptions.png";
 function DetailPay() {
   const [courseData, setCourseData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -14,6 +16,7 @@ function DetailPay() {
   const cookies = new Cookies();
   const username = cookies.get("api_username");
   const token = cookies.get("jwt_authorization");
+  const [errorAlert, setErrorAlert] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,7 +27,7 @@ function DetailPay() {
           Accept: "application/json",
         };
 
-        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/users/${username}/orders/${orderId}`, { headers });
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/users/${username}/orders/${orderId}`, { headers });
         setCourseData(response.data.data);
         setLoading(false);
       } catch (error) {
@@ -65,15 +68,22 @@ function DetailPay() {
       const body = {
         paymentMethod: "BANK_TRANSFER",
       };
-      await axios.patch(`https://course-in-production.up.railway.app/api/v1/users/${username}/orders/${orderId}/pay`, body, { headers });
-
+      await axios.patch(`https://coursein7.uc.r.appspot.com/api/v1/users/${username}/orders/${orderId}/pay`, body, { headers });
+      setErrorAlert(null);
       navigate(`/paySuccess`);
     } catch (error) {
-      console.error("Error processing payment:", error);
+      console.error("Error processing payment:", error.response.data.errors);
+
+      setErrorAlert(
+        <div className="alert alert-danger" role="alert">
+          {error.response.data.errors}
+        </div>
+      );
     }
   };
   return (
     <>
+      {errorAlert}
       <Header />
       <div className="top-content">
         <Link
@@ -136,7 +146,7 @@ function DetailPay() {
                   </h2>
                   <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
-                      <img className="img-pay" src="../img/Payment options.png"></img>
+                      <img className="img-pay" src={paymentoptions}></img>
                       <div className="textpayment">
                         <h5>Card number</h5>
                         <input style={{ border: "none", width: "50%" }} type="text" placeholder="Enter Number" />
@@ -188,7 +198,7 @@ function DetailPay() {
 
                 <button className="payclass" onClick={handlePayment}>
                   Bayar dan Ikuti Kelas Selamanya
-                  <img src="../img/Vector.png" alt="Next Icon" style={{ paddingLeft: "10px" }} />
+                  <img src={nexticon} alt="Next Icon" style={{ paddingLeft: "10px" }} />
                 </button>
               </div>
             </div>

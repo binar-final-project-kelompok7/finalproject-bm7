@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import SearchIcon from "../assets/searchIcon2.png";
-import filterIcon from "../assets/filterIcon.png";
+import SearchIcon from "../assets/img/searchIcon2.png";
+import filterIcon from "../assets/img/filterIcon.png";
 import axios from "axios";
 import useAuthGuard from "../pages/Admin/AdminAuthCheck";
 
@@ -12,6 +12,7 @@ const PaymentStatus = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+<<<<<<< HEAD
         const response = await axios.get(
           `https://course-in-production.up.railway.app/api/v1/orders/dashboard?page=${
             currentPage - 1
@@ -23,6 +24,14 @@ const PaymentStatus = () => {
             },
           }
         );
+=======
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/orders/dashboard?page=${currentPage - 1}&size=7`, {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+>>>>>>> a1dba7aaa5b7c25a3d274bfff46333f91af28e81
         setPaymentStatusData(response.data.data);
         console.log(response.data.data);
         setTotalPages(response.data.paging.totalPage);
@@ -32,7 +41,7 @@ const PaymentStatus = () => {
     };
 
     fetchData();
-  }, []);
+  }, [authToken, currentPage]);
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -65,15 +74,20 @@ const PaymentStatus = () => {
           </thead>
 
           <tbody>
-            {paymentStatusData.map((payment) => (
-              <tr style={{ fontSize: "13px" }} key={payment.username}>
+            {paymentStatusData.map((payment, index) => (
+              <tr style={{ fontSize: "13px" }} key={index}>
                 <td className="p-2">{payment.username}</td>
                 <td className="p-2">{payment.category}</td>
                 <td className="p-2">{payment.courseName}</td>
+<<<<<<< HEAD
                 <td className={getStatusClass(payment.status) + " p-2"}>
                   {getStatusLabel(payment.status)}
                 </td>
                 {/* <td className="p-2">{payment.paymentMethod}</td> */}
+=======
+                <td className={getStatusClass(payment.status) + " p-2"}>{getStatusLabel(payment.status)}</td>
+                <td className="p-2">BANK TRANSFER</td>
+>>>>>>> a1dba7aaa5b7c25a3d274bfff46333f91af28e81
                 <td className="p-2">{payment.completedAt}</td>
               </tr>
             ))}
@@ -113,7 +127,6 @@ const getStatusClass = (status) => {
   }
 };
 
-// Helper function to get the appropriate label for the status
 const getStatusLabel = (status) => {
   switch (status) {
     case "COMPLETED":

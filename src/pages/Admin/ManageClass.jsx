@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SearchIcon from "../../assets/searchIcon2.png";
-import addIcon from "../../assets/addIcon.png";
-import filterIcon from "../../assets/filterIcon.png";
+import SearchIcon from "../../assets/img/searchIcon2.png";
+import addIcon from "../../assets/img/addIcon.png";
+import filterIcon from "../../assets/img/filterIcon.png";
 import AdminPopupTambah from "./AdminPopup";
 import axios from "axios";
 import AdminPopupUpdate from "./UpdatesCourses";
@@ -17,7 +17,7 @@ const ManageClass = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://course-in-production.up.railway.app/api/v1/courses?page=${currentPage - 1}&size=5`, {
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/courses?page=${currentPage - 1}&size=5`, {
           headers: {
             Accept: "application/json",
             Authorization: `Bearer ${authToken}`,

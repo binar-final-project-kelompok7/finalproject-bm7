@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import searchHomeNav from "../assets/searchIcon.png";
-import masukButton from "../assets/buttonLoginHome.png";
-import profile from "../assets/profile.png";
-import myClassIcon from "../assets/classNavIcon.png";
+import searchHomeNav from "../assets/img/searchIcon.png";
+import masukButton from "../assets/img/buttonLoginHome.png";
+import profile from "../assets/img/profile.png";
+import myClassIcon from "../assets/img/classNavIcon.png";
 import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
-import "./Header.css";
+import "../assets/style/Header.css";
 import Cookies from "universal-cookie";
 
 const Header = ({ setFilterOptions }) => {
