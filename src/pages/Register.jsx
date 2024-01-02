@@ -26,7 +26,7 @@ function Register() {
 
       let config = {
         method: "POST",
-        url: `https://course-in-production.up.railway.app/api/v1/users/register`,
+        url: "https://coursein7.uc.r.appspot.com/api/v1/users/register",
         headers: {
           "Content-Type": "application/json",
         },
@@ -35,16 +35,7 @@ function Register() {
 
       const response = await axios.request(config);
       console.log(response);
-      const token = response.headers["authorization"].split(" ")[1];
-      const apiUsername = username;
-
-      cookies.set("jwt_authorization", token, {
-        expires: new Date(Date.now() + 3600 * 1000),
-      });
-      cookies.set("api_username", apiUsername, {
-        expires: new Date(Date.now() + 3600 * 1000),
-      });
-      navigate("/");
+      navigate("/otp", { state: { email } });
     } catch (error) {
       if (error.response) {
         console.error(error.response.data.code, error.response.data.message);

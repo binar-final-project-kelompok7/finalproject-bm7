@@ -1,21 +1,111 @@
 import React from "react";
-import './OTP.css'
+import "./OTP.css";
 import OTPInput, { ResendOTP } from "otp-input-react";
 import { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
+import axios from "axios";
 
 function OTP() {
   const [OTP, setOTP] = useState("");
+  const location = useLocation();
+  const { email = "" } = location.state || {};
+  const emailOtp = email;
+  const cookies = new Cookies();
+  const navigate = useNavigate();
 
-  const renderButton = (buttonProps, remainingTime) => {    
+  const resendOtp = async (e) => {
+    try {
+      let data = JSON.stringify({
+        email: emailOtp,
+      });
+
+      let config = {
+        method: "POST",
+        url: "https://coursein7.uc.r.appspot.com/api/v1/users/resend-otp",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+      console.log("Mengirim permintaan resend OTP...");
+      const response = await axios.request(config);
+      console.log("Respon dari server:", response);
+      console.log(response);
+
+      if (response.status === 200) {
+        console.log("OTP dikirim ulang. Cek email Anda!");
+        navigate("/otp");
+      } else {
+        console.error("Respon dengan status:", response.status);
+        console.error("Data kesalahan:", response.data);
+      }
+      navigate("/otp");
+    } catch (error) {
+      // if (error.response) {
+      //   console.error(error.response.data.code, error.response.data.message);
+      // }
+      console.error("Error during OTP resend:", error.message);
+    }
+  };
+
+  const verifyOtp = async (e) => {
+    try {
+      let data = JSON.stringify({
+        email,
+        otpCode: OTP,
+      });
+
+      let config = {
+        method: "POST",
+        url: "https://coursein7.uc.r.appspot.com/api/v1/users/verify-otp",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      const response = await axios.request(config);
+      console.log(response, " ditekan response");
+      const token = response.headers["authorization"].split(" ")[1];
+      // const apiUsername = response.data.data.username;
+
+      cookies.set("jwt_authorization", token, {
+        expires: new Date(Date.now() + 3600 * 1000),
+      });
+      // cookies.set("api_username", apiUsername, {
+      //   expires: new Date(Date.now() + 3600 * 1000),
+      // });
+
+      navigate("/");
+    } catch (error) {
+      if (error.response) {
+        console.error(error.response.data.code, error.response.data.message);
+      }
+    }
+  };
+
+  const renderButton = (buttonProps, remainingTime) => {
     return (
       <>
         {buttonProps.remainingTime !== 0 ? (
-        <p>Kirim ulang OTP dalam <span style={{color: "#6148FF", fontWeight: "700"}}>{buttonProps.remainingTime}</span> detik</p>
-      ) : (
-        <button className="text-danger border-0" {...buttonProps}>Kirim Ulang</button>
-      )}
+          <p>
+            Kirim ulang OTP dalam{" "}
+            <span style={{ color: "#6148FF", fontWeight: "700" }}>
+              {buttonProps.remainingTime}
+            </span>{" "}
+            detik
+          </p>
+        ) : (
+          <button
+            onClick={resendOtp}
+            className="text-danger border-0"
+            {...buttonProps}
+          >
+            Kirim Ulang
+          </button>
+        )}
       </>
     );
   };
@@ -54,10 +144,11 @@ function OTP() {
               <div className="d-flex">
                 <ResendOTP
                   className="text-otp d-flex"
-                  maxTime={60}
-                  onResendClick={() => console.log("Resend clicked")}
+                  maxTime={5}
+                  onResendClick={resendOtp}
                   renderButton={renderButton}
                   renderTime={renderTime}
+                  onClick={resendOtp}
                 />
               </div>
             </div>
@@ -65,7 +156,7 @@ function OTP() {
               className="rounded-3 border-0 p-2 text-white mb-4 w-100"
               style={{ backgroundColor: "#6148ff" }}
               type="button"
-              onClick={{}}
+              onClick={verifyOtp}
             >
               Simpan
             </button>
