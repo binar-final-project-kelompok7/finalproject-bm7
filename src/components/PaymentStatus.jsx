@@ -12,9 +12,8 @@ const PaymentStatus = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-<<<<<<< HEAD
         const response = await axios.get(
-          `https://course-in-production.up.railway.app/api/v1/orders/dashboard?page=${
+          `https://coursein7.uc.r.appspot.com/api/v1/orders/dashboard?page=${
             currentPage - 1
           }&size=7`,
           {
@@ -24,14 +23,6 @@ const PaymentStatus = () => {
             },
           }
         );
-=======
-        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/orders/dashboard?page=${currentPage - 1}&size=7`, {
-          headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
->>>>>>> a1dba7aaa5b7c25a3d274bfff46333f91af28e81
         setPaymentStatusData(response.data.data);
         console.log(response.data.data);
         setTotalPages(response.data.paging.totalPage);
@@ -79,15 +70,10 @@ const PaymentStatus = () => {
                 <td className="p-2">{payment.username}</td>
                 <td className="p-2">{payment.category}</td>
                 <td className="p-2">{payment.courseName}</td>
-<<<<<<< HEAD
                 <td className={getStatusClass(payment.status) + " p-2"}>
                   {getStatusLabel(payment.status)}
                 </td>
-                {/* <td className="p-2">{payment.paymentMethod}</td> */}
-=======
-                <td className={getStatusClass(payment.status) + " p-2"}>{getStatusLabel(payment.status)}</td>
                 <td className="p-2">BANK TRANSFER</td>
->>>>>>> a1dba7aaa5b7c25a3d274bfff46333f91af28e81
                 <td className="p-2">{payment.completedAt}</td>
               </tr>
             ))}
