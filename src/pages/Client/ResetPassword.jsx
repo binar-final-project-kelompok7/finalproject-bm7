@@ -16,7 +16,7 @@ function ResetPassword() {
       });
     } else {
       try {
-        const response = await axios.put("https://coursein7.uc.r.appspot.com/api/v1/auth/forgot-password", {
+        const response = await axios.post("https://coursein7.uc.r.appspot.com/api/v1/auth/forgot-password", {
           email: emailreset,
           headers: {
             Accept: "application/json",
