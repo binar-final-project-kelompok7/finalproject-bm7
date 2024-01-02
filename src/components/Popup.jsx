@@ -40,7 +40,7 @@ function Pup() {
       };
 
       const response = await axios.post(
-        "https://course-in-production.up.railway.app/api/v1/orders",
+        "https://coursein7.uc.r.appspot.com/api/v1/orders",
         {
           username: usernameProfile,
           courseCode: courseCode,
