@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Hero = () => {
   const navigate = useNavigate();
   return (
-    <div className="container-fluid p-0 d-none d-md-block">
+    <div className="container-fluid p-0 d-md-block">
       <div className="row m-0">
         <div className="hero col-7 p-0">
           <img src={heroImage} />
