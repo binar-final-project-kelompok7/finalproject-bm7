@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import searchIcon from "../../assets/img/searchIcon.png";
 import usersIcon from "../../assets/img/usersIcon.png";
 import NavigasiAdmin from "../../components/NavigasiAdmin";
 import { Outlet } from "react-router-dom";
@@ -42,12 +41,8 @@ const Admin = () => {
 
       <div className="w-75 pt-3">
         <header className="container-fluid d-flex justify-content-between align-items-center px-0 mb-5">
-          <div className="leftHeader d-flex justify-content-around align-items-center gap-5 w-100">
+          <div className="leftHeader px-5 w-100">
             <h2>Hi, Admin!</h2>
-            <div className="search border around-3 rounded-4 bg-white">
-              <input type="text" placeholder="cari" className="border-0 p-3" />
-              <img src={searchIcon} style={{ width: "38px", height: "38px", cursor: "pointer" }} className="mx-3" />
-            </div>
           </div>
         </header>
         <main className="d-flex flex-column">
