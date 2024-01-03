@@ -45,7 +45,7 @@ const Popular = () => {
           </button>
         </div>
       </div>
-      <div className="navPopulars overflow-auto d-flex flex-row justify-content-center justify-content-md-start" style={{ marginTop: "20px" }}>
+      <div className="navPopulars overflow-auto d-flex flex-row justify-content-start justify-content-md-start" style={{ marginTop: "20px" }}>
         <div className="navPopular" style={{ width: "100px", marginBottom: "40px" }}>
           <button style={{ backgroundColor: selectedCategory === "All" ? "#6148FF" : "#E8F1FF", color: selectedCategory === "All" ? "#fff" : "#000", fontWeight: "600" }} className="rounded-5" onClick={() => handleCategoryClick("All")}>
             All
