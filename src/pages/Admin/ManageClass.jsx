@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchIcon from "../../assets/img/searchIcon2.png";
 import addIcon from "../../assets/img/addIcon.png";
-import filterIcon from "../../assets/img/filterIcon.png";
 import AdminPopupTambah from "./AdminPopup";
 import axios from "axios";
 import AdminPopupUpdate from "./UpdatesCourses";
@@ -44,12 +42,7 @@ const ManageClass = () => {
           <button style={{ backgroundColor: "#6148FF" }} className="rounded-5 py-1 px-3 text-white d-flex gap-2 align-items-center" data-bs-toggle="modal" href="#exampleModalToggle" role="button" onClick={() => setPopupOpen(true)}>
             <img src={addIcon} alt="Add Icon" />
             Tambah
-          </button>
-          <button style={{ border: "1px solid #6148FF", color: "#6148FF" }} className="rounded-5 py-1 px-3 d-flex gap-2 align-items-center fw-bold">
-            <img src={filterIcon} />
-            Filter
-          </button>
-          <img src={SearchIcon} />
+          </button>         
         </div>
       </div>
       <div style={{ overflowY: "auto", height: "300px" }}>
