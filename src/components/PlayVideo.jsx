@@ -81,7 +81,7 @@ function PlayVideo() {
                   </div>
                 </div>
                 <div className="btnjoin">
-                  <a href="https://t.me/your_telegram_group" target="_blank" rel="noopener noreferrer">
+                  <a href="https://t.me/+i1HubHbn_cIyZDQ1" target="_blank" rel="noopener noreferrer">
                     <button className="join">Join Telegram</button>
                   </a>
                 </div>

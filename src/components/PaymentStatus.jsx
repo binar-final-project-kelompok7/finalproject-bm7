@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import SearchIcon from "../assets/img/searchIcon2.png";
-import filterIcon from "../assets/img/filterIcon.png";
 import axios from "axios";
 import useAuthGuard from "../pages/Admin/AdminAuthCheck";
 
@@ -40,16 +38,7 @@ const PaymentStatus = () => {
     <div className="mx-auto mt-5" style={{ width: "90%" }}>
       <div className="d-flex justify-content-between">
         <h3>Status Pembayaran</h3>
-        <div className="d-flex align-items-center gap-3">
-          <button
-            style={{ border: "1px solid #6148FF", color: "#6148FF" }}
-            className="rounded-5 py-1 px-3 d-flex gap-2 align-items-center fw-bold"
-          >
-            <img src={filterIcon} />
-            Filter
-          </button>
-          <img src={SearchIcon} />
-        </div>
+        
       </div>
       <div style={{ overflowY: "auto", maxHeight: "300px" }}>
         <table>
