@@ -90,7 +90,9 @@ function OTP() {
       }
       setErrorAlert(
         <div className="alert alert-danger" role="alert">
-          {error.response.data.errors}
+          {error.response && error.response.data && (
+          <div>{error.response.data.errors}</div>
+          )}
         </div>
       );
     }
