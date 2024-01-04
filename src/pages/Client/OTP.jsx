@@ -15,6 +15,7 @@ function OTP() {
   // const emailOtp = email;
   const cookies = new Cookies();
   const navigate = useNavigate();
+  const [errorAlert, setErrorAlert] = useState(null);
 
   const resendOtp = async (e) => {
     try {
@@ -81,12 +82,19 @@ function OTP() {
       cookies.set("api_username", apiUsername, {
         expires: new Date(Date.now() + 3600 * 1000),
       });
-
+      setErrorAlert(null);
       navigate("/");
     } catch (error) {
       if (error.response) {
         console.error(error.response.data.code, error.response.data.message);
       }
+      setErrorAlert(
+        <div className="alert alert-danger" role="alert">
+          {error.response && error.response.data && (
+          <div>{error.response.data.errors}</div>
+          )}
+        </div>
+      );
     }
   };
 
@@ -109,6 +117,8 @@ function OTP() {
   const renderTime = () => React.Fragment;
 
   return (
+    <>
+    {errorAlert}
     <section className="container-fluid d-flex justify-content-around align-items-md-center align-items-start p-0" style={{ height: "100vh" }}>
       <div className="login w-50 d-flex justify-content-center">
         <div>
@@ -140,6 +150,7 @@ function OTP() {
         <h1>CourseIn</h1>
       </div>
     </section>
+    </>
   );
 }
 
