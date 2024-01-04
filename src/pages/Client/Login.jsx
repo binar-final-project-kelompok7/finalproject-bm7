@@ -52,7 +52,9 @@ function Login() {
       }
       setErrorAlert(
         <div className="alert alert-danger" role="alert">
-          {error.response.data.errors}
+          {error.response && error.response.data && (
+          <div>{error.response.data.errors === 'Bad credentials' ? 'Username atau password salah' : error.response.data.errors === 'username: must not be blank' ? 'Username tidak boleh kosong' : error.response.data.errors === 'password: must not be blank' ? 'Password tidak boleh kosong' : error.response.data.errors === 'password: must not be blank, username: must not be blank' ? error.response.data.errors : error.response.data.errors}</div>
+          )}
         </div>
       );
     }
