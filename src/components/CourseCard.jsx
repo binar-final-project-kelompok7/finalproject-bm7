@@ -10,7 +10,7 @@ const CourseCard = ({ course, navigateTo }) => {
   const navigate = useNavigate();
   return (
     <div className="ks-card-content" key={course.code} onClick={() => navigate(navigateTo)}>
-      <img src={imageimg} alt="" />
+      <img src={imageimg} alt="" className="ks-img" />
       <div className="ks-card-content-1">
         <p>{course.category}</p>
         <div>
