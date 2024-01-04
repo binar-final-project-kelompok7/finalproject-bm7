@@ -82,6 +82,7 @@ const ProfileSaya = () => {
 
   useEffect(() => {
     getdetailUser();
+    setUsername(userResponse.username)
   }, [usernameProfile, token]);
   return (
     <div className="containerMyProfile d-flex flex-column w-md-50 mx-auto pt-4">
@@ -91,7 +92,7 @@ const ProfileSaya = () => {
         <label className="mt-3" htmlFor="" style={{ fontSize: "12px" }}>
           Username
         </label>
-        <input type="text" className="bg-transparent text-black rounded-3 border-1" placeholder={userResponse.username} value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input disabled type="text" className="bg-transparent text-black rounded-3 border-1"  value={userResponse.username}/>
         <label className="mt-3" htmlFor="" style={{ fontSize: "12px" }}>
           Name
         </label>
