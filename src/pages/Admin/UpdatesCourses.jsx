@@ -74,7 +74,6 @@ function AdminPopupUpdate({ courseCode }) {
         },
       });
 
-      console.log("Berhasil:", response.data);
       window.location.reload();
     } catch (error) {
       console.error("Gagal:", error.response.data);

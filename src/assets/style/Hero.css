@@ -14,7 +14,15 @@
 
 @media only screen and (max-width: 426px) {
   .hero img {
-    height: 280px;
+    height: 150px;
     width: 300px;
+  }
+  .hero-container h2 {
+    font-size: 20px;
+  }
+  .hero-container button {
+    font-size: 10px;
+    width: 100px;
+    height: 30px;
   }
 }
