@@ -95,10 +95,18 @@ function OTP() {
       <>
         {buttonProps.remainingTime !== 0 ? (
           <p>
-            Kirim ulang OTP dalam <span style={{ color: "#6148FF", fontWeight: "700" }}>{buttonProps.remainingTime}</span> detik
+            Kirim ulang OTP dalam{" "}
+            <span style={{ color: "#6148FF", fontWeight: "700" }}>
+              {buttonProps.remainingTime}
+            </span>{" "}
+            detik
           </p>
         ) : (
-          <button onClick={resendOtp} className="text-danger border-0" {...buttonProps}>
+          <button
+            onClick={resendOtp}
+            className="text-danger border-0"
+            {...buttonProps}
+          >
             Kirim Ulang
           </button>
         )}
@@ -109,7 +117,10 @@ function OTP() {
   const renderTime = () => React.Fragment;
 
   return (
-    <section className="container-fluid d-flex justify-content-around align-items-md-center align-items-start p-0" style={{ height: "100vh" }}>
+    <section
+      className="container-fluid d-flex justify-content-around align-items-md-center align-items-start p-0"
+      style={{ height: "100vh" }}
+    >
       <div className="login w-50 d-flex justify-content-center">
         <div>
           <div>
@@ -125,18 +136,41 @@ function OTP() {
               <span>Ketikan 6 digit kode yang dikirimkan ke Email Anda</span>
             </div>
             <div className="frame mb-5 d-flex flex-column align-items-center">
-              <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={6} otpType="number" disabled={false} className="mb-3 mt-4" />
+              <OTPInput
+                value={OTP}
+                onChange={setOTP}
+                autoFocus
+                OTPLength={6}
+                otpType="number"
+                disabled={false}
+                className="mb-3 mt-4"
+              />
               <div className="d-flex">
-                <ResendOTP className="text-otp d-flex" maxTime={5} onResendClick={resendOtp} renderButton={renderButton} renderTime={renderTime} onClick={resendOtp} />
+                <ResendOTP
+                  className="text-otp d-flex"
+                  maxTime={5}
+                  onResendClick={resendOtp}
+                  renderButton={renderButton}
+                  renderTime={renderTime}
+                  onClick={resendOtp}
+                />
               </div>
             </div>
-            <button className="rounded-3 border-0 p-2 text-white mb-4 w-100" style={{ backgroundColor: "#6148ff" }} type="button" onClick={verifyOtp}>
+            <button
+              className="rounded-3 border-0 p-2 text-white mb-4 w-100"
+              style={{ backgroundColor: "#6148ff" }}
+              type="button"
+              onClick={verifyOtp}
+            >
               Simpan
             </button>
           </form>
         </div>
       </div>
-      <div className="desktopIconOtp d-none d-md-flex align-items-center justify-content-center text-white" style={{ backgroundColor: "#6148FF", height: "100%" }}>
+      <div
+        className="desktopIconOtp d-none d-md-flex align-items-center justify-content-center text-white"
+        style={{ backgroundColor: "#6148FF", height: "100%" }}
+      >
         <h1>CourseIn</h1>
       </div>
     </section>

@@ -36,6 +36,9 @@ function ResetPassword() {
           navigate(`/resetpassword-confirm/${resetToken}`, {
             state: { email: emailreset, token: resetToken },
           });
+          toast.success("Silahkan cek Email anda...", {
+            theme: "colored",
+          });
         } else {
           toast.error("Email tidak ditemukan!", {
             theme: "colored",
