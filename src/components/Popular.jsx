@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classImage from "../assets/img/classImage.png";
+import uiux from "../assets/img/uiux_.jpg";
+import android from "../assets/img/andoid_.jpg";
+import business from "../assets/img/business_.jpg";
+import datascience from "../assets/img/datascience_.jpg";
 import axios from "axios";
-
+import "../assets/style/Hero.css";
 const Popular = () => {
   const [popularCourses, setPopularCourses] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const navigate = useNavigate();
+  const categoryImageMap = {
+    UIUX_DESIGN: uiux,
+    DATA_SCIENCE: datascience,
+    ANDROID_DEVELOPMENT: android,
+    BUSINESS_INTELLIGENCE: business,
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +38,6 @@ const Popular = () => {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
-
   const filteredCourses = selectedCategory === "All" ? popularCourses : popularCourses.filter((course) => course.category === selectedCategory);
 
   return (
@@ -107,23 +116,27 @@ const Popular = () => {
         </div>
       </div>
       <div className="popularList d-flex overflow-auto gap-3">
-        {filteredCourses.map((course) => (
-          <div key={course.code} className="popularContent d-flex flex-column text-start" style={{ width: "323px" }}>
-            <Link to={`/detailclass/${course.code}`} style={{ textDecoration: "none" }}>
-              <img src={classImage} alt="gambar" />
-              <h6 style={{ fontWeight: "600", color: "#6148FF", marginTop: "20px" }}>{course.category}</h6>
-              <h6 style={{ fontWeight: "600" }}>{course.name}</h6>
-              <div className="d-flex flex-wrap justify-content-between">
-                <div className="">
-                  <p style={{ fontWeight: "500" }}>{course.level}</p>
+        {filteredCourses.map((course) => {
+          const categoryImage = categoryImageMap[course.category] || classImage;
+
+          return (
+            <div key={course.code} className="popularContent d-flex flex-column text-start" style={{ width: "323px" }}>
+              <Link to={`/detailclass/${course.code}`} style={{ textDecoration: "none" }}>
+                <img src={categoryImage} alt="gambar" className="ks-img" />
+                <h6 style={{ fontWeight: "600", color: "#6148FF", marginTop: "20px" }}>{course.category}</h6>
+                <h6 style={{ fontWeight: "600" }}>{course.name}</h6>
+                <div className="d-flex flex-wrap justify-content-between">
+                  <div className="">
+                    <p style={{ fontWeight: "500" }}>{course.level}</p>
+                  </div>
                 </div>
-              </div>
-              <button className="rounded-5 text-white" style={{ backgroundColor: "#489CFF", width: "180px", height: "40px", marginBottom: "20px" }}>
-                Beli {course.price}
-              </button>
-            </Link>
-          </div>
-        ))}
+                <button className="rounded-5 text-white" style={{ backgroundColor: "#489CFF", width: "180px", height: "40px", marginBottom: "20px" }}>
+                  Beli {course.price}
+                </button>
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
