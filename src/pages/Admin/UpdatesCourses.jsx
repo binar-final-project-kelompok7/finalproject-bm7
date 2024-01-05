@@ -128,7 +128,7 @@ function AdminPopupUpdate({ courseCode }) {
                 <label htmlFor="code" className="form-label">
                   Kode Kelas
                 </label>
-                <input type="text" className="form-control" id="code" value={courseData.code} onChange={handleChange} placeholder="Text" style={{ width: "80%", height: "50px", borderRadius: "15px" }} />
+                <input disabled type="text" className="form-control" id="code" value={courseData.code} onChange={handleChange} placeholder="Text" style={{ width: "80%", height: "50px", borderRadius: "15px" }} />
               </div>
               <div className="mb-1">
                 <label htmlFor="type" className="form-label">
