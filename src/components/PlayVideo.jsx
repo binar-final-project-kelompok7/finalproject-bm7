@@ -6,9 +6,6 @@ import Header from "./Header";
 import BottomNav from "./BottomNav";
 import { useParams } from "react-router-dom";
 import MdiBadgeOutlineImg from "../assets/img/mdi_badge-outline.png";
-import ClarityBookLineImg from "../assets/img/clarity_book-line.png";
-import RiTimeFillImg from "../assets/img/ri_time-fill.png";
-import StartImg from "../assets/img/start.png";
 
 function PlayVideo() {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -16,13 +13,19 @@ function PlayVideo() {
   const [courseData, setCourseData] = useState({});
   const videoRef = useRef(null);
   const { courseCode } = useParams();
+
   useEffect(() => {
-    // Fetch data from your API
-    fetch(`https://coursein7.uc.r.appspot.com/api/v1/courses/${courseCode}`)
-      .then((response) => response.json())
-      .then((data) => setCourseData(data.data))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []); // Empty dependency array ensures the effect runs only once
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://coursein7.uc.r.appspot.com/api/v1/courses/${courseCode}`);
+        setCourseData(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [courseCode]);
   const handlePlayPause = () => {
     const video = videoRef.current;
     if (isPlaying) {
@@ -67,16 +70,6 @@ function PlayVideo() {
                   <div className="column">
                     <p style={{ color: "#6148FF" }}>
                       <img src={MdiBadgeOutlineImg}></img> {courseData.level}
-                    </p>
-                  </div>
-                  <div className="column">
-                    <p>
-                      <img src={ClarityBookLineImg}></img> 5 Modul
-                    </p>
-                  </div>
-                  <div className="column">
-                    <p>
-                      <img src={RiTimeFillImg}></img> 45 Menit
                     </p>
                   </div>
                 </div>
@@ -152,9 +145,6 @@ function PlayVideo() {
             </div>
             <div className="title" style={{ display: "flex", alignItems: "center" }}>
               <h4 style={{ color: "#6148FF", fontWeight: "700", paddingTop: "20px", paddingLeft: "20px", width: "80%" }}> {courseData.category}</h4>
-              <div className="rate">
-                <img src={StartImg} alt="star"></img>5.0
-              </div>
             </div>
             <h6 style={{ paddingRight: "20px", paddingLeft: "20px", fontWeight: "700" }}>
               {courseData.name}
@@ -164,12 +154,6 @@ function PlayVideo() {
               <p style={{ fontSize: "12px", color: "#6148FF" }}>
                 <img src={MdiBadgeOutlineImg} alt="badge"></img>
                 {courseData.level}
-              </p>
-              <p style={{ fontSize: "12px" }}>
-                <img src={ClarityBookLineImg} alt="book"></img>5 Modul
-              </p>
-              <p style={{ fontSize: "12px" }}>
-                <img src={RiTimeFillImg} alt="time"></img>45 Menit
               </p>
             </div>
             <div className="tentang">

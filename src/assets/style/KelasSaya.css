@@ -118,14 +118,16 @@
 }
 
 .ks-card-content {
-  width: 323px;
+  width: 300px;
   height: 180px;
   border-radius: 15px;
   background-color: white;
   box-sizing: border-box;
-  margin: 10px 20px;
+  margin: 10px 15px;
 }
-
+.ks-img {
+  width: 100%;
+}
 .ks-card-content-1 {
   display: flex;
   justify-content: space-between;
@@ -293,7 +295,7 @@
   height: 20px;
   width: 20px;
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1281px) {
   .KelasSaya-Container {
     margin: 0px;
     padding-top: 10px;
