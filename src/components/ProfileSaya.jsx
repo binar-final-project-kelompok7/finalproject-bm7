@@ -6,13 +6,13 @@ import "../assets/style/ProfileSaya.css";
 import { toast } from "react-toastify";
 
 const ProfileSaya = () => {
-  const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false); // Add loading state
   const cookies = new Cookies();
   const usernameProfile = cookies.get("api_username");
   const token = cookies.get("jwt_authorization");
+  const [username, setUsername] = useState(usernameProfile);
   const [userResponse, setUserResponse] = useState({
     data: { username: "", name: "", email: "" },
   });
@@ -81,8 +81,7 @@ const ProfileSaya = () => {
   };
 
   useEffect(() => {
-    getdetailUser();
-    setUsername(userResponse.username)
+    getdetailUser();    
   }, [usernameProfile, token]);
   return (
     <div className="containerMyProfile d-flex flex-column w-md-50 mx-auto pt-4">
@@ -92,7 +91,7 @@ const ProfileSaya = () => {
         <label className="mt-3" htmlFor="" style={{ fontSize: "12px" }}>
           Username
         </label>
-        <input disabled type="text" className="bg-transparent text-black rounded-3 border-1"  value={userResponse.username}/>
+        <input disabled type="text" className="bg-transparent text-black rounded-3 border-1"  value={username}/>
         <label className="mt-3" htmlFor="" style={{ fontSize: "12px" }}>
           Name
         </label>
