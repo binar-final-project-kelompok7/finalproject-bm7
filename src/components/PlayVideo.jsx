@@ -6,6 +6,7 @@ import Header from "./Header";
 import BottomNav from "./BottomNav";
 import { useParams } from "react-router-dom";
 import MdiBadgeOutlineImg from "../assets/img/mdi_badge-outline.png";
+import axios from "axios";
 
 function PlayVideo() {
   const [isPlaying, setIsPlaying] = useState(true);
