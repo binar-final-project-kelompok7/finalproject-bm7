@@ -19,7 +19,6 @@ const Course = () => {
   const [filterOptions, setFilterOptions] = useState({
     palingbaru: false,
     palingpopuler: false,
-    promo: false,
     UIUXDesign: false,
     WebDevelopment: false,
     AndroidDevelopment: false,
@@ -41,8 +40,6 @@ const Course = () => {
           params.filters = "NEWEST";
         } else if (filterOptions.palingpopuler) {
           params.filters = "POPULAR";
-        } else if (filterOptions.promo) {
-          params.filters = "DISCOUNT";
         } else if (filterOptions.UIUXDesign) {
           params.categories = "UIUX_DESIGN";
         } else if (filterOptions.WebDevelopment) {
@@ -122,7 +119,6 @@ const Course = () => {
     setFilterOptions({
       palingbaru: false,
       palingpopuler: false,
-      promo: false,
       UIUXDesign: false,
       WebDevelopment: false,
       AndroidDevelopment: false,
@@ -143,7 +139,6 @@ const Course = () => {
     const isFilterMatch =
       (!filterOptions.palingbaru || filterOptions.palingbaru) &&
       (!filterOptions.palingpopuler || filterOptions.palingpopuler) &&
-      (!filterOptions.promo || filterOptions.promo) &&
       (!filterOptions.UIUXDesign || course.category === "UIUX_DESIGN") &&
       (!filterOptions.WebDevelopment || course.category === "WEB_DEVELOPMENT") &&
       (!filterOptions.AndroidDevelopment || course.category === "ANDROID_DEVELOPMENT") &&

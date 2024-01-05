@@ -22,7 +22,6 @@ function OTP() {
       let data = JSON.stringify({
         email: email,
       });
-      console.log(email);
       let config = {
         method: "POST",
         url: `https://coursein7.uc.r.appspot.com/api/v1/users/resend-otp`,
@@ -31,13 +30,9 @@ function OTP() {
         },
         data: data,
       };
-      console.log("Mengirim permintaan resend OTP...");
       const response = await axios.request(config);
-      console.log("Respon dari server:", response);
-      console.log(response);
 
       if (response.status === 200) {
-        console.log("OTP dikirim ulang. Cek email Anda!");
         // navigate("/otp");
       } else {
         console.error("Respon dengan status:", response.status);
@@ -71,7 +66,6 @@ function OTP() {
       };
 
       const response = await axios.request(config);
-      console.log(response, " ditekan response");
       const token = response.headers["authorization"].split(" ")[1];
       const apiUsername = response.data.data.username;
 

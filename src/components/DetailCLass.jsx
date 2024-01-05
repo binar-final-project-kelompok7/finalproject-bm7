@@ -8,9 +8,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import PlayVideoImg from "../assets/img/play-video.png";
 import MdiBadgeOutlineImg from "../assets/img/mdi_badge-outline.png";
-import ClarityBookLineImg from "../assets/img/clarity_book-line.png";
-import RiTimeFillImg from "../assets/img/ri_time-fill.png";
-import StartImg from "../assets/img/start.png";
 import Cookies from "universal-cookie";
 
 function DetailClass() {
@@ -90,21 +87,6 @@ function DetailClass() {
                       <img src={MdiBadgeOutlineImg}></img> {courseData.level}
                     </p>
                   </div>
-                  <div className="column">
-                    <p>
-                      <img src={ClarityBookLineImg}></img> 5 Modul
-                    </p>
-                  </div>
-                  <div className="column">
-                    <p>
-                      <img src={RiTimeFillImg}></img> 45 Menit
-                    </p>
-                  </div>
-                </div>
-                <div className="btnjoin">
-                  <a href="https://t.me/your_telegram_group" target="_blank" rel="noopener noreferrer">
-                    <button className="join">Join Telegram</button>
-                  </a>
                 </div>
               </div>
             </div>
@@ -172,9 +154,6 @@ function DetailClass() {
               >
                 {courseData.category}
               </h4>
-              <div className="rate">
-                <img src={StartImg} alt="star"></img>5.0
-              </div>
             </div>
             <h6
               style={{
@@ -201,22 +180,9 @@ function DetailClass() {
                 <img src={MdiBadgeOutlineImg} alt="badge"></img>
                 {courseData.level}
               </p>
-              <p style={{ fontSize: "12px" }}>
-                <img src={ClarityBookLineImg} alt="book"></img>5 Modul
-              </p>
-              <p style={{ fontSize: "12px" }}>
-                <img src={RiTimeFillImg} alt="time"></img>45 Menit
-              </p>
             </div>
 
             <div className="tentang">
-              <div className="join2">
-                <button className="pt-1">
-                  <a href="https://t.me/your_telegram_group" target="_blank" rel="noopener noreferrer" className="text-light d-flex align-items-center justify-content-center pt-0">
-                    <p>Join Telegram</p>
-                  </a>
-                </button>
-              </div>
               <div
                 className="teks"
                 style={{

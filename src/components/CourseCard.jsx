@@ -1,9 +1,6 @@
 import React from "react";
 import imageimg from "../assets/img/img.png";
-import star from "../assets/img/star.png";
 import level from "../assets/img/level.png";
-import modul from "../assets/img/modul.png";
-import timeimg from "../assets/img/time.png";
 import { useNavigate } from "react-router-dom";
 
 const CourseCard = ({ course, navigateTo }) => {
@@ -13,10 +10,6 @@ const CourseCard = ({ course, navigateTo }) => {
       <img src={imageimg} alt="" className="ks-img" />
       <div className="ks-card-content-1">
         <p>{course.category}</p>
-        <div>
-          <img src={star} alt="" />
-          4.7
-        </div>
       </div>
       <p className="titlecourse">{course.name}</p>
       <p className="creator">by {course.author} </p>
@@ -24,14 +17,6 @@ const CourseCard = ({ course, navigateTo }) => {
         <div>
           <img src={level} alt="" />
           <p>{course.level}</p>
-        </div>
-        <div>
-          <img src={modul} alt="" />
-          <p>10 Modul</p>
-        </div>
-        <div>
-          <img src={timeimg} alt="" />
-          <p>120 menit</p>
         </div>
       </div>
       <div className={`ks-card-content-3 ${course.type.toLowerCase()}`}>{course.type}</div>

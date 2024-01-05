@@ -13,10 +13,6 @@ const CourseFilter = ({ filterOptions, handleCheckboxChange, handleClearFilters 
           <input type="checkbox" id="palingpopuler" checked={filterOptions.palingpopuler} onChange={() => handleCheckboxChange("palingpopuler")} />
           <label htmlFor="palingpopuler">Paling Populer</label>
         </div>
-        <div>
-          <input type="checkbox" id="promo" checked={filterOptions.promo} onChange={() => handleCheckboxChange("promo")} />
-          <label htmlFor="promo">Promo</label>
-        </div>
       </div>
       <h1>Kategori</h1>
       <div className="isiFilter">

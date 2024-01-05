@@ -33,8 +33,6 @@ function Register() {
         data: data,
       };
 
-      const response = await axios.request(config);
-      console.log(response);
       // const token = response.headers["authorization"].split(" ")[1];
       // const apiUsername = username;
 

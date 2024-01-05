@@ -35,8 +35,6 @@ function Login() {
       const token = response.headers["authorization"].split(" ")[1];
       const apiUsername = response.data.data.username;
 
-      console.log(apiUsername);
-
       cookies.set("jwt_authorization", token, {
         expires: new Date(Date.now() + 3600 * 1000),
       });
