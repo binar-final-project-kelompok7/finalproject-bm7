@@ -5,7 +5,6 @@ import axios from "axios";
 
 function ResetPassword() {
   const [emailreset, setEmailReset] = useState("");
-
   const navigate = useNavigate();
 
   const handleSaveClick = async (e) => {
@@ -25,12 +24,7 @@ function ResetPassword() {
         });
 
         if (response.data.code === 200 && response.data.data.token) {
-          const resetToken = response.data.data.token;
-
-          // Navigates to the reset password confirmation page with the token in the URL
-          navigate(`/resetpassword-confirm/${resetToken}`, {
-            state: { email: emailreset, token: resetToken },
-          });
+          toast.success("Tautan berhasil dikirim melalui email", { theme: "colored" });
         } else {
           toast.error("Email tidak ditemukan!", {
             theme: "colored",
