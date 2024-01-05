@@ -1,28 +1,30 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function ConfirmResetPassword() {
-  const location = useLocation();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const currentURL = window.location.href;
+  const tokenIndex = currentURL.lastIndexOf("/resetpassword-confirm/") + "/resetpassword-confirm/".length;
+  const resetToken = currentURL.slice(tokenIndex);
 
   const navigate = useNavigate();
 
   const handleSaveClick = async (e) => {
     e.preventDefault();
 
-    if (location.state) {
-      const { email, token } = location.state;
-
       // Now you can use email and token in your API call or any other logic
       try {
-        const response = await axios.put("https://coursein7.uc.r.appspot.com/api/v1/auth/confirm-forgot-password", {
-          confirmNewPassword: confirmPassword,
-          newPassword: password,
-          token: token,
-        });
+        const response = await axios.put(
+          "https://coursein7.uc.r.appspot.com/api/v1/auth/confirm-forgot-password",
+          {
+            confirmNewPassword: confirmPassword,
+            newPassword: password,
+            token: resetToken,
+          }
+        );
 
         toast.success("Password Berhasil Diubah!", {
           theme: "colored",
@@ -35,10 +37,6 @@ function ConfirmResetPassword() {
         });
         console.error("Error resetting password:", error);
       }
-    } else {
-      // Handle the case when location.state is undefined
-      console.error("Location state is undefined");
-    }
   };
 
   return (
