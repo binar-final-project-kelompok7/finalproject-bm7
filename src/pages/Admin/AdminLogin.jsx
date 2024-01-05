@@ -62,7 +62,6 @@ const AdminLogin = () => {
           <input type="text" name="ID-Admin" id="ID-Admin" placeholder="ID Admin" value={username} onChange={(e) => setUsername(e.target.value)} />
           <div>
             <label htmlFor="Adm-Pw">Password</label>
-            <a href="#">Lupa Kata Sandi</a>
           </div>
           <input type="password" name="Adm-Pw" id="Adm-Pw" placeholder="Masukkan Password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <button type="submit">Masuk</button>

@@ -127,6 +127,8 @@
 }
 .ks-img {
   width: 100%;
+  height: 75px;
+  border-radius: 10px 10px 0 0;
 }
 .ks-card-content-1 {
   display: flex;

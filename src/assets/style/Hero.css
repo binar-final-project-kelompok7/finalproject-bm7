@@ -5,7 +5,11 @@
 .heroText button {
   color: #6148ff;
 }
-
+.ks-img {
+  width: 100%;
+  height: 75px;
+  border-radius: 10px 10px 0 0;
+}
 @media only screen and (max-width: 426px) {
   .hero img {
     height: 150px;
